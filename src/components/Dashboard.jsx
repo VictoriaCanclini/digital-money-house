@@ -1,12 +1,15 @@
 import React from "react";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 const dashboard = () => {
   return (
-    <section>
-      <Navbar />
-      {/* <div>helloooooo dashboard</div> */}
-    </section>
+    <>
+      <section className="bg-[url('/img/Landing-page.jpg')] bg-cover bg-center h-screen">
+        <Navbar />
+        {/* <Footer /> */}
+      </section>
+    </>
   );
 };
 

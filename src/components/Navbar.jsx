@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Navbar = () => {
   return (
     <div className="flex justify-between bg-black">
@@ -5,12 +7,16 @@ const Navbar = () => {
         <img src="/img/Logo 01.png" alt="Logo1" width={70} />
       </div>
       <div className="flex justify-end gap-1">
-        <button className="text-[#C1FD35] border-2 rounded-md pr-2 pl-2 pb-1 pt-1 m-4">
-          Ingresar
-        </button>
-        <button className="bg-[#C1FD35] text-black rounded-md pr-2 pl-2 pb-1 pt-1 m-4">
-          Crear cuenta
-        </button>
+        <Link href="/login">
+          <button className="text-[#C1FD35] border-2 rounded-md pr-2 pl-2 pb-1 pt-1 m-4">
+            Ingresar
+          </button>
+        </Link>
+        <Link href="/register">
+          <button className="bg-[#C1FD35] text-black rounded-md pr-2 pl-2 pb-1 pt-1 m-4">
+            Crear cuenta
+          </button>
+        </Link>
       </div>
     </div>
   );

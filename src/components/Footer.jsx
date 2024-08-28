@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="bg-[#3A393E]">
+    <div className="bg-[#3A393E] mt-[50px]">
       <p className="text-[#C1FD35] ml-4 p-4">© 2022 Digital Money House</p>
     </div>
   );

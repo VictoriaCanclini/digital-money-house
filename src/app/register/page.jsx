@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Link from "next/link";
 
 export default function Register() {
@@ -5,11 +6,21 @@ export default function Register() {
     <>
       <div className="flex justify-between bg-[#C1FD35]">
         <div className="mt-6 ml-2 mb-4">
-          <img src="/img/Logo-black.png" alt="Logo1" width={70} />
+          <Link href="/">
+            <img src="/img/Logo-black.png" alt="Logo1" width={70} />
+          </Link>
+        </div>
+        <div className="flex justify-end gap-1">
+          <Link
+            href="/login"
+            className="text-white bg-black border-2 border-black rounded-md m-3 p-2"
+          >
+            Iniciar sesión
+          </Link>
         </div>
       </div>
 
-      <div className="flex flex-col justify-center items-center  w-full h-full py-[115px]">
+      <div className="flex flex-col justify-center items-center  w-full h-full mt-[105px]">
         <h2 className="text-[20px] mb-[10px] sm:text-[30px] sm:mb-[20px] leading-3">
           Crear cuenta
         </h2>
@@ -33,13 +44,101 @@ export default function Register() {
       "
           >
             <input
+              className={
+                "flex-none w-full h-[60px] sm:max-w-[85%] rounded-lg text-black p-2"
+              }
+              label={"Nombre"}
+              // value={valueName}
+              // onChange={OnChangeName}
+              // onBlur={BlurName}
+              // onFocus={FocusName}
+              // classNameLabel={"block text-[23px]"}
+              placeholder={"Nombre*"}
+              name={"nombre"}
+              // classNameInput={`p-[5px]
+              // outline-none
+              // w-[100%]
+              // h-[40px]
+              // bg-black/20`}
+            />
+            <div className="h-[.5rem]">
+              <p className="text-red text-[.9rem] leading-3"></p>
+            </div>
+            <input
+              className={
+                "flex-none w-full h-[60px] sm:max-w-[85%] rounded-lg text-black p-2"
+              }
+              label={"Apellido"}
+              // value={valueLastName}
+              // onChange={OnChangeLastName}
+              // onBlur={BlurLastName}
+              // onFocus={FocusLastName}
+              // classNameLabel={"block text-[23px]"}
+              placeholder={"Apellido*"}
+              name={"apellido"}
+              // classNameInput={`p-[5px]
+              // outline-none
+              // w-[100%]
+              // h-[40px]
+              // bg-black/20`}
+            />
+            <div className="h-[.5rem]">
+              <p className="text-red text-[.9rem] leading-3"></p>
+            </div>
+            <input
+              className={
+                "flex-none w-full h-[60px] sm:max-w-[85%] rounded-lg text-black p-2"
+              }
+              type={"text"}
+              label={"DNI"}
+              // value={valueDni}
+              // onChange={OnChangeDni}
+              // onBlur={BlurDni}
+              // onFocus={FocusDni}
+              // classNameLabel={"block text-[23px]"}
+              name={"dni"}
+              placeholder={"DNI*"}
+              // classNameInput={`p-[4px]
+              // outline-none
+              // w-[100%]
+              // h-[40px]
+              // bg-black/20`}
+            />
+            <div className="h-[.5rem]">
+              <p className="text-red text-[.9rem] leading-3"></p>
+            </div>
+            <input
+              className={
+                "flex-none w-full h-[60px] sm:max-w-[85%] rounded-lg text-black p-2"
+              }
+              type={"text"}
+              label={"Telefono"}
+              // value={valueDni}
+              // onChange={OnChangeDni}
+              // onBlur={BlurDni}
+              // onFocus={FocusDni}
+              // classNameLabel={"block text-[23px]"}
+              name={"dni"}
+              placeholder={"Telefono*"}
+              // classNameInput={`p-[4px]
+              // outline-none
+              // w-[100%]
+              // h-[40px]
+              // bg-black/20`}
+            />
+            <div className="h-[.5rem]">
+              <p className="text-red text-[.9rem] leading-3"></p>
+            </div>
+            <input
               label={"email"}
               name={"email"}
-              classNameLabel={"block text-[30px]"}
+              // classNameLabel={"block text-[30px]"}
               type={"text"}
-              className={"w-full h-[60px] sm:max-w-[85%] rounded-lg"}
-              classNameInput={`p-[20px] outline-none w-[100%] h-[40px] bg-black/20`}
-              placeholder={"Correo electrónico"}
+              className={
+                "w-full h-[60px] sm:max-w-[85%] rounded-lg text-black p-2"
+              }
+              // classNameInput={`p-[20px] outline-none w-[100%] h-[40px] bg-black/20`}
+              placeholder={"Correo electrónico*"}
               // onFocus={FocusMail}
               // value={valueMail}
               // onChange={OnChangeMail}
@@ -48,19 +147,16 @@ export default function Register() {
             <div className="h-[.5rem]">
               <p className="text-red text-[.9rem] leading-3"></p>
             </div>
-          </div>
-          <div
-            className="mb-4 w-[100%] flex justify-start items-center flex-col
-      sm:px-3"
-          >
             <input
               label={"Contraseña"}
               name={"password"}
-              classNameLabel={"text-[30px]"}
+              // classNameLabel={"text-[30px]"}
               type={"password"}
-              className={"w-full h-[60px] sm:max-w-[85%] rounded-lg"}
-              classNameInput={`p-[20px] outline-none w-[100%] h-[40px] bg-black/20`}
-              placeholder={"Contraseña"}
+              className={
+                "w-full h-[60px] sm:max-w-[85%] rounded-lg text-black p-2"
+              }
+              // classNameInput={`p-[20px] outline-none w-[100%] h-[40px] bg-black/20`}
+              placeholder={"Contraseña*"}
               // value={valuePassword}
               // onFocus={FocusPassword}
               // onChange={OnChangePassword}
@@ -70,62 +166,19 @@ export default function Register() {
               //   setIsPasswordVisible(!isPasswordVisible)
               // }
             />
-
-            <div className="h-[.5rem] pb-6">
+            {/* <div className="h-[.5rem] pb-6">
               <p className="text-red text-[.9rem] leading-3"></p>
-            </div>
+            </div> */}
           </div>
-
-          <div
-            className="
-      flex
-      flex-col 
-      justify-center 
-      items-center 
-      mt-[60px]"
+          <Link
+            href="/successful-registration"
+            className="underline text-[#C1FD35]"
           >
-            <div className="h-[.5rem] mb-[1.2rem]">
-              <p className="text-[#ff0000] text-[1rem] leading-3"></p>
-
-              <p className="text-darkGreen text-[1rem] leading-3"></p>
-            </div>
-            {/* <button
-              className={`
-        py-[16px] 
-        px-[55px] 
-        leading-3 
-        text-[19px]
-        block
-        sm:w-[13rem]
-        md:w-[14rem]
-        w-full h-[60px] sm:max-w-[85%] rounded-lg text-[#C1FD35]`}
-            >
-              Continuar
-            </button> */}
-
-            <Link href="/register" className="underline">
-              Crear cuenta
-            </Link>
-          </div>
-          <div
-            className="
-      flex 
-      text-black 
-      gap-x-3 
-      justify-center 
-      items-center 
-      mt-3 
-      flex-col
-      sm:text-[17px] 
-      sm:flex-row"
-          >
-            <p>¿No tenés cuenta?</p>
-            <Link href="/register" className="underline">
-              Registrate
-            </Link>
-          </div>
+            Crear cuenta
+          </Link>
         </form>
       </div>
+      <Footer />
     </>
   );
 }

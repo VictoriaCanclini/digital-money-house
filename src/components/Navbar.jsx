@@ -9,7 +9,7 @@ const Navbar = () => {
       <div className="flex justify-end gap-1">
         <Link
           href="/login"
-          className="text-[#C1FD35] border-2 rounded-md m-3 p-2"
+          className="text-[#C1FD35] border-2 border-[#C1FD35] rounded-md m-3 p-2"
         >
           Ingresar
         </Link>

@@ -5,7 +5,7 @@ import Footer from "./Footer";
 const dashboard = () => {
   return (
     <>
-      <section className="relative bg-[url('/img/Mask-group.png')] bg-no-repeat bg-cover bg-center h-screen">
+      <section className="relative bg-[url('/img/Mask-group.png')] bg-no-repeat bg-cover bg-center">
         <Navbar />
         <div className="m-10">
           <h1 className="text-[40px]">
@@ -23,7 +23,7 @@ const dashboard = () => {
         </div>
 
         {/* Imagen de fondo principal */}
-        <div className="absolute inset-0 flex justify-center items-end mb-10">
+        <div className="absolute inset-0 flex items-end mb-[50px] sm:mb-10">
           <img className="w-screen" src="/img/Main.png" alt="Main background" />
         </div>
         <Footer />

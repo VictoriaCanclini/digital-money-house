@@ -7,15 +7,17 @@ const Navbar = () => {
         <img src="/img/Logo 01.png" alt="Logo1" width={70} />
       </div>
       <div className="flex justify-end gap-1">
-        <Link href="/login">
-          <button className="text-[#C1FD35] border-2 rounded-md pr-2 pl-2 pb-1 pt-1 m-4">
-            Ingresar
-          </button>
+        <Link
+          href="/login"
+          className="text-[#C1FD35] border-2 rounded-md m-3 p-2"
+        >
+          Ingresar
         </Link>
-        <Link href="/register">
-          <button className="bg-[#C1FD35] text-black rounded-md pr-2 pl-2 pb-1 pt-1 m-4">
-            Crear cuenta
-          </button>
+        <Link
+          href="/register"
+          className="bg-[#C1FD35] text-black rounded-md m-3 p-2 mr-6"
+        >
+          Crear cuenta
         </Link>
       </div>
     </div>

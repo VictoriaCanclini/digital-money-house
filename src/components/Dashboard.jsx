@@ -5,8 +5,8 @@ import Footer from "./Footer";
 const dashboard = () => {
   return (
     <>
+      <Navbar />
       <section className="relative bg-[url('/img/Mask-group.png')] bg-no-repeat bg-cover bg-center">
-        <Navbar />
         <div className="m-10">
           <h1 className="text-[40px]">
             De ahora en adelante, hacés más con tu dinero

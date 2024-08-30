@@ -35,6 +35,16 @@ function useInput(type) {
         messageError: "*El dni solo puede contener numeros",
       },
     ],
+    tel: [
+      {
+        condition: (valor) => valor.trim() !== "",
+        messageError: "*El teléfono no puede estar vacío",
+      },
+      {
+        condition: (valor) => /^[0-9]+$/.test(valor),
+        messageError: "*El teléfono solo puede contener numeros",
+      },
+    ],
     email: [
       {
         condition: (valor) => valor.trim() !== "",

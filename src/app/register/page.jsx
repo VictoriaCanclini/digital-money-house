@@ -1,7 +1,115 @@
+"use client";
+
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import useInput from "@/hooks/useInput";
+import { useState } from "react";
 
 export default function Register() {
+  const [messageAlert, setmessageAlert] = useState("");
+  const [messageAlertOk, setmessageAlertOk] = useState("");
+  const {
+    OnChange: OnChangeName,
+    value: valueName,
+    blur: BlurName,
+    focus: FocusName,
+    message: MessageName,
+  } = useInput("name");
+  const {
+    OnChange: OnChangeLastName,
+    value: valueLastName,
+    blur: BlurLastName,
+    focus: FocusLastName,
+    message: MessageLastName,
+  } = useInput("lastname");
+  const {
+    OnChange: OnChangeDni,
+    value: valueDni,
+    blur: BlurDni,
+    focus: FocusDni,
+    message: MessageDni,
+  } = useInput("dni");
+  const {
+    OnChange: OnChangeTel,
+    value: valueTel,
+    blur: BlurTel,
+    focus: FocusTel,
+    message: MessageTel,
+  } = useInput("tel");
+  const {
+    OnChange: OnChangeEmail,
+    value: valueEmail,
+    blur: BlurEmail,
+    focus: FocusEmail,
+    message: MessageEmail,
+  } = useInput("email");
+  const {
+    OnChange: OnChangePassword,
+    value: valuePassword,
+    blur: BlurPassword,
+    focus: FocusPassword,
+    message: MessagePassword,
+    isPasswordVisible,
+    setIsPasswordVisible,
+  } = useInput("password");
+
+  const onSubmitForm = async (e) => {
+    e.preventDefault();
+    //Verificacion campos de los input
+    if (
+      valueName.trim() == "" ||
+      valueLastName.trim() == "" ||
+      valueDni.trim() == "" ||
+      valueEmail.trim() == "" ||
+      valuePassword.trim() == ""
+    ) {
+      setmessageAlert("¡Completar todos los campos!");
+      setTimeout(() => {
+        setmessageAlert("");
+      }, 1300);
+    } else {
+      //Verificacion campos de los mensajes de error
+      if (
+        MessageLastName ||
+        MessageName ||
+        MessageDni ||
+        MessageEmail ||
+        MessagePassword
+      ) {
+        setmessageAlert("¡Verificar campos!");
+        setTimeout(() => {
+          setmessageAlert("");
+        }, 1300);
+      } else {
+        //Registro de usuario
+        // try {
+        //   await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/user/add`, {
+        //     name: valueName,
+        //     lastname: valueLastName,
+        //     dni: valueDni,
+        //     mail: valueMail,
+        //     password: valuePassword,
+        //   });
+        //   setmessageAlert("");
+        //   setmessageAlertOk("¡Bienvenido!");
+        //   setTimeout(() => {
+        //     router.push("/login");
+        //   }, 1300);
+        // } catch (error) {
+        //   console.error(error);
+        //   const { data } = error.response;
+        //   //Uso de las validaciones del back, si el correo esta registrado se le manda un alerta al cliente
+        //   if (data == "Email is already registered") {
+        //     setmessageAlert("El correo ya se encuentra en uso");
+        //     setTimeout(() => {
+        //       setmessageAlert("");
+        //     }, 1300);
+        //   }
+        // }
+      }
+    }
+  };
+
   return (
     <>
       <div className="flex justify-between bg-[#C1FD35]">
@@ -20,12 +128,12 @@ export default function Register() {
         </div>
       </div>
 
-      <div className="flex flex-col justify-center items-center  w-full h-full mt-[105px]">
+      <div className="flex flex-col justify-center items-center  w-full h-full mt-[80px]">
         <h2 className="text-[20px] mb-[10px] sm:text-[30px] sm:mb-[20px] leading-3">
           Crear cuenta
         </h2>
         <form
-          // onSubmit={onSubmitForm}
+          onSubmit={onSubmitForm}
           className="
       mt-[50px] 
       w-[80%]
@@ -48,134 +156,130 @@ export default function Register() {
                 "flex-none w-full h-[60px] sm:max-w-[85%] rounded-lg text-black p-2"
               }
               label={"Nombre"}
-              // value={valueName}
-              // onChange={OnChangeName}
-              // onBlur={BlurName}
-              // onFocus={FocusName}
-              // classNameLabel={"block text-[23px]"}
+              value={valueName}
+              onChange={OnChangeName}
+              onBlur={BlurName}
+              onFocus={FocusName}
               placeholder={"Nombre*"}
               name={"nombre"}
-              // classNameInput={`p-[5px]
-              // outline-none
-              // w-[100%]
-              // h-[40px]
-              // bg-black/20`}
             />
             <div className="h-[.5rem]">
-              <p className="text-red text-[.9rem] leading-3"></p>
+              {MessageName && (
+                <p className="text-red-500 text-[.9rem] leading-3 mt-2">
+                  {MessageName}
+                </p>
+              )}
             </div>
             <input
               className={
-                "flex-none w-full h-[60px] sm:max-w-[85%] rounded-lg text-black p-2"
+                "flex-none w-full h-[60px] sm:max-w-[85%] rounded-lg text-black p-2 mt-4"
               }
               label={"Apellido"}
-              // value={valueLastName}
-              // onChange={OnChangeLastName}
-              // onBlur={BlurLastName}
-              // onFocus={FocusLastName}
-              // classNameLabel={"block text-[23px]"}
+              value={valueLastName}
+              onChange={OnChangeLastName}
+              onBlur={BlurLastName}
+              onFocus={FocusLastName}
               placeholder={"Apellido*"}
               name={"apellido"}
-              // classNameInput={`p-[5px]
-              // outline-none
-              // w-[100%]
-              // h-[40px]
-              // bg-black/20`}
             />
             <div className="h-[.5rem]">
-              <p className="text-red text-[.9rem] leading-3"></p>
+              {MessageLastName && (
+                <p className="text-red-500 text-[.9rem] leading-3 mt-2">
+                  {MessageLastName}
+                </p>
+              )}
             </div>
             <input
               className={
-                "flex-none w-full h-[60px] sm:max-w-[85%] rounded-lg text-black p-2"
+                "flex-none w-full h-[60px] sm:max-w-[85%] rounded-lg text-black p-2 mt-4"
               }
               type={"text"}
               label={"DNI"}
-              // value={valueDni}
-              // onChange={OnChangeDni}
-              // onBlur={BlurDni}
-              // onFocus={FocusDni}
-              // classNameLabel={"block text-[23px]"}
+              value={valueDni}
+              onChange={OnChangeDni}
+              onBlur={BlurDni}
+              onFocus={FocusDni}
               name={"dni"}
               placeholder={"DNI*"}
-              // classNameInput={`p-[4px]
-              // outline-none
-              // w-[100%]
-              // h-[40px]
-              // bg-black/20`}
             />
             <div className="h-[.5rem]">
-              <p className="text-red text-[.9rem] leading-3"></p>
+              {MessageDni && (
+                <p className="text-red-500 text-[.9rem] leading-3 mt-2">
+                  {MessageDni}
+                </p>
+              )}
             </div>
             <input
               className={
-                "flex-none w-full h-[60px] sm:max-w-[85%] rounded-lg text-black p-2"
+                "flex-none w-full h-[60px] sm:max-w-[85%] rounded-lg text-black p-2 mt-4"
               }
               type={"text"}
               label={"Telefono"}
-              // value={valueDni}
-              // onChange={OnChangeDni}
-              // onBlur={BlurDni}
-              // onFocus={FocusDni}
-              // classNameLabel={"block text-[23px]"}
-              name={"dni"}
+              value={valueTel}
+              onChange={OnChangeTel}
+              onBlur={BlurTel}
+              onFocus={FocusTel}
+              name={"tel"}
               placeholder={"Telefono*"}
-              // classNameInput={`p-[4px]
-              // outline-none
-              // w-[100%]
-              // h-[40px]
-              // bg-black/20`}
             />
             <div className="h-[.5rem]">
-              <p className="text-red text-[.9rem] leading-3"></p>
+              {MessageTel && (
+                <p className="text-red-500 text-[.9rem] leading-3 mt-2">
+                  {MessageTel}
+                </p>
+              )}
             </div>
             <input
               label={"email"}
               name={"email"}
-              // classNameLabel={"block text-[30px]"}
               type={"text"}
               className={
-                "w-full h-[60px] sm:max-w-[85%] rounded-lg text-black p-2"
+                "w-full h-[60px] sm:max-w-[85%] rounded-lg text-black p-2 mt-4"
               }
-              // classNameInput={`p-[20px] outline-none w-[100%] h-[40px] bg-black/20`}
               placeholder={"Correo electrónico*"}
-              // onFocus={FocusMail}
-              // value={valueMail}
-              // onChange={OnChangeMail}
-              // onBlur={BlurMail}
+              onFocus={FocusEmail}
+              value={valueEmail}
+              onChange={OnChangeEmail}
+              onBlur={BlurEmail}
             />
             <div className="h-[.5rem]">
-              <p className="text-red text-[.9rem] leading-3"></p>
+              {MessageEmail && (
+                <p className="text-red-500 text-[.9rem] leading-3 mt-2">
+                  {MessageEmail}
+                </p>
+              )}
             </div>
             <input
               label={"Contraseña"}
               name={"password"}
-              // classNameLabel={"text-[30px]"}
               type={"password"}
               className={
-                "w-full h-[60px] sm:max-w-[85%] rounded-lg text-black p-2"
+                "w-full h-[60px] sm:max-w-[85%] rounded-lg text-black p-2 mt-4"
               }
-              // classNameInput={`p-[20px] outline-none w-[100%] h-[40px] bg-black/20`}
               placeholder={"Contraseña*"}
-              // value={valuePassword}
-              // onFocus={FocusPassword}
-              // onChange={OnChangePassword}
-              // onBlur={BlurPassword}
-              // isPasswordVisible={isPasswordVisible}
-              // togglePasswordVisibility={() =>
-              //   setIsPasswordVisible(!isPasswordVisible)
-              // }
+              value={valuePassword}
+              onFocus={FocusPassword}
+              onChange={OnChangePassword}
+              onBlur={BlurPassword}
+              isPasswordVisible={isPasswordVisible}
+              togglePasswordVisibility={() =>
+                setIsPasswordVisible(!isPasswordVisible)
+              }
             />
-            {/* <div className="h-[.5rem] pb-6">
-              <p className="text-red text-[.9rem] leading-3"></p>
-            </div> */}
+            <div className="h-[.5rem]">
+              {MessagePassword && (
+                <p className="text-red-500 text-[.9rem] leading-3 mt-2">
+                  {MessagePassword}
+                </p>
+              )}
+            </div>
+            <Link
+              href="/successful-registration"
+              className="underline text-[#C1FD35] mt-8"
+            >
+              Crear cuenta
+            </Link>
           </div>
-          <Link
-            href="/successful-registration"
-            className="underline text-[#C1FD35]"
-          >
-            Crear cuenta
-          </Link>
         </form>
       </div>
       <Footer />

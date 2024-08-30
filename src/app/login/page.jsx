@@ -116,12 +116,10 @@ export default function Login() {
               <input
                 label={"email"}
                 name={"email"}
-                // classNameLabel={"block text-[30px]"}
                 type={"text"}
                 className={
                   "w-full h-[60px] sm:max-w-[85%] rounded-lg text-black p-2"
                 }
-                // classNameInput={`p-[20px] outline-none w-[100%] h-[40px] bg-black/20`}
                 placeholder={"Correo electrónico"}
                 onFocus={FocusEmail}
                 value={valueEmail}
@@ -143,12 +141,10 @@ export default function Login() {
               <input
                 label={"password"}
                 name={"password"}
-                // classNameLabel={"text-[30px]"}
                 type={"password"}
                 className={
                   "w-full h-[60px] sm:max-w-[85%] rounded-lg text-black p-2"
                 }
-                // classNameInput={`p-[20px] outline-none w-[100%] h-[40px] bg-black/20`}
                 placeholder={"Contraseña"}
                 value={valuePassword}
                 onFocus={FocusPassword}

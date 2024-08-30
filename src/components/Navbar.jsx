@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <div className="flex justify-between bg-black h-[30px]">
+    <div className="flex justify-between bg-black">
       <div className="mt-6 ml-2">
         <img src="/img/Logo 01.png" alt="Logo1" width={70} />
       </div>

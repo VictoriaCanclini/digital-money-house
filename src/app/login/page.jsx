@@ -172,12 +172,13 @@ export default function Login() {
             >
               Continuar
             </button>
-            <Link
-              href="/register"
-              className="underline mt-6 flex justify-center"
+            <button
+              className="w-full h-[60px] sm:max-w-[80%] rounded-lg p-2
+              text-[20px]
+               text-black border-lg bg-[#CECECE] mt-8"
             >
-              Crear cuenta
-            </Link>
+              <Link href="/register">Crear cuenta</Link>
+            </button>
           </form>
         </div>
       </div>

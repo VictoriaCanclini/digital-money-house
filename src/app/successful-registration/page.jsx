@@ -12,8 +12,7 @@ const Successful = () => {
           </Link>
         </div>
       </div>
-
-      <div className="flex flex-col justify-center items-center  w-full h-full py-[115px]">
+      <div className="flex flex-col justify-center items-center h-screen py-[115px]">
         <h2 className="text-[30px] mb-[10px] sm:text-[40px] sm:mb-[20px] leading-3">
           Registro Exitoso
         </h2>
@@ -28,11 +27,6 @@ const Successful = () => {
       items-center 
       mt-[10px]"
         >
-          <div className="h-[.5rem] mb-[1.2rem]">
-            <p className="text-[#ff0000] text-[1rem] leading-3"></p>
-
-            <p className="text-darkGreen text-[1rem] leading-3"></p>
-          </div>
           <Link href="/login">
             <button
               className={`
@@ -50,9 +44,7 @@ const Successful = () => {
           </Link>
         </div>
       </div>
-      <div className="mt-[165px]">
-        <Footer />
-      </div>
+      <Footer />
     </>
   );
 };

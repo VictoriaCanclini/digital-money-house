@@ -19,8 +19,16 @@ const dashboard = () => {
 
           {/* Contenedor para las tarjetas */}
           <div className="relative z-10 flex flex-col sm:flex-row justify-center items-center gap-4 mt-30 ml-4 mr-4 sm:mt-60">
-            <img src="/img/Card-landing.png" alt="card1" width={500} />
-            <img src="/img/Card-landing2.png" alt="card2" width={500} />
+            <img
+              src="/img/Card-landing.png"
+              alt="card1"
+              className="w-[80%] sm:w-[500px]"
+            />
+            <img
+              src="/img/Card-landing2.png"
+              alt="card2"
+              className="w-[80%] sm:w-[500px]"
+            />
           </div>
           {/* Imagen de fondo principal */}
           <div className="absolute inset-0 flex items-end mb-10">

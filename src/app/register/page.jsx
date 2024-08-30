@@ -55,20 +55,20 @@ export default function Register() {
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
-    //Verificacion campos de los input
+    // Verificación de campos de los inputs
     if (
-      valueName.trim() == "" ||
-      valueLastName.trim() == "" ||
-      valueDni.trim() == "" ||
-      valueEmail.trim() == "" ||
-      valuePassword.trim() == ""
+      valueName.trim() === "" ||
+      valueLastName.trim() === "" ||
+      valueDni.trim() === "" ||
+      valueEmail.trim() === "" ||
+      valuePassword.trim() === ""
     ) {
       setmessageAlert("¡Completar todos los campos!");
       setTimeout(() => {
         setmessageAlert("");
       }, 1300);
     } else {
-      //Verificacion campos de los mensajes de error
+      // Verificación de mensajes de error
       if (
         MessageLastName ||
         MessageName ||
@@ -81,7 +81,7 @@ export default function Register() {
           setmessageAlert("");
         }, 1300);
       } else {
-        //Registro de usuario
+        // Registro de usuario
         // try {
         //   await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/user/add`, {
         //     name: valueName,
@@ -98,8 +98,8 @@ export default function Register() {
         // } catch (error) {
         //   console.error(error);
         //   const { data } = error.response;
-        //   //Uso de las validaciones del back, si el correo esta registrado se le manda un alerta al cliente
-        //   if (data == "Email is already registered") {
+        //   // Uso de las validaciones del back, si el correo está registrado se le manda un alerta al cliente
+        //   if (data === "Email is already registered") {
         //     setmessageAlert("El correo ya se encuentra en uso");
         //     setTimeout(() => {
         //       setmessageAlert("");
@@ -127,34 +127,28 @@ export default function Register() {
           </Link>
         </div>
       </div>
-
-      <div className="flex flex-col justify-center items-center  w-full h-full mt-[80px]">
+      <div className="flex flex-col justify-center items-center w-full h-full mt-[80px]">
         <h2 className="text-[20px] mb-[10px] sm:text-[30px] sm:mb-[20px] leading-3">
           Crear cuenta
         </h2>
         <form
           onSubmit={onSubmitForm}
           className="
-      mt-[50px] 
-      w-[80%]
-      min-[450px]:max-w-[350px]
-      sm:max-w-[450px]
-      md:flex md:flex-col md:items-center
+      
+          mt-[50px] 
+          w-[80%]
+          min-[450px]:max-w-[350px]
+          sm:max-w-[450px]
+          md:grid 
+          md:grid-cols-2 
+          md:gap-x-4
+          md:gap-y-6
+          justify-items-center
           "
         >
-          <div
-            className="
-      mb-4 
-      w-[100%] 
-      sm:px-3
-      flex justify-start items-center
-      flex-col
-      "
-          >
+          <div className="w-full mb-4">
             <input
-              className={
-                "flex-none w-full h-[60px] sm:max-w-[85%] rounded-lg text-black p-2"
-              }
+              className="w-full h-[60px] rounded-lg text-black p-2"
               label={"Nombre"}
               value={valueName}
               onChange={OnChangeName}
@@ -163,17 +157,16 @@ export default function Register() {
               placeholder={"Nombre*"}
               name={"nombre"}
             />
-            <div className="h-[.5rem]">
-              {MessageName && (
-                <p className="text-red-500 text-[.9rem] leading-3 mt-2">
-                  {MessageName}
-                </p>
-              )}
-            </div>
+            {MessageName && (
+              <p className="text-red-500 text-[.9rem] leading-3 mt-2">
+                {MessageName}
+              </p>
+            )}
+          </div>
+
+          <div className="w-full mb-4">
             <input
-              className={
-                "flex-none w-full h-[60px] sm:max-w-[85%] rounded-lg text-black p-2 mt-4"
-              }
+              className="w-full h-[60px] rounded-lg text-black p-2"
               label={"Apellido"}
               value={valueLastName}
               onChange={OnChangeLastName}
@@ -182,17 +175,16 @@ export default function Register() {
               placeholder={"Apellido*"}
               name={"apellido"}
             />
-            <div className="h-[.5rem]">
-              {MessageLastName && (
-                <p className="text-red-500 text-[.9rem] leading-3 mt-2">
-                  {MessageLastName}
-                </p>
-              )}
-            </div>
+            {MessageLastName && (
+              <p className="text-red-500 text-[.9rem] leading-3 mt-2">
+                {MessageLastName}
+              </p>
+            )}
+          </div>
+
+          <div className="w-full mb-4">
             <input
-              className={
-                "flex-none w-full h-[60px] sm:max-w-[85%] rounded-lg text-black p-2 mt-4"
-              }
+              className="w-full h-[60px] rounded-lg text-black p-2"
               type={"text"}
               label={"DNI"}
               value={valueDni}
@@ -202,87 +194,86 @@ export default function Register() {
               name={"dni"}
               placeholder={"DNI*"}
             />
-            <div className="h-[.5rem]">
-              {MessageDni && (
-                <p className="text-red-500 text-[.9rem] leading-3 mt-2">
-                  {MessageDni}
-                </p>
-              )}
-            </div>
+            {MessageDni && (
+              <p className="text-red-500 text-[.9rem] leading-3 mt-2">
+                {MessageDni}
+              </p>
+            )}
+          </div>
+
+          <div className="w-full mb-4">
             <input
-              className={
-                "flex-none w-full h-[60px] sm:max-w-[85%] rounded-lg text-black p-2 mt-4"
-              }
+              className="w-full h-[60px] rounded-lg text-black p-2"
               type={"text"}
-              label={"Telefono"}
+              label={"Teléfono"}
               value={valueTel}
               onChange={OnChangeTel}
               onBlur={BlurTel}
               onFocus={FocusTel}
               name={"tel"}
-              placeholder={"Telefono*"}
+              placeholder={"Teléfono*"}
             />
-            <div className="h-[.5rem]">
-              {MessageTel && (
-                <p className="text-red-500 text-[.9rem] leading-3 mt-2">
-                  {MessageTel}
-                </p>
-              )}
-            </div>
+            {MessageTel && (
+              <p className="text-red-500 text-[.9rem] leading-3 mt-2">
+                {MessageTel}
+              </p>
+            )}
+          </div>
+
+          <div className="w-full mb-4">
             <input
+              className="w-full h-[60px] rounded-lg text-black p-2"
               label={"email"}
               name={"email"}
               type={"text"}
-              className={
-                "w-full h-[60px] sm:max-w-[85%] rounded-lg text-black p-2 mt-4"
-              }
               placeholder={"Correo electrónico*"}
               onFocus={FocusEmail}
               value={valueEmail}
               onChange={OnChangeEmail}
               onBlur={BlurEmail}
             />
-            <div className="h-[.5rem]">
-              {MessageEmail && (
-                <p className="text-red-500 text-[.9rem] leading-3 mt-2">
-                  {MessageEmail}
-                </p>
-              )}
-            </div>
+            {MessageEmail && (
+              <p className="text-red-500 text-[.9rem] leading-3 mt-2">
+                {MessageEmail}
+              </p>
+            )}
+          </div>
+
+          <div className="w-full mb-4">
             <input
               label={"Contraseña"}
               name={"password"}
               type={"password"}
-              className={
-                "w-full h-[60px] sm:max-w-[85%] rounded-lg text-black p-2 mt-4"
-              }
+              className="w-full h-[60px] rounded-lg text-black p-2"
               placeholder={"Contraseña*"}
               value={valuePassword}
               onFocus={FocusPassword}
               onChange={OnChangePassword}
               onBlur={BlurPassword}
-              isPasswordVisible={isPasswordVisible}
-              togglePasswordVisibility={() =>
-                setIsPasswordVisible(!isPasswordVisible)
-              }
+              // isPasswordVisible={isPasswordVisible}
+              // togglePasswordVisibility={() =>
+              //   setIsPasswordVisible(!isPasswordVisible)
+              // }
             />
-            <div className="h-[.5rem]">
-              {MessagePassword && (
-                <p className="text-red-500 text-[.9rem] leading-3 mt-2">
-                  {MessagePassword}
-                </p>
-              )}
-            </div>
-            <Link
-              href="/successful-registration"
-              className="underline text-[#C1FD35] mt-8"
-            >
-              Crear cuenta
+            {MessagePassword && (
+              <p className="text-red-500 text-[.9rem] leading-3 mt-2">
+                {MessagePassword}
+              </p>
+            )}
+          </div>
+
+          <div className="col-span-2 w-full">
+            <Link href="/successful-registration">
+              <button className="w-full h-[60px] rounded-lg p-2 text-[20px] text-black border-lg bg-[#C1FD35]">
+                Crear cuenta
+              </button>
             </Link>
           </div>
         </form>
       </div>
-      <Footer />
+      <div className="mt-[145px]">
+        <Footer />
+      </div>
     </>
   );
 }

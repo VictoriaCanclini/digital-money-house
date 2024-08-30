@@ -1,7 +1,82 @@
+"use client";
+
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import useInput from "@/hooks/useInput";
+import { useState } from "react";
 
 export default function Login() {
+  const [messageAlert, setmessageAlert] = useState("");
+  const [messageAlertOk, setmessageAlertOk] = useState("");
+
+  const {
+    OnChange: OnChangeMail,
+    value: valueEmail,
+    blur: BlurEmail,
+    focus: FocusEmail,
+    message: MessageEmail,
+  } = useInput("email");
+
+  const {
+    OnChange: OnChangePassword,
+    value: valuePassword,
+    blur: BlurPassword,
+    focus: FocusPassword,
+    message: MessagePassword,
+    isPasswordVisible,
+    setIsPasswordVisible,
+  } = useInput("password");
+
+  const onSubmitForm = async (e) => {
+    e.preventDefault();
+
+    if (valueEmail.trim() == "" || valuePassword.trim() == "") {
+      setmessageAlert("¡Completar todos los campos!");
+      setTimeout(() => {
+        setmessageAlert("");
+      }, 1300);
+    } else {
+      //Verificacion campos de los mensajes de error
+      if (MessageEmail || MessagePassword) {
+        setmessageAlert("¡Verificar campos!");
+        setTimeout(() => {
+          setmessageAlert("");
+        }, 1300);
+      } else {
+        //Registro de usuario
+        // try {
+        //   const response = await axios.post(
+        //     `${process.env.NEXT_PUBLIC_API_URL}/api/user/login`,
+        //     {
+        //       email: valueEmail,
+        //       password: valuePassword,
+        //     },
+        //     { withCredentials: true }
+        //   );
+        //   const data = response.data;
+        //   dispatch(
+        //     setCredentials({
+        //       dni: data.user.dni,
+        //       name: data.user.name,
+        //       lastname: data.user.lastname,
+        //       email: data.user.email,
+        //       id: data.user._id,
+        //     })
+        //   );
+        //   setmessageAlert("");
+        //   setmessageAlertOk("¡Bienvenido!");
+        //   router.push("/");
+        // } catch (error) {
+        //   console.error(error);
+        //   setmessageAlert("Error en el login");
+        //   setTimeout(() => {
+        //     setmessageAlert("");
+        //   }, 1300);
+        // }
+      }
+    }
+  };
+
   return (
     <>
       <div className="h-screen">
@@ -20,7 +95,7 @@ export default function Login() {
             ¡Hola! Ingresá tu e-mail
           </h2>
           <form
-            // onSubmit={onSubmitForm}
+            onSubmit={onSubmitForm}
             className="
       mt-[50px] 
       w-[80%]
@@ -31,7 +106,7 @@ export default function Login() {
           >
             <div
               className="
-      mb-4 
+      mb-6 
       w-[100%] 
       sm:px-3
       flex justify-start items-center
@@ -48,14 +123,18 @@ export default function Login() {
                 }
                 // classNameInput={`p-[20px] outline-none w-[100%] h-[40px] bg-black/20`}
                 placeholder={"Correo electrónico"}
-                // onFocus={FocusMail}
-                // value={valueMail}
-                // onChange={OnChangeMail}
-                // onBlur={BlurMail}
+                onFocus={FocusEmail}
+                value={valueEmail}
+                onChange={OnChangeMail}
+                onBlur={BlurEmail}
               />
-              {/* <div className="h-[.5rem]">
-                <p className="text-red text-[.9rem] leading-3"></p>
-              </div> */}
+              <div className="h-[.5rem]">
+                {MessageEmail && (
+                  <p className="text-red-500 text-[.9rem] leading-3 mt-2">
+                    {MessageEmail}
+                  </p>
+                )}
+              </div>
             </div>
             <div
               className="mb-4 w-[100%] flex justify-start items-center flex-col
@@ -71,47 +150,38 @@ export default function Login() {
                 }
                 // classNameInput={`p-[20px] outline-none w-[100%] h-[40px] bg-black/20`}
                 placeholder={"Contraseña"}
-                // value={valuePassword}
-                // onFocus={FocusPassword}
-                // onChange={OnChangePassword}
-                // onBlur={BlurPassword}
-                // isPasswordVisible={isPasswordVisible}
-                // togglePasswordVisibility={() =>
-                //   setIsPasswordVisible(!isPasswordVisible)
-                // }
+                value={valuePassword}
+                onFocus={FocusPassword}
+                onChange={OnChangePassword}
+                onBlur={BlurPassword}
+                isPasswordVisible={isPasswordVisible}
+                togglePasswordVisibility={() =>
+                  setIsPasswordVisible(!isPasswordVisible)
+                }
               />
 
-              {/* <div className="h-[.5rem] pb-6">
-                <p className="text-red text-[.9rem] leading-3"></p>
-              </div> */}
+              <div className="h-[.5rem] pb-6">
+                {MessagePassword && (
+                  <p className="text-red-500 text-[.9rem] leading-3 mt-2">
+                    {MessagePassword}
+                  </p>
+                )}
+              </div>
             </div>
-
-            <div
+            <button
               className="
-      flex
-      flex-col 
-      justify-center 
-      items-center
-      mt-2 "
-            >
-              {/* <div className="h-[.5rem] mb-[1.2rem]">
-                <p className="text-[#ff0000] text-[1rem] leading-3"></p>
-
-                <p className="text-darkGreen text-[1rem] leading-3"></p>
-              </div> */}
-              <button
-                className={`
-        
-     
+                w-full h-[60px] sm:max-w-[80%] rounded-lg p-2
         text-[20px]
-        h-[60px] sm:max-w-[85%] text-[#C1FD35]`}
-              >
-                Continuar
-              </button>
-              <Link href="/register" className="underline ml-1">
-                Crear cuenta
-              </Link>
-            </div>
+         text-black border-lg bg-[#C1FD35] "
+            >
+              Continuar
+            </button>
+            <Link
+              href="/register"
+              className="underline mt-6 flex justify-center"
+            >
+              Crear cuenta
+            </Link>
           </form>
         </div>
       </div>

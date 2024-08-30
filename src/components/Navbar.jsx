@@ -2,11 +2,11 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <div className="flex justify-between bg-black">
+    <div className="flex justify-between bg-black h-[70px]">
       <div className="mt-6 ml-2">
         <img src="/img/Logo 01.png" alt="Logo1" width={70} />
       </div>
-      <div className="flex justify-end gap-2 m-6">
+      <div className="flex justify-end gap-2 mt-2 mr-4">
         <button>
           <Link
             href="/login"

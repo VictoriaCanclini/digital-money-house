@@ -5,8 +5,10 @@ import Link from "next/link";
 import useInput from "@/hooks/useInput";
 import { useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function Register() {
+  const router = useRouter();
   const [messageAlert, setmessageAlert] = useState("");
   const [messageAlertOk, setmessageAlertOk] = useState("");
   const {
@@ -84,13 +86,14 @@ export default function Register() {
       } else {
         //Registro de usuario
         try {
-          await axios.post(`${process.env.BASE_URL}/api/users`, {
+          const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/users`;
+          await axios.post(url, {
             firstname: valueName,
             lastname: valueLastName,
-            dni: valueDni,
+            dni: parseInt(valueDni, 10),
             email: valueEmail,
             password: valuePassword,
-            tel: valueTel,
+            phone: valuePhone,
           });
           setmessageAlert("");
           setmessageAlertOk("¡Bienvenido!");
@@ -100,12 +103,13 @@ export default function Register() {
         } catch (error) {
           console.error(error);
           const { data } = error.response;
+          console.log(data);
           // Uso de las validaciones del back, si el correo está registrado se le manda un alerta al cliente
-          if (data === "Email is already registered") {
+          if (data.error === "Email already registered") {
             setmessageAlert("El correo ya se encuentra en uso");
             setTimeout(() => {
               setmessageAlert("");
-            }, 1300);
+            }, 1800);
           }
         }
       }
@@ -260,6 +264,18 @@ export default function Register() {
             {MessagePassword && (
               <p className="text-red-500 text-[.9rem] leading-3 mt-2">
                 {MessagePassword}
+              </p>
+            )}
+          </div>
+
+          <div className="h-[.5rem] mb-[1.2rem]">
+            {messageAlert ? (
+              <p className="text-red-500 text-[1rem] leading-3">
+                {messageAlert}
+              </p>
+            ) : (
+              <p className="text-green-500 text-[1rem] leading-3">
+                {messageAlertOk}
               </p>
             )}
           </div>

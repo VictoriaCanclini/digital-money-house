@@ -5,10 +5,18 @@ import Link from "next/link";
 import useInput from "@/hooks/useInput";
 import { useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+
+import { setCredentials } from "../../state/features/authSlice";
 
 export default function LoginPassword() {
+  const router = useRouter();
+  const dispatch = useDispatch();
   const [messageAlert, setmessageAlert] = useState("");
   const [messageAlertOk, setmessageAlertOk] = useState("");
+
+  const { value: valueEmail } = useInput("email");
 
   const {
     OnChange: OnChangePassword,
@@ -23,7 +31,7 @@ export default function LoginPassword() {
   const onSubmitForm = async (e) => {
     e.preventDefault();
 
-    if (valuePassword.trim() == "") {
+    if (valueEmail.trim() == "" || valuePassword.trim() == "") {
       setmessageAlert("¡Completar todos los campos!");
       setTimeout(() => {
         setmessageAlert("");
@@ -39,24 +47,24 @@ export default function LoginPassword() {
         //Registro de usuario
         try {
           const response = await axios.post(
-            `${`${process.env.BASE_URL}/api/login`}`,
+            `${`${process.env.NEXT_PUBLIC_BASE_URL}/api/login`}`,
             {
-              // email: valueEmail,
+              email: valueEmail,
               password: valuePassword,
             },
             { withCredentials: true }
           );
           const data = response.data;
+          console.log(data);
           dispatch(
             setCredentials({
               dni: data.user.dni,
-              name: data.user.name,
+              firstname: data.user.firstname,
               lastname: data.user.lastname,
               email: data.user.email,
-              id: data.user._id,
+              id: data.user.user_id,
             })
           );
-          setmessageAlert("");
           setmessageAlertOk("¡Bienvenido!");
           router.push("/");
         } catch (error) {

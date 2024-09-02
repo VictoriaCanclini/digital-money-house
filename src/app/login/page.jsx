@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 import useInput from "@/hooks/useInput";
 import { useState } from "react";
+import axios from "axios";
 
 export default function Login() {
   const [messageAlert, setmessageAlert] = useState("");
@@ -23,8 +24,8 @@ export default function Login() {
     blur: BlurPassword,
     focus: FocusPassword,
     message: MessagePassword,
-    isPasswordVisible,
-    setIsPasswordVisible,
+    // isPasswordVisible,
+    // setIsPasswordVisible,
   } = useInput("password");
 
   const onSubmitForm = async (e) => {
@@ -44,35 +45,35 @@ export default function Login() {
         }, 1300);
       } else {
         //Registro de usuario
-        // try {
-        //   const response = await axios.post(
-        //     `${process.env.NEXT_PUBLIC_API_URL}/api/user/login`,
-        //     {
-        //       email: valueEmail,
-        //       password: valuePassword,
-        //     },
-        //     { withCredentials: true }
-        //   );
-        //   const data = response.data;
-        //   dispatch(
-        //     setCredentials({
-        //       dni: data.user.dni,
-        //       name: data.user.name,
-        //       lastname: data.user.lastname,
-        //       email: data.user.email,
-        //       id: data.user._id,
-        //     })
-        //   );
-        //   setmessageAlert("");
-        //   setmessageAlertOk("¡Bienvenido!");
-        //   router.push("/");
-        // } catch (error) {
-        //   console.error(error);
-        //   setmessageAlert("Error en el login");
-        //   setTimeout(() => {
-        //     setmessageAlert("");
-        //   }, 1300);
-        // }
+        try {
+          const response = await axios.post(
+            `${`${process.env.BASE_URL}/api/login`}`,
+            {
+              email: valueEmail,
+              password: valuePassword,
+            },
+            { withCredentials: true }
+          );
+          const data = response.data;
+          dispatch(
+            setCredentials({
+              dni: data.user.dni,
+              name: data.user.name,
+              lastname: data.user.lastname,
+              email: data.user.email,
+              id: data.user._id,
+            })
+          );
+          setmessageAlert("");
+          setmessageAlertOk("¡Bienvenido!");
+          router.push("/");
+        } catch (error) {
+          console.error(error);
+          setmessageAlert("Error en el login");
+          setTimeout(() => {
+            setmessageAlert("");
+          }, 1300);
+        }
       }
     }
   };
@@ -150,10 +151,10 @@ export default function Login() {
                 onFocus={FocusPassword}
                 onChange={OnChangePassword}
                 onBlur={BlurPassword}
-                isPasswordVisible={isPasswordVisible}
-                togglePasswordVisibility={() =>
-                  setIsPasswordVisible(!isPasswordVisible)
-                }
+                // isPasswordVisible={isPasswordVisible}
+                // togglePasswordVisibility={() =>
+                //   setIsPasswordVisible(!isPasswordVisible)
+                // }
               />
 
               <div className="h-[.5rem] pb-6">

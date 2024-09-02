@@ -1,6 +1,19 @@
 import Link from "next/link";
 
 const Navbar = () => {
+  const handleLogout = async () => {
+    try {
+      await axios.post(
+        `${process.env.BASE_URL}/api/logout`,
+        {},
+        { withCredentials: true }
+      );
+      router.push("/");
+    } catch (error) {
+      console.error("Error al cerrar sesión:", error);
+    }
+  };
+
   return (
     <div className="flex justify-between bg-black h-[70px]">
       <div className="mt-6 ml-2">
@@ -23,6 +36,15 @@ const Navbar = () => {
             Crear cuenta
           </Link>
         </button>
+        {/* {user && (
+          <Link
+            href="/logout"
+            className="text-white bg-black border-2 border-black rounded-md m-3 p-2"
+            onClick={handleLogout}
+          >
+            Cerrar sesión
+          </Link>
+        )} */}
       </div>
     </div>
   );

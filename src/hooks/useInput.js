@@ -5,7 +5,7 @@ function useInput(type) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const OnChange = (e) => setValue(e.target.value);
   const validations_types = {
-    name: [
+    firstname: [
       {
         condition: (valor) => valor.trim() !== "",
         messageError: "*El nombre no puede estar vacío",
@@ -35,7 +35,7 @@ function useInput(type) {
         messageError: "*El dni solo puede contener numeros",
       },
     ],
-    tel: [
+    phone: [
       {
         condition: (valor) => valor.trim() !== "",
         messageError: "*El teléfono no puede estar vacío",
@@ -56,12 +56,6 @@ function useInput(type) {
         messageError: "*El mail debe ser un mail válido",
       },
     ],
-    // password: [
-    //   {
-    //     condition: (valor) => valor.trim() !== "",
-    //     messageError: "*La contraseña no puede estar vacía",
-    //   },
-    // ],
     password: [
       {
         condition: (valor) => valor.trim() !== "",

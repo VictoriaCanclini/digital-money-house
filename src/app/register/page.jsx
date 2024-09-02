@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 import useInput from "@/hooks/useInput";
 import { useState } from "react";
+import axios from "axios";
 
 export default function Register() {
   const [messageAlert, setmessageAlert] = useState("");
@@ -14,7 +15,7 @@ export default function Register() {
     blur: BlurName,
     focus: FocusName,
     message: MessageName,
-  } = useInput("name");
+  } = useInput("firstname");
   const {
     OnChange: OnChangeLastName,
     value: valueLastName,
@@ -30,12 +31,12 @@ export default function Register() {
     message: MessageDni,
   } = useInput("dni");
   const {
-    OnChange: OnChangeTel,
-    value: valueTel,
-    blur: BlurTel,
-    focus: FocusTel,
-    message: MessageTel,
-  } = useInput("tel");
+    OnChange: OnChangePhone,
+    value: valuePhone,
+    blur: BlurPhone,
+    focus: FocusPhone,
+    message: MessagePhone,
+  } = useInput("phone");
   const {
     OnChange: OnChangeEmail,
     value: valueEmail,
@@ -49,8 +50,8 @@ export default function Register() {
     blur: BlurPassword,
     focus: FocusPassword,
     message: MessagePassword,
-    isPasswordVisible,
-    setIsPasswordVisible,
+    // isPasswordVisible,
+    // setIsPasswordVisible,
   } = useInput("password");
 
   const onSubmitForm = async (e) => {
@@ -81,31 +82,32 @@ export default function Register() {
           setmessageAlert("");
         }, 1300);
       } else {
-        // Registro de usuario
-        // try {
-        //   await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/user/add`, {
-        //     name: valueName,
-        //     lastname: valueLastName,
-        //     dni: valueDni,
-        //     mail: valueMail,
-        //     password: valuePassword,
-        //   });
-        //   setmessageAlert("");
-        //   setmessageAlertOk("¡Bienvenido!");
-        //   setTimeout(() => {
-        //     router.push("/login");
-        //   }, 1300);
-        // } catch (error) {
-        //   console.error(error);
-        //   const { data } = error.response;
-        //   // Uso de las validaciones del back, si el correo está registrado se le manda un alerta al cliente
-        //   if (data === "Email is already registered") {
-        //     setmessageAlert("El correo ya se encuentra en uso");
-        //     setTimeout(() => {
-        //       setmessageAlert("");
-        //     }, 1300);
-        //   }
-        // }
+        //Registro de usuario
+        try {
+          await axios.post(`${process.env.BASE_URL}/api/users`, {
+            firstname: valueName,
+            lastname: valueLastName,
+            dni: valueDni,
+            email: valueEmail,
+            password: valuePassword,
+            tel: valueTel,
+          });
+          setmessageAlert("");
+          setmessageAlertOk("¡Bienvenido!");
+          setTimeout(() => {
+            router.push("/successful-registration");
+          }, 1300);
+        } catch (error) {
+          console.error(error);
+          const { data } = error.response;
+          // Uso de las validaciones del back, si el correo está registrado se le manda un alerta al cliente
+          if (data === "Email is already registered") {
+            setmessageAlert("El correo ya se encuentra en uso");
+            setTimeout(() => {
+              setmessageAlert("");
+            }, 1300);
+          }
+        }
       }
     }
   };
@@ -206,16 +208,16 @@ export default function Register() {
               className="w-full h-[60px] rounded-lg text-black p-2"
               type={"text"}
               label={"Teléfono"}
-              value={valueTel}
-              onChange={OnChangeTel}
-              onBlur={BlurTel}
-              onFocus={FocusTel}
-              name={"tel"}
+              value={valuePhone}
+              onChange={OnChangePhone}
+              onBlur={BlurPhone}
+              onFocus={FocusPhone}
+              name={"phone"}
               placeholder={"Teléfono*"}
             />
-            {MessageTel && (
+            {MessagePhone && (
               <p className="text-red-500 text-[.9rem] leading-3 mt-2">
-                {MessageTel}
+                {MessagePhone}
               </p>
             )}
           </div>
@@ -263,11 +265,9 @@ export default function Register() {
           </div>
 
           <div className="col-span-2 w-full">
-            <Link href="/successful-registration">
-              <button className="w-full h-[60px] rounded-lg p-2 text-[20px] text-black border-lg bg-[#C1FD35]">
-                Crear cuenta
-              </button>
-            </Link>
+            <button className="w-full h-[60px] rounded-lg p-2 text-[20px] text-black border-lg bg-[#C1FD35]">
+              Crear cuenta
+            </button>
           </div>
         </form>
       </div>

@@ -26,7 +26,9 @@ const Navbar = () => {
   return (
     <div className="flex justify-between bg-black h-[40px] sm:h-[50px]">
       <div className="mt-7 ml-2">
-        <img src="/img/Logo 01.png" alt="Logo1" width={70} />
+        <Link href="/">
+          <img src="/img/Logo 01.png" alt="Logo1" width={70} />
+        </Link>
       </div>
       <div className="flex justify-end gap-2 sm:mt-6 mr-4 mt-7">
         {email ? (

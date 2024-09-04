@@ -67,7 +67,7 @@ export default function LoginPassword() {
             })
           );
           setmessageAlertOk("¡Bienvenido!");
-          router.push("/");
+          router.push("/home");
         } catch (error) {
           console.error(error);
           setmessageAlert("Error en el login");

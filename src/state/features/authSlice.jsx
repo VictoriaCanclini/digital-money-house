@@ -8,6 +8,13 @@ const authSlice = createSlice({
       const { user, email } = payload;
       state.user = user;
       state.email = email;
+
+      // Guardar el estado en localStorage
+      if (payload.email) {
+        localStorage.setItem("auth", JSON.stringify(state));
+      } else {
+        localStorage.removeItem("auth");
+      }
     },
   },
 });

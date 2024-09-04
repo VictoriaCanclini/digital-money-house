@@ -6,17 +6,15 @@ import useInput from "@/hooks/useInput";
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
 import { setCredentials } from "../../state/features/authSlice";
 
 export default function LoginPassword() {
-  const router = useRouter();
+  const email = useSelector((state) => state.auth.email);
   const dispatch = useDispatch();
+  const router = useRouter();
   const [messageAlert, setmessageAlert] = useState("");
   const [messageAlertOk, setmessageAlertOk] = useState("");
-
-  const { value: valueEmail } = useInput("email");
 
   const {
     OnChange: OnChangePassword,
@@ -31,7 +29,7 @@ export default function LoginPassword() {
   const onSubmitForm = async (e) => {
     e.preventDefault();
 
-    if (valueEmail.trim() == "" || valuePassword.trim() == "") {
+    if (valuePassword.trim() == "") {
       setmessageAlert("¡Completar todos los campos!");
       setTimeout(() => {
         setmessageAlert("");
@@ -49,20 +47,17 @@ export default function LoginPassword() {
           const response = await axios.post(
             `${`${process.env.NEXT_PUBLIC_BASE_URL}/api/login`}`,
             {
-              email: valueEmail,
+              email: email,
               password: valuePassword,
-            },
-            { withCredentials: true }
+            }
+            //{ withCredentials: true }
           );
           const data = response.data;
           console.log(data);
           dispatch(
             setCredentials({
-              dni: data.user.dni,
-              firstname: data.user.firstname,
-              lastname: data.user.lastname,
-              email: data.user.email,
-              id: data.user.user_id,
+              // user: data.user,
+              // email: data.user.email,
             })
           );
           setmessageAlertOk("¡Bienvenido!");
@@ -130,7 +125,6 @@ export default function LoginPassword() {
                 //   setIsPasswordVisible(!isPasswordVisible)
                 // }
               />
-
               <div className="h-[.5rem] pb-6">
                 {MessagePassword && (
                   <p className="text-red-500 text-[.9rem] leading-3 mt-2">

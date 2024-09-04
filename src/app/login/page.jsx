@@ -5,8 +5,11 @@ import Link from "next/link";
 import useInput from "@/hooks/useInput";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { setCredentials } from "../../state/features/authSlice";
 
 export default function Login() {
+  const dispatch = useDispatch();
   const router = useRouter();
   const [messageAlert, setmessageAlert] = useState("");
 
@@ -34,6 +37,7 @@ export default function Login() {
           setmessageAlert("");
         }, 1300);
       } else {
+        dispatch(setCredentials({ user: null, email: valueEmail }));
         router.push("/login-password");
       }
     }

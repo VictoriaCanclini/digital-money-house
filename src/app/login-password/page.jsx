@@ -8,9 +8,11 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { setCredentials } from "../../state/features/authSlice";
+import Cookies from "js-cookie";
 
 export default function LoginPassword() {
   const email = useSelector((state) => state.auth.email);
+  const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
   const router = useRouter();
   const [messageAlert, setmessageAlert] = useState("");
@@ -54,10 +56,14 @@ export default function LoginPassword() {
           );
           const data = response.data;
           console.log(data);
+          console.log(user);
+
+          Cookies.set("token", data.token, { expires: 7 });
+
           dispatch(
             setCredentials({
-              // user: data.user,
-              // email: data.user.email,
+              user: data.user,
+              email: email,
             })
           );
           setmessageAlertOk("¡Bienvenido!");

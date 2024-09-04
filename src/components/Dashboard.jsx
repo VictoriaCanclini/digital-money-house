@@ -7,7 +7,7 @@ const dashboard = () => {
     <>
       <div className="flex flex-col min-h-screen">
         <Navbar />
-        <section className="relative bg-[url('/img/Mask-group.png')] bg-no-repeat bg-cover bg-center">
+        <section className="relative bg-[url('/img/Mask-group.png')] bg-no-repeat bg-cover bg-center h-screen">
           <div className="m-10">
             <h1 className="text-[40px]">
               De ahora en adelante, hacés más con tu dinero
@@ -18,7 +18,7 @@ const dashboard = () => {
           </div>
 
           {/* Contenedor para las tarjetas */}
-          <div className="relative z-10 flex flex-col sm:flex-row justify-center items-center gap-4 mt-30 ml-4 mr-4 sm:mt-60">
+          <div className="relative z-10 flex flex-col sm:flex-row justify-center items-center gap-4 mt-20 ml-4 mr-4 sm:mt-60">
             <img
               src="/img/Card-landing.png"
               alt="card1"
@@ -31,7 +31,7 @@ const dashboard = () => {
             />
           </div>
           {/* Imagen de fondo principal */}
-          <div className="absolute inset-0 flex items-end mb-10">
+          <div className="absolute inset-0 flex items-end sm:mb-10">
             <img
               className="w-screen"
               src="/img/Main.png"

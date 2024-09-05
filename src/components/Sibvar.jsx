@@ -5,6 +5,7 @@ import Cookies from "js-cookie";
 import { setCredentials } from "../state/features/authSlice";
 import { useDispatch } from "react-redux";
 import axios from "axios";
+import Link from "next/link";
 
 const Sibvar = () => {
   const router = useRouter();
@@ -24,9 +25,11 @@ const Sibvar = () => {
   return (
     <div className="w-64 bg-[#C1FD35] text-black p-4 h-screen">
       <ul>
-        <li className="mb-2">
-          <button>Inicio</button>
-        </li>
+        <Link href="/">
+          <li className="mb-2">
+            <button>Inicio</button>
+          </li>
+        </Link>
         <li className="mb-2">
           <button>Actividad</button>
         </li>

@@ -21,3 +21,35 @@ export function Check({ width, height }) {
     </svg>
   );
 }
+
+export function Search({ width, height }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={width || "20"}
+      height={height || "20"}
+      viewBox="0 0 24 24"
+    >
+      <g fill="none" stroke="currentColor">
+        <circle cx="11" cy="11" r="6" />
+        <path stroke-linecap="round" d="m20 20l-3-3" />
+      </g>
+    </svg>
+  );
+}
+
+export function Circle({ width, height, color }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={width || "30"}
+      height={height || "30"}
+      viewBox="0 0 24 24"
+    >
+      <path
+        fill="#C1FD35"
+        d="M12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"
+      />
+    </svg>
+  );
+}

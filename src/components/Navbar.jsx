@@ -1,43 +1,32 @@
 "use client";
 
 import Link from "next/link";
-import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import { useRouter } from "next/navigation";
-import Cookies from "js-cookie";
-import { setCredentials } from "../state/features/authSlice";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const { email } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
-  const router = useRouter();
+  const [isClient, setIsClient] = useState(false);
 
-  const handleLogout = async () => {
-    try {
-      await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/logout`, {});
-      Cookies.remove("token");
-      dispatch(setCredentials({ user: null, email: "" }));
-      router.push("/login");
-    } catch (error) {
-      console.error("Error al cerrar sesión:", error);
-    }
-  };
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return (
-    <div className="flex justify-between bg-black h-[40px] sm:h-[50px]">
-      <div className="mt-7 ml-2">
+    <div className="flex justify-between bg-black h-[30px] sm:h-[60px]">
+      <div className="mt-5 ml-2">
         <Link href="/">
           <img src="/img/Logo 01.png" alt="Logo1" width={70} />
         </Link>
       </div>
-      <div className="flex justify-end gap-2 sm:mt-6 mr-4 mt-7">
-        {email ? (
-          <button
-            onClick={handleLogout}
-            className="bg-[#C1FD35] text-black rounded-md pt-5 pb-5 pl-3 pr-3 flex items-center"
-          >
-            Cerrar sesión
-          </button>
+      <div className="flex justify-end gap-2 sm:mt-4 mr-4 mt-5 sm:mb-2">
+        {isClient && email ? (
+          <>
+            <button className="bg-[#C1FD35] text-black rounded-lg pt-4 pb-4 pl-3 pr-3 flex items-center">
+              VC
+            </button>
+            <p className="mt-3">Hola, Victoria Canclini</p>
+          </>
         ) : (
           <>
             <button>

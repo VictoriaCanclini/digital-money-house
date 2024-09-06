@@ -30,22 +30,22 @@ const HomePage = () => {
             <div className="md:w-[1000px] sm:w-[500px] w-[300px] md:h-[285px] h-[320px] bg-white rounded-md text-black border-2 border-gray-300 shadow-md flex flex-col">
               <span className="ml-6 mt-4 font-bold">Tu actividad</span>
               <hr className="border-gray-300 my-3 mr-6 ml-6" />
-              <div className="flex items-center ml-6 text-sm">
+              <div className="flex items-center md:ml-6 ml-4 text-sm">
                 <Circle color={"[#C1FD35]"} className="mr-2" />
                 <span className="ml-2">Transferiste a Rodrigo</span>
-                <span className="ml-[700px]">-$1265,57</span>
+                <span className="md:ml-[700px] ml-1">-$1265,57</span>
               </div>
               <hr className="border-gray-300 my-3 mr-6 ml-6" />
-              <div className="flex items-center ml-6 text-sm">
+              <div className="flex items-center md:ml-6 ml-4 text-sm">
                 <Circle className="mr-2" />
-                <span className="ml-2">Transferiste a Consorcio</span>
-                <span className="ml-[685px]">-$1265,57</span>
+                <span className="ml-2">Transferiste a Rodrigo</span>
+                <span className="md:ml-[700px] ml-1">-$1265,57</span>
               </div>
               <hr className="border-gray-300 my-3 mr-6 ml-6" />
-              <div className="flex items-center ml-6 text-sm">
+              <div className="flex items-center md:ml-6 ml-4 text-sm">
                 <Circle className="mr-2" />
-                <span className="ml-2">Ingresaste dinero</span>
-                <span className="ml-[730px]">$1265,57</span>
+                <span className="ml-2">Transferiste a Rodrigo</span>
+                <span className="md:ml-[700px] ml-1">-$1265,57</span>
               </div>
               <hr className="border-gray-300 my-4 mr-6 ml-6" />
               <div className="flex justify-between mr-6">

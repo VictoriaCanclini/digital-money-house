@@ -1,4 +1,4 @@
-import { Circle, Search } from "@/common/Icons";
+import { Arrow, Circle, Search } from "@/common/Icons";
 import Card from "@/components/Card";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -33,19 +33,25 @@ const HomePage = () => {
               <div className="flex items-center ml-6 text-sm">
                 <Circle color={"[#C1FD35]"} className="mr-2" />
                 <span className="ml-2">Transferiste a Rodrigo</span>
+                <span className="ml-[700px]">-$1265,57</span>
               </div>
               <hr className="border-gray-300 my-3 mr-6 ml-6" />
               <div className="flex items-center ml-6 text-sm">
                 <Circle className="mr-2" />
                 <span className="ml-2">Transferiste a Consorcio</span>
+                <span className="ml-[685px]">-$1265,57</span>
               </div>
               <hr className="border-gray-300 my-3 mr-6 ml-6" />
               <div className="flex items-center ml-6 text-sm">
                 <Circle className="mr-2" />
                 <span className="ml-2">Ingresaste dinero</span>
+                <span className="ml-[730px]">$1265,57</span>
               </div>
               <hr className="border-gray-300 my-4 mr-6 ml-6" />
-              <span className="ml-6 font-bold">Ver toda tu actividad</span>
+              <div className="flex justify-between mr-6">
+                <span className="ml-6 font-bold">Ver toda tu actividad</span>
+                <Arrow />
+              </div>
             </div>
           </div>
         </div>

@@ -69,3 +69,16 @@ export function Arrow({ width, height, color }) {
     </svg>
   );
 }
+
+export function Burguer({ width, height, color }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={width || "40"}
+      height={height || "40"}
+      viewBox="0 0 24 24"
+    >
+      <path fill="#C1FD35" d="M3 18v-2h18v2zm0-5v-2h18v2zm0-5V6h18v2z" />
+    </svg>
+  );
+}

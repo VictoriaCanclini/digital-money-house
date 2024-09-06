@@ -1,6 +1,6 @@
 const Card = () => {
   return (
-    <div className="bg-black w-[1000px] h-[230px] p-8 mt-6 mr-60 rounded-xl">
+    <div className="bg-black md:w-[1000px] sm:w-[500px] w-[300px] md:h-[230px] h-[200px] p-8 mt-6 mr-60 rounded-xl">
       <div className="text-white flex justify-end gap-2 mr-8 underline text-sm">
         <button>Ver tarjetas</button>
         <button>Ver CVU</button>

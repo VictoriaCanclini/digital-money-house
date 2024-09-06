@@ -1,5 +1,6 @@
 "use client";
 
+import { Burguer } from "@/common/Icons";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -13,7 +14,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="flex justify-between bg-black h-[30px] sm:h-[60px]">
+    <div className="flex justify-between bg-black h-[60px]">
       <div className="mt-5 ml-2">
         <Link href="/">
           <img src="/img/Logo 01.png" alt="Logo1" width={70} />
@@ -22,10 +23,14 @@ const Navbar = () => {
       <div className="flex justify-end gap-2 sm:mt-4 mr-4 mt-5 sm:mb-2">
         {isClient && email ? (
           <>
-            <button className="bg-[#C1FD35] text-black rounded-lg pt-4 pb-4 pl-3 pr-3 flex items-center">
+            <button className="bg-[#C1FD35] text-black rounded-lg pt-4 pb-4 pl-3 pr-3 mb-1 flex items-center">
               VC
             </button>
-            <p className="mt-3">Hola, Victoria Canclini</p>
+            {/* <p className="mt-3">Hola, Victoria Canclini</p> */}
+            <p className="hidden sm:block mt-3">Hola, Victoria Canclini</p>
+            <button className="sm:hidden flex items-center">
+              <Burguer />
+            </button>
           </>
         ) : (
           <>

@@ -23,26 +23,26 @@ const Sibvar = () => {
   };
 
   return (
-    <div className="w-64 bg-[#C1FD35] text-black p-4 h-screen">
+    <div className="w-64 bg-[#C1FD35] text-black p-4 h-screen hidden sm:block">
       <ul>
         <Link href="/">
-          <li className="mb-2">
+          <li className="mb-4">
             <button>Inicio</button>
           </li>
         </Link>
-        <li className="mb-2">
+        <li className="mb-3">
           <button>Actividad</button>
         </li>
-        <li className="mb-2">
+        <li className="mb-3">
           <button>Tu perfil</button>
         </li>
-        <li className="mb-2">
+        <li className="mb-3 mr-20">
           <button>Cargar dinero</button>
         </li>
-        <li className="mb-2">
+        <li className="mb-3">
           <button>Cargar servicios</button>
         </li>
-        <li className="mb-2">
+        <li className="mb-3">
           <button>Tarjetas</button>
         </li>
         <li className="text-gray-500">

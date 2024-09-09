@@ -71,5 +71,3 @@ const ProfilePage = () => {
 };
 
 export default ProfilePage;
-
-//flex justify-start pt-10 pl-6

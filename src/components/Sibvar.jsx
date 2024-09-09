@@ -44,9 +44,11 @@ const Sibvar = () => {
         <li className="mb-3">
           <button>Cargar servicios</button>
         </li>
-        <li className="mb-3">
-          <button>Tarjetas</button>
-        </li>
+        <Link href="/credit-card">
+          <li className="mb-3">
+            <button>Tarjetas</button>
+          </li>
+        </Link>
         <li className="text-gray-500">
           <button onClick={handleLogout}>Cerrar sesión</button>
         </li>

@@ -17,18 +17,24 @@ const Card = ({
         <button>{button1Text}</button>
         <button>{button2Text}</button>
       </div>
-      <h2 className="text-sm text-white font-semibold">{title}</h2>
-      <button className="border-2 border-[#C1FD35] text-xl rounded-full p-2 mt-6">
-        {amount}
-      </button>
+      <h2 className="text-sm text-white font-semibold mb-4">{title}</h2>
+      {amount && (
+        <button className="border-2 border-[#C1FD35] text-xl rounded-full p-2 mt-6">
+          {amount}
+        </button>
+      )}
+
       <div className="flex flex-col mr-[900px] gap-1 text-[#C1FD35] text-lg">
-        <div className="flex flex-row">
+        <div className="flex justify-between">
           <button>{button3Text}</button>
-          {icon}
+          <span className="ml-[860px]">{icon}</span>
         </div>
-        <spam className="text-white text-sm">{number1}</spam>
-        <button>{button4Text}</button>
-        <spam className="text-white text-sm">{number2}</spam>
+        <span className="text-white text-sm">{number1}</span>
+        <div className="flex justify-between">
+          <button>{button4Text}</button>
+          <span className="ml-[860px]">{icon}</span>
+        </div>
+        <span className="text-white text-sm">{number2}</span>
       </div>
     </div>
   );

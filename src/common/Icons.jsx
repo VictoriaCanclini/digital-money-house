@@ -103,8 +103,8 @@ export function Copy({ width, height, color }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={width || "20"}
-      height={height || "20"}
+      width={width || "25"}
+      height={height || "25"}
       viewBox="0 0 32 32"
     >
       <path
@@ -112,6 +112,22 @@ export function Copy({ width, height, color }) {
         d="M28 10v18H10V10zm0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2"
       />
       <path fill="currentColor" d="M4 18H2V4a2 2 0 0 1 2-2h14v2H4Z" />
+    </svg>
+  );
+}
+
+export function Plus({ width, height, color }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={width || "30"}
+      height={height || "30"}
+      viewBox="0 0 256 256"
+    >
+      <path
+        fill={color || "currentColor"}
+        d="M128 28a100 100 0 1 0 100 100A100.11 100.11 0 0 0 128 28m0 192a92 92 0 1 1 92-92a92.1 92.1 0 0 1-92 92m44-92a4 4 0 0 1-4 4h-36v36a4 4 0 0 1-8 0v-36H88a4 4 0 0 1 0-8h36V88a4 4 0 0 1 8 0v36h36a4 4 0 0 1 4 4"
+      />
     </svg>
   );
 }

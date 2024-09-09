@@ -1,8 +1,8 @@
 import { Arrow, Circle, Plus } from "@/common/Icons";
-import Card from "@/components/Card";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Sibvar from "@/components/Sibvar";
+import Link from "next/link";
 
 const CreditCardPage = () => {
   return (
@@ -16,7 +16,9 @@ const CreditCardPage = () => {
               Agregá tu tarjeta de débito o crédito
             </h2>
             <div className="flex justify-between  text-[#C1FD35]">
-              <Plus color={"#C1FD35"} />
+              <Link href="credit-card-2">
+                <Plus color={"#C1FD35"} />
+              </Link>
               <spam className="md:mr-[760px] mr-[80px] md:mt-1">
                 Nueva Tarjeta
               </spam>

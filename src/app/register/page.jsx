@@ -87,7 +87,7 @@ export default function Register() {
         //Registro de usuario
         try {
           const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/users`;
-          await axios.post(url, {
+          const response = await axios.post(url, {
             firstname: valueName,
             lastname: valueLastName,
             dni: parseInt(valueDni, 10),
@@ -95,6 +95,14 @@ export default function Register() {
             password: valuePassword,
             phone: valuePhone,
           });
+          const data = response.data;
+          console.log(data);
+
+          const user_id = data.user_id;
+          console.log(user_id);
+
+          localStorage.setItem("user_id", user_id);
+
           setmessageAlert("");
           setmessageAlertOk("¡Bienvenido!");
           setTimeout(() => {

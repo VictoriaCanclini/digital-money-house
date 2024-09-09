@@ -52,11 +52,11 @@ export default function LoginPassword() {
               email: email,
               password: valuePassword,
             }
-            //{ withCredentials: true }
           );
           const data = response.data;
           console.log(data);
-          console.log(user);
+
+          const user_id = localStorage.getItem("user_id");
 
           Cookies.set("token", data.token, { expires: 7 });
 
@@ -64,6 +64,7 @@ export default function LoginPassword() {
             setCredentials({
               user: data.user,
               email: email,
+              userId: user_id,
             })
           );
           setmessageAlertOk("¡Bienvenido!");

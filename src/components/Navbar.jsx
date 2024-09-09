@@ -4,13 +4,37 @@ import { Burguer } from "@/common/Icons";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 const Navbar = () => {
   const { email } = useSelector((state) => state.auth);
   const [isClient, setIsClient] = useState(false);
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
     setIsClient(true);
+    const user_id = localStorage.getItem("user_id");
+    console.log(user_id);
+    if (user_id) {
+      const fetchUserData = async () => {
+        try {
+          const token = localStorage.getItem("token"); // Obtener el token de localStorage
+          const response = await axios.get(
+            `${process.env.NEXT_PUBLIC_BASE_URL}/api/users/${user_id}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`, // Pasar el token en los headers
+              },
+            }
+          );
+          setUserData(response.data); // Guardar la data del usuario en el estado
+        } catch (error) {
+          console.error("Error al obtener los datos del usuario:", error);
+        }
+      };
+
+      fetchUserData();
+    }
   }, []);
 
   return (
@@ -26,8 +50,11 @@ const Navbar = () => {
             <button className="bg-[#C1FD35] text-black rounded-lg pt-4 pb-4 pl-3 pr-3 mb-1 flex items-center">
               VC
             </button>
-            {/* <p className="mt-3">Hola, Victoria Canclini</p> */}
-            <p className="hidden sm:block mt-3">Hola, Victoria Canclini</p>
+            {userData && (
+              <p className="hidden sm:block mt-3">
+                Hola, {userData.firstname} {userData.lastname}
+              </p>
+            )}
             <button className="sm:hidden flex items-center">
               <Burguer />
             </button>

@@ -24,10 +24,10 @@ const getStoredAuth = () => {
     // Solo accede a localStorage en el cliente
     return localStorage.getItem("auth")
       ? JSON.parse(localStorage.getItem("auth"))
-      : { user: null, email: "" };
+      : { user: null, email: "", firstname: "", lastname: "" };
   }
   // Estado por defecto en el servidor
-  return { user: null, email: "" };
+  return { user: null, email: "", firstname: "", lastname: "" };
 };
 
 export const store = configureStore({

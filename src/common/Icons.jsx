@@ -82,3 +82,36 @@ export function Burguer({ width, height, color }) {
     </svg>
   );
 }
+
+export function Edit({ width, height, color }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={width || "20"}
+      height={height || "20"}
+      viewBox="0 0 24 24"
+    >
+      <path
+        fill={color || "currentColor"}
+        d="M3 21v-4.25L16.2 3.575q.3-.275.663-.425t.762-.15t.775.15t.65.45L20.425 5q.3.275.438.65T21 6.4q0 .4-.137.763t-.438.662L7.25 21zM17.6 7.8L19 6.4L17.6 5l-1.4 1.4z"
+      />
+    </svg>
+  );
+}
+
+export function Copy({ width, height, color }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={width || "20"}
+      height={height || "20"}
+      viewBox="0 0 32 32"
+    >
+      <path
+        fill={color || "currentColor"}
+        d="M28 10v18H10V10zm0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2"
+      />
+      <path fill="currentColor" d="M4 18H2V4a2 2 0 0 1 2-2h14v2H4Z" />
+    </svg>
+  );
+}

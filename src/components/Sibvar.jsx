@@ -25,7 +25,7 @@ const Sibvar = () => {
   return (
     <div className="w-64 bg-[#C1FD35] text-black p-4 h-screen hidden sm:block">
       <ul>
-        <Link href="/">
+        <Link href="/home">
           <li className="mb-4">
             <button>Inicio</button>
           </li>
@@ -33,9 +33,11 @@ const Sibvar = () => {
         <li className="mb-3">
           <button>Actividad</button>
         </li>
-        <li className="mb-3">
-          <button>Tu perfil</button>
-        </li>
+        <Link href="/profile">
+          <li className="mb-3">
+            <button>Tu perfil</button>
+          </li>
+        </Link>
         <li className="mb-3 mr-20">
           <button>Cargar dinero</button>
         </li>

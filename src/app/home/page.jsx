@@ -11,7 +11,12 @@ const HomePage = () => {
       <div className="flex">
         <Sibvar />
         <div className="flex flex-col justify-center w-full p-4 ml-8">
-          <Card />
+          <Card
+            title="Dinero disponible"
+            button1Text="Ver tarjetas"
+            button2Text="Ver CVU"
+            amount="$6.890.534,17"
+          />
           <div className="flex flex-row mt-6 gap-1">
             <button className="bg-[#C1FD35] text-black font-bold md:w-[500px] sm:w-[250px] w-[150px] h-[106px] rounded-md">
               Cargar dinero

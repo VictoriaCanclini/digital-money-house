@@ -24,7 +24,7 @@ const Navbar = () => {
         {isClient && email ? (
           <>
             <button className="bg-[#C1FD35] text-black rounded-lg pt-4 pb-4 pl-3 pr-3 mb-1 flex items-center">
-              VC
+              <Link href="/profile">VC</Link>
             </button>
             {/* <p className="mt-3">Hola, Victoria Canclini</p> */}
             <p className="hidden sm:block mt-3">Hola, Victoria Canclini</p>

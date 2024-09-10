@@ -1,17 +1,41 @@
 "use client";
 
 import { Burguer } from "@/common/Icons";
+import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
+import { setCredentials } from "../state/features/authSlice";
+import { useDispatch } from "react-redux";
 
 const Navbar = () => {
+  const router = useRouter();
+  const dispatch = useDispatch();
   const { email } = useSelector((state) => state.auth);
   const [isClient, setIsClient] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado para controlar el menú
 
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  // Función para alternar el estado del menú hamburguesa
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/logout`, {});
+      Cookies.remove("token");
+      dispatch(setCredentials({ user: null, email: "" }));
+      router.push("/login");
+    } catch (error) {
+      console.error("Error al cerrar sesión:", error);
+    }
+  };
 
   return (
     <div className="flex justify-between bg-black h-[60px]">
@@ -26,9 +50,11 @@ const Navbar = () => {
             <button className="bg-[#C1FD35] text-black rounded-lg pt-4 pb-4 pl-3 pr-3 mb-1 flex items-center">
               <Link href="/profile">VC</Link>
             </button>
-            {/* <p className="mt-3">Hola, Victoria Canclini</p> */}
             <p className="hidden sm:block mt-3">Hola, Victoria Canclini</p>
-            <button className="sm:hidden flex items-center">
+            <button
+              className="sm:hidden flex items-center"
+              onClick={toggleMenu} // Al hacer clic, alternamos el estado del menú
+            >
               <Burguer />
             </button>
           </>
@@ -53,6 +79,47 @@ const Navbar = () => {
           </>
         )}
       </div>
+
+      {/* Mostrar menú hamburguesa cuando esté abierto */}
+      {isMenuOpen && (
+        <div className="absolute top-[60px] right-0 bg-black bg-opacity-70 text-white w-[30%] rounded-md sm:hidden">
+          <ul className="flex flex-col items-center gap-4 p-4">
+            <li>
+              <Link href="/home" onClick={toggleMenu}>
+                Inicio
+              </Link>
+            </li>
+            <li>
+              <Link href="/" onClick={toggleMenu}>
+                Actividad
+              </Link>
+            </li>
+            <li>
+              <Link href="/profile" onClick={toggleMenu}>
+                Tu perfil
+              </Link>
+            </li>
+            <li>
+              <Link href="/home" onClick={toggleMenu}>
+                Cargar dinero
+              </Link>
+            </li>
+            <li>
+              <Link href="/home" onClick={toggleMenu}>
+                Pagar servicios
+              </Link>
+            </li>
+            <li>
+              <Link href="/credit-card" onClick={toggleMenu}>
+                Tarjetas
+              </Link>
+            </li>
+            <li>
+              <button onClick={handleLogout}>Cerrar sesión</button>
+            </li>
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

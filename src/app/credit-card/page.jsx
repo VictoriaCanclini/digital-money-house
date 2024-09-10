@@ -22,7 +22,9 @@ const CreditCardPage = () => {
               <spam className="md:mr-[760px] mr-[80px] md:mt-1">
                 Nueva Tarjeta
               </spam>
-              <Arrow color={"#C1FD35"} />
+              <Link href="credit-card-2">
+                <Arrow color={"#C1FD35"} />
+              </Link>
             </div>
           </div>
           <div className="flex flex-row mt-4">

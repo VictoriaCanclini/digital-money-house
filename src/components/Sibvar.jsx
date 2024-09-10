@@ -42,7 +42,7 @@ const Sibvar = () => {
           <button>Cargar dinero</button>
         </li>
         <li className="mb-3">
-          <button>Cargar servicios</button>
+          <button>Pagar servicios</button>
         </li>
         <Link href="/credit-card">
           <li className="mb-3">

@@ -5,13 +5,14 @@ import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import Cookies from "js-cookie";
 import { setCredentials } from "../state/features/authSlice";
 import { useDispatch } from "react-redux";
 
 const Navbar = () => {
   const router = useRouter();
+  const pathname = usePathname();
   const dispatch = useDispatch();
   const { email } = useSelector((state) => state.auth);
   const [isClient, setIsClient] = useState(false);
@@ -51,12 +52,14 @@ const Navbar = () => {
               <Link href="/profile">VC</Link>
             </button>
             <p className="hidden sm:block mt-3">Hola, Victoria Canclini</p>
-            <button
-              className="sm:hidden flex items-center"
-              onClick={toggleMenu} // Al hacer clic, alternamos el estado del menú
-            >
-              <Burguer />
-            </button>
+            {pathname !== "/" && (
+              <button
+                className="sm:hidden flex items-center"
+                onClick={toggleMenu} // Al hacer clic, alternamos el estado del menú
+              >
+                <Burguer />
+              </button>
+            )}
           </>
         ) : (
           <>
@@ -106,7 +109,7 @@ const Navbar = () => {
             </li>
             <li>
               <Link href="/home" onClick={toggleMenu}>
-                Pagar servicios
+                Pagar serv...
               </Link>
             </li>
             <li>

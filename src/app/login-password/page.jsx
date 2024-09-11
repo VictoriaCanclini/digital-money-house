@@ -12,7 +12,6 @@ import Cookies from "js-cookie";
 
 export default function LoginPassword() {
   const email = useSelector((state) => state.auth.email);
-  const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
   const router = useRouter();
   const [messageAlert, setmessageAlert] = useState("");
@@ -24,8 +23,6 @@ export default function LoginPassword() {
     blur: BlurPassword,
     focus: FocusPassword,
     message: MessagePassword,
-    // isPasswordVisible,
-    // setIsPasswordVisible,
   } = useInput("password");
 
   const onSubmitForm = async (e) => {
@@ -56,7 +53,6 @@ export default function LoginPassword() {
           );
           const data = response.data;
           console.log(data);
-          console.log(user);
 
           Cookies.set("token", data.token, { expires: 7 });
 
@@ -126,10 +122,6 @@ export default function LoginPassword() {
                 onFocus={FocusPassword}
                 onChange={OnChangePassword}
                 onBlur={BlurPassword}
-                // isPasswordVisible={isPasswordVisible}
-                // togglePasswordVisibility={() =>
-                //   setIsPasswordVisible(!isPasswordVisible)
-                // }
               />
               <div className="h-[.5rem] pb-6">
                 {MessagePassword && (

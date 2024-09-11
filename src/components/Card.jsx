@@ -13,11 +13,11 @@ const Card = ({
 }) => {
   return (
     <div className="bg-black md:w-[1000px] sm:w-[500px] w-[300px] md:h-[230px] h-[250px] p-8 mt-6 mr-60 rounded-xl">
-      <div className="text-white flex justify-end gap-2 mr-8 underline text-sm">
+      <div className="text-white flex justify-end gap-4 underline text-sm">
         <button>{button1Text}</button>
         <button>{button2Text}</button>
       </div>
-      <h2 className="text-sm text-white font-semibold mb-4">{title}</h2>
+      <h2 className="text-md text-white font-semibold mb-4 mt-4">{title}</h2>
       {amount && (
         <button className="border-2 border-[#C1FD35] text-xl rounded-full p-2 mt-6">
           {amount}

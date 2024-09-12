@@ -85,7 +85,7 @@ const Navbar = () => {
 
       {/* Mostrar menú hamburguesa cuando esté abierto */}
       {isMenuOpen && (
-        <div className="absolute top-[60px] right-0 bg-black bg-opacity-70 text-white w-[30%] rounded-md sm:hidden">
+        <div className="absolute top-[60px] right-0 bg-[#C1FD35] bg-opacity-70 text-black w-[30%] rounded-md sm:hidden">
           <ul className="flex flex-col items-center gap-4 p-4">
             <li>
               <Link href="/home" onClick={toggleMenu}>

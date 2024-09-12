@@ -54,8 +54,8 @@ const CreditCardPage2 = () => {
       <Navbar />
       <div className="flex h-screen">
         <Sibvar />
-        <div className="flex flex-col justify-center w-full ml-8">
-          <div className="md:w-[1100px] sm:w-[500px] w-[360px] md:h-[500px] h-[570px] bg-white rounded-md text-black border-2 border-gray-300 shadow-md flex flex-col">
+        <div className="flex flex-col justify-center w-full p-6">
+          <div className="md:w-[1100px] sm:w-[500px] w-[360px] md:h-[500px] h-[570px] bg-white rounded-md border-2 border-gray-300 shadow-md flex flex-col">
             <div className={styles.container}>
               <Cards
                 number={number}

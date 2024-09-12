@@ -1,5 +1,3 @@
-import { Copy } from "@/common/Icons";
-
 const Card = ({
   title,
   button1Text,
@@ -12,7 +10,7 @@ const Card = ({
   icon,
 }) => {
   return (
-    <div className="bg-black md:w-[1000px] sm:w-[500px] w-[300px] md:h-[230px] h-[250px] p-8 mt-6 mr-60 rounded-xl">
+    <div className="bg-black md:w-[1000px] sm:w-[500px] w-[300px] md:h-[230px] h-[250px] p-6 mt-6 rounded-xl">
       <div className="text-white flex justify-end gap-4 underline text-sm">
         <button>{button1Text}</button>
         <button>{button2Text}</button>
@@ -23,7 +21,6 @@ const Card = ({
           {amount}
         </button>
       )}
-
       <div className="flex flex-col mr-[900px] gap-1 text-[#C1FD35] text-lg">
         <div className="flex justify-between">
           <button>{button3Text}</button>

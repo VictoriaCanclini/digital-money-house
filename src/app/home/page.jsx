@@ -8,9 +8,9 @@ const HomePage = () => {
   return (
     <div className="bg-[#D9D9D9]">
       <Navbar />
-      <div className="flex">
+      <div className="flex h-screen">
         <Sibvar />
-        <div className="flex flex-col justify-center w-full p-4 ml-8">
+        <div className="flex flex-col justify-center w-full p-10 ml-6">
           <Card
             title="Dinero disponible"
             button1Text="Ver tarjetas"

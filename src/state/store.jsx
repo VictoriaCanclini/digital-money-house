@@ -1,20 +1,3 @@
-// import { configureStore } from "@reduxjs/toolkit";
-// import authReducer from "./features/authSlice";
-
-// // Recuperar el estado desde localStorage
-// export const storedAuth = localStorage.getItem("auth")
-//   ? JSON.parse(localStorage.getItem("auth"))
-//   : { user: null, email: "" };
-
-// export const store = configureStore({
-//   reducer: {
-//     auth: authReducer,
-//   },
-//   preloadedState: {
-//     auth: storedAuth, // Inicializar el estado de auth con los datos almacenados
-//   },
-// });
-
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./features/authSlice";
 
@@ -24,10 +7,10 @@ const getStoredAuth = () => {
     // Solo accede a localStorage en el cliente
     return localStorage.getItem("auth")
       ? JSON.parse(localStorage.getItem("auth"))
-      : { user: null, email: "" };
+      : { user: null, email: "", user_id: 0 };
   }
   // Estado por defecto en el servidor
-  return { user: null, email: "" };
+  return { user: null, email: "", user_id: 0 };
 };
 
 export const store = configureStore({

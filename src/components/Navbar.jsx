@@ -14,7 +14,7 @@ const Navbar = () => {
   const router = useRouter();
   const pathname = usePathname();
   const dispatch = useDispatch();
-  const { email } = useSelector((state) => state.auth);
+  const { email, user_id } = useSelector((state) => state.auth);
   const [isClient, setIsClient] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado para controlar el menú
 

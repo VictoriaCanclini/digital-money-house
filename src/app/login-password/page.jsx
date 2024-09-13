@@ -12,6 +12,7 @@ import Cookies from "js-cookie";
 
 export default function LoginPassword() {
   const email = useSelector((state) => state.auth.email);
+  const user_id = useSelector((state) => state.auth.user_id);
   const dispatch = useDispatch();
   const router = useRouter();
   const [messageAlert, setmessageAlert] = useState("");
@@ -24,6 +25,25 @@ export default function LoginPassword() {
     focus: FocusPassword,
     message: MessagePassword,
   } = useInput("password");
+
+  const fetchUserId = async (token) => {
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/account`,
+        {
+          headers: {
+            Authorization: `${token}`,
+          },
+        }
+      );
+      const userData = response.data;
+      console.log("User data:", userData);
+      return userData;
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      setmessageAlert("Error al obtener los datos del usuario");
+    }
+  };
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
@@ -49,19 +69,22 @@ export default function LoginPassword() {
               email: email,
               password: valuePassword,
             }
-            //{ withCredentials: true }
           );
           const data = response.data;
           console.log(data);
 
+          console.log("Token:", data.token);
           Cookies.set("token", data.token, { expires: 7 });
 
           dispatch(
             setCredentials({
               user: data.user,
               email: email,
+              user_id: user_id,
             })
           );
+          const userData = await fetchUserId(data.token);
+          console.log("User ID:", userData?.user_id);
           setmessageAlertOk("¡Bienvenido!");
           router.push("/home");
         } catch (error) {

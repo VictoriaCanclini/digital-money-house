@@ -74,7 +74,7 @@ const Navbar = () => {
         {isClient && email ? (
           <>
             <button className="bg-[#C1FD35] text-black rounded-lg pt-4 pb-4 pl-3 pr-3 mb-1 flex items-center">
-              <Link href={`/profile/`}>{initials}</Link>
+              <Link href={`/profile/${user_id}`}>{initials}</Link>
             </button>
             <p className="hidden sm:block mt-3">
               Hola, {userData?.firstname} {userData?.lastname}
@@ -125,7 +125,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link href={`/profile/`} onClick={toggleMenu}>
+              <Link href={`/profile/${user_id}`} onClick={toggleMenu}>
                 Tu perfil
               </Link>
             </li>

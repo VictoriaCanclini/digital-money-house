@@ -13,6 +13,7 @@ import Cookies from "js-cookie";
 export default function LoginPassword() {
   const email = useSelector((state) => state.auth.email);
   const user_id = useSelector((state) => state.auth.user_id);
+  const firstname = useSelector((state) => state.auth.firstname);
   const dispatch = useDispatch();
   const router = useRouter();
   const [messageAlert, setmessageAlert] = useState("");
@@ -80,11 +81,14 @@ export default function LoginPassword() {
 
           const userData = await fetchUserId(data.token);
           console.log("User ID:", userData?.user_id);
+          console.log("CVU:", userData?.cvu);
           dispatch(
             setCredentials({
               user: data.user,
               email: email,
               user_id: userData.user_id,
+              cvu: userData.cvu,
+              alias: userData.alias,
             })
           );
           setmessageAlertOk("¡Bienvenido!");

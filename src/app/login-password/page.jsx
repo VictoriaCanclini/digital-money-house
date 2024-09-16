@@ -18,6 +18,8 @@ export default function LoginPassword() {
   const [messageAlert, setmessageAlert] = useState("");
   const [messageAlertOk, setmessageAlertOk] = useState("");
 
+  console.log(user_id);
+
   const {
     OnChange: OnChangePassword,
     value: valuePassword,
@@ -76,15 +78,15 @@ export default function LoginPassword() {
           console.log("Token:", data.token);
           Cookies.set("token", data.token, { expires: 7 });
 
+          const userData = await fetchUserId(data.token);
+          console.log("User ID:", userData?.user_id);
           dispatch(
             setCredentials({
               user: data.user,
               email: email,
-              user_id: user_id,
+              user_id: userData.user_id,
             })
           );
-          const userData = await fetchUserId(data.token);
-          console.log("User ID:", userData?.user_id);
           setmessageAlertOk("¡Bienvenido!");
           router.push("/home");
         } catch (error) {

@@ -17,10 +17,35 @@ const Navbar = () => {
   const { email, user_id } = useSelector((state) => state.auth);
   const [isClient, setIsClient] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado para controlar el menú
+  const [userData, setUserData] = useState(null);
+  const [initials, setInitials] = useState("");
 
   useEffect(() => {
     setIsClient(true);
-  }, []);
+    if (user_id) {
+      const fetchUserData = async () => {
+        try {
+          const response = await axios.get(
+            `${process.env.NEXT_PUBLIC_BASE_URL}/api/users/${user_id}`,
+            {
+              headers: {
+                Authorization: `${Cookies.get("token")}`, // Si es necesario un token de autenticación
+              },
+            }
+          );
+          const user = response.data;
+          setUserData(user); // Guardamos los datos del usuario en el estado
+          const userInitials =
+            user.firstname?.charAt(0).toUpperCase() +
+            user.lastname?.charAt(0).toUpperCase();
+          setInitials(userInitials); // Guardar iniciales
+        } catch (error) {
+          console.error("Error al obtener los datos del usuario:", error);
+        }
+      };
+      fetchUserData();
+    }
+  }, [user_id]);
 
   // Función para alternar el estado del menú hamburguesa
   const toggleMenu = () => {
@@ -49,9 +74,11 @@ const Navbar = () => {
         {isClient && email ? (
           <>
             <button className="bg-[#C1FD35] text-black rounded-lg pt-4 pb-4 pl-3 pr-3 mb-1 flex items-center">
-              <Link href="/profile">VC</Link>
+              <Link href={`/profile/`}>{initials}</Link>
             </button>
-            <p className="hidden sm:block mt-3">Hola, Victoria Canclini</p>
+            <p className="hidden sm:block mt-3">
+              Hola, {userData?.firstname} {userData?.lastname}
+            </p>
             {pathname !== "/" && (
               <button
                 className="sm:hidden flex items-center"
@@ -98,7 +125,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link href="/profile" onClick={toggleMenu}>
+              <Link href={`/profile/`} onClick={toggleMenu}>
                 Tu perfil
               </Link>
             </li>

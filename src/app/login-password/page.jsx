@@ -9,11 +9,10 @@ import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { setCredentials } from "../../state/features/authSlice";
 import Cookies from "js-cookie";
+import { userAgent } from "next/server";
 
 export default function LoginPassword() {
   const email = useSelector((state) => state.auth.email);
-  const user_id = useSelector((state) => state.auth.user_id);
-  const firstname = useSelector((state) => state.auth.firstname);
   const dispatch = useDispatch();
   const router = useRouter();
   const [messageAlert, setmessageAlert] = useState("");
@@ -82,11 +81,11 @@ export default function LoginPassword() {
           console.log("CVU:", userData?.cvu);
           dispatch(
             setCredentials({
-              user: data.user,
               email: email,
               user_id: userData.user_id,
               cvu: userData.cvu,
               alias: userData.alias,
+              available_amount: userData.available_amount,
             })
           );
           setmessageAlertOk("¡Bienvenido!");

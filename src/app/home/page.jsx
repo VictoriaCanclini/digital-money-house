@@ -1,10 +1,15 @@
+"use client";
+
 import { Arrow, Circle, Search } from "@/common/Icons";
 import Card from "@/components/Card";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Sibvar from "@/components/Sibvar";
+import { useSelector } from "react-redux";
 
 const HomePage = () => {
+  const available_amount = useSelector((state) => state.auth.available_amount);
+
   return (
     <div className="bg-[#D9D9D9]">
       <Navbar />
@@ -15,7 +20,7 @@ const HomePage = () => {
             title="Dinero disponible"
             button1Text="Ver tarjetas"
             button2Text="Ver CVU"
-            amount="$6.890.534,17"
+            amount={available_amount}
           />
           <div className="flex flex-row mt-6 gap-1">
             <button className="bg-[#C1FD35] text-black font-bold md:w-[500px] sm:w-[250px] w-[150px] h-[106px] rounded-md">

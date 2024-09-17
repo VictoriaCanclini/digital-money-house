@@ -2,15 +2,21 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const authSlice = createSlice({
   name: "auth",
-  initialState: { user: null, email: "", user_id: 0, alias: "", cvu: 0 },
+  initialState: {
+    email: "",
+    user_id: 0,
+    alias: "",
+    cvu: 0,
+    available_amount: 0,
+  },
   reducers: {
     setCredentials: (state, { payload }) => {
-      const { user, email, user_id, alias, cvu } = payload;
-      state.user = user;
+      const { email, user_id, alias, cvu, available_amount } = payload;
       state.email = email;
       state.user_id = user_id;
       state.alias = alias;
       state.cvu = cvu;
+      state.available_amount = available_amount;
 
       // Guardar el estado en localStorage
       if (email) {

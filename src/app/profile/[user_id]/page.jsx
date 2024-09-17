@@ -55,7 +55,7 @@ const ProfilePage = ({ params }) => {
             <hr className="border-gray-300 my-2 mr-6 ml-6" />
             <div className="flex justify-between md:ml-6 ml-4 md:mr-6 mr-4  text-sm">
               <span className="ml-2 text-gray-500">Nombre y apellido</span>
-              <span className="text-gray-500 ml-10">
+              <span className="text-gray-500 ml-2">
                 {userData?.firstname + " " + userData?.lastname}
               </span>
               <Edit color={"#CECECE"} />

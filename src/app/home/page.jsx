@@ -5,6 +5,7 @@ import Card from "@/components/Card";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Sibvar from "@/components/Sibvar";
+import Link from "next/link";
 import { useSelector } from "react-redux";
 
 const HomePage = () => {
@@ -23,12 +24,16 @@ const HomePage = () => {
             amount={available_amount}
           />
           <div className="flex flex-row mt-6 gap-1">
-            <button className="bg-[#C1FD35] text-black font-bold md:w-[500px] sm:w-[250px] w-[150px] h-[106px] rounded-md">
-              Cargar dinero
-            </button>
-            <button className="bg-[#C1FD35] text-black md:w-[500px] sm:w-[250px] w-[150px] font-bold h-[106px] rounded-md">
-              Pagar servicios
-            </button>
+            <Link href="/add-money">
+              <button className="bg-[#C1FD35] text-black font-bold md:w-[500px] sm:w-[250px] w-[150px] h-[106px] rounded-md">
+                Cargar dinero
+              </button>
+            </Link>
+            <Link href="/pay-service">
+              <button className="bg-[#C1FD35] text-black md:w-[500px] sm:w-[250px] w-[150px] font-bold h-[106px] rounded-md">
+                Pagar servicios
+              </button>
+            </Link>
           </div>
           <div className="flex flex-row mt-6">
             <div className="bg-white p-2 md:w-[1000px] sm:w-[500px] w-[300px] gap-1 rounded-md text-gray-400 border-2 border-gray-300 shadow-md flex items-center">
@@ -60,7 +65,9 @@ const HomePage = () => {
               <hr className="border-gray-300 md:my-4 my-6 mr-6 ml-6" />
               <div className="flex justify-between mr-6">
                 <span className="ml-6 font-bold">Ver toda tu actividad</span>
-                <Arrow color={"#A9A9A9"} />
+                <Link href="/activity">
+                  <Arrow color={"#A9A9A9"} />
+                </Link>
               </div>
             </div>
           </div>

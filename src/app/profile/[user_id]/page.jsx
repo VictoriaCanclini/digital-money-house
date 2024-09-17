@@ -13,11 +13,8 @@ import { useSelector } from "react-redux";
 const ProfilePage = ({ params }) => {
   const user_id = params["user_id"];
   const [userData, setUserData] = useState(null);
-  const userId = useSelector((state) => state.auth.user_id);
   const cvu = useSelector((state) => state.auth.cvu);
   const alias = useSelector((state) => state.auth.alias);
-
-  console.log(cvu);
 
   useEffect(() => {
     if (user_id) {
@@ -41,8 +38,6 @@ const ProfilePage = ({ params }) => {
     }
   }, [user_id]);
 
-  console.log(userId);
-
   return (
     <div className="bg-[#D9D9D9]">
       <Navbar />
@@ -54,13 +49,13 @@ const ProfilePage = ({ params }) => {
             <hr className="border-gray-300 my-2 mr-6 ml-6" />
             <div className="flex justify-between md:ml-6 ml-4 md:mr-6 mr-4 text-sm">
               <span className="ml-2 text-gray-500">Email</span>
-              <span className="text-gray-500">{userData?.email}</span>
+              <span className="text-gray-500 ml-20">{userData?.email}</span>
               <Edit color={"#CECECE"} />
             </div>
             <hr className="border-gray-300 my-2 mr-6 ml-6" />
             <div className="flex justify-between md:ml-6 ml-4 md:mr-6 mr-4  text-sm">
               <span className="ml-2 text-gray-500">Nombre y apellido</span>
-              <span className="text-gray-500">
+              <span className="text-gray-500 ml-10">
                 {userData?.firstname + " " + userData?.lastname}
               </span>
               <Edit color={"#CECECE"} />
@@ -68,19 +63,19 @@ const ProfilePage = ({ params }) => {
             <hr className="border-gray-300 my-2 mr-6 ml-6" />
             <div className="flex justify-between md:ml-6 ml-4 md:mr-6 mr-4  text-sm">
               <span className="ml-2 text-gray-500">CUIT</span>
-              <span className="text-gray-500">12345</span>
+              <span className="text-gray-500 ml-24">27372738212</span>
               <Edit color={"#CECECE"} />
             </div>
             <hr className="border-gray-300 my-2 mr-6 ml-6" />
             <div className="flex justify-between md:ml-6 ml-4 md:mr-6 mr-4  text-sm">
               <span className="ml-2 text-gray-500">Telefono</span>
-              <span className="text-gray-500">{userData?.phone}</span>
+              <span className="text-gray-500 ml-28">{userData?.phone}</span>
               <Edit color={"#CECECE"} />
             </div>
             <hr className="border-gray-300 my-2 mr-6 ml-6" />
             <div className="flex justify-between items-center md:ml-6 ml-4 md:mr-6 mr-4  text-sm">
               <span className="ml-2 text-gray-500">Contraseña</span>
-              <span className="text-gray-500">{userData?.password}</span>
+              <span className="text-gray-500 ml-24">xxxxxx</span>
               <Edit color={"#CECECE"} />
             </div>
             <hr className="border-gray-300 my-3 mr-6 ml-6" />

@@ -19,8 +19,6 @@ export default function LoginPassword() {
   const [messageAlert, setmessageAlert] = useState("");
   const [messageAlertOk, setmessageAlertOk] = useState("");
 
-  console.log(user_id);
-
   const {
     OnChange: OnChangePassword,
     value: valuePassword,

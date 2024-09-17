@@ -30,20 +30,26 @@ const Sibvar = () => {
             <button>Inicio</button>
           </li>
         </Link>
-        <li className="mb-3">
-          <button>Actividad</button>
-        </li>
+        <Link href="/activity">
+          <li className="mb-3">
+            <button>Actividad</button>
+          </li>
+        </Link>
         <Link href="/profile">
           <li className="mb-3">
             <button>Tu perfil</button>
           </li>
         </Link>
-        <li className="mb-3 mr-20">
-          <button>Cargar dinero</button>
-        </li>
-        <li className="mb-3">
-          <button>Pagar servicios</button>
-        </li>
+        <Link href="/add-money">
+          <li className="mb-3 mr-20">
+            <button>Cargar dinero</button>
+          </li>
+        </Link>
+        <Link href="/pay-service">
+          <li className="mb-3">
+            <button>Pagar servicios</button>
+          </li>
+        </Link>
         <Link href="/credit-card">
           <li className="mb-3">
             <button>Tarjetas</button>

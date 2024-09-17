@@ -120,7 +120,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link href="/" onClick={toggleMenu}>
+              <Link href="/activity" onClick={toggleMenu}>
                 Actividad
               </Link>
             </li>
@@ -130,12 +130,12 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link href="/home" onClick={toggleMenu}>
+              <Link href="/add-money" onClick={toggleMenu}>
                 Cargar dinero
               </Link>
             </li>
             <li>
-              <Link href="/home" onClick={toggleMenu}>
+              <Link href="/pay-service" onClick={toggleMenu}>
                 Pagar serv...
               </Link>
             </li>

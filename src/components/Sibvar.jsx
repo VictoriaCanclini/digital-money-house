@@ -3,13 +3,14 @@
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { setCredentials } from "../state/features/authSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import Link from "next/link";
 
 const Sibvar = () => {
   const router = useRouter();
   const dispatch = useDispatch();
+  const { user_id } = useSelector((state) => state.auth);
 
   const handleLogout = async () => {
     try {
@@ -35,7 +36,7 @@ const Sibvar = () => {
             <button>Actividad</button>
           </li>
         </Link>
-        <Link href="/profile">
+        <Link href={`/profile/${user_id}`}>
           <li className="mb-3">
             <button>Tu perfil</button>
           </li>

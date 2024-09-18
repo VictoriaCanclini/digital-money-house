@@ -14,12 +14,12 @@ const AddMoneyPage = () => {
           <div className="bg-black md:w-[1000px] sm:w-[500px] w-[350px] h-[100px] p-6 rounded-xl">
             <div className="flex justify-between md:justify-between text-[#C1FD35] items-center mt-2">
               <div className="flex items-center gap-4">
-                <Link href="/">
+                <Link href="/my-data">
                   <People color={"#C1FD35"} />
                 </Link>
                 <span>Transferencia bancaria</span>
               </div>
-              <Link href="/">
+              <Link href="/my-data">
                 <Arrow color={"#C1FD35"} />
               </Link>
             </div>

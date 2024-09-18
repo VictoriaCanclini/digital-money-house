@@ -1,4 +1,4 @@
-import { Arrow, Plus } from "@/common/Icons";
+import { Arrow, Card, People } from "@/common/Icons";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Sibvar from "@/components/Sibvar";
@@ -15,7 +15,7 @@ const AddMoneyPage = () => {
             <div className="flex justify-between md:justify-between text-[#C1FD35] items-center mt-2">
               <div className="flex items-center gap-4">
                 <Link href="/">
-                  <Plus color={"#C1FD35"} />
+                  <People color={"#C1FD35"} />
                 </Link>
                 <span>Transferencia bancaria</span>
               </div>
@@ -28,7 +28,7 @@ const AddMoneyPage = () => {
             <div className="flex justify-between md:justify-between text-[#C1FD35] items-center mt-2">
               <div className="flex items-center gap-4">
                 <Link href="/">
-                  <Plus color={"#C1FD35"} />
+                  <Card color={"#C1FD35"} />
                 </Link>
                 <span>Seleccionar tarjeta</span>
               </div>

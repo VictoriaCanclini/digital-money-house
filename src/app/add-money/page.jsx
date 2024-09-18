@@ -11,23 +11,27 @@ const AddMoneyPage = () => {
       <div className="flex h-screen">
         <Sibvar />
         <div className="flex flex-col justify-center w-full ml-10 gap-20">
-          <div className="bg-black md:w-[1000px] sm:w-[500px] w-[350px] md:h-[100px] h-[130px] p-8 mr-60 rounded-xl">
-            <div className="flex justify-between gap-4 text-[#C1FD35]">
-              <Link href="/">
-                <Plus color={"#C1FD35"} />
-              </Link>
-              <spam className="mr-[70%] mt-1">Transferencia bancaria</spam>
+          <div className="bg-black md:w-[1000px] sm:w-[500px] w-[350px] h-[100px] p-6 rounded-xl">
+            <div className="flex justify-between md:justify-between text-[#C1FD35] items-center mt-2">
+              <div className="flex items-center gap-4">
+                <Link href="/">
+                  <Plus color={"#C1FD35"} />
+                </Link>
+                <span>Transferencia bancaria</span>
+              </div>
               <Link href="/">
                 <Arrow color={"#C1FD35"} />
               </Link>
             </div>
           </div>
-          <div className="bg-black md:w-[1000px] sm:w-[500px] w-[350px] md:h-[100px] h-[130px] p-8 mr-60 rounded-xl">
-            <div className="flex justify-between  text-[#C1FD35]">
-              <Link href="/">
-                <Plus color={"#C1FD35"} />
-              </Link>
-              <spam className="mr-[70%] mt-1">Seleccionar tarjeta</spam>
+          <div className="bg-black md:w-[1000px] sm:w-[500px] w-[350px] h-[100px] p-6 rounded-xl">
+            <div className="flex justify-between md:justify-between text-[#C1FD35] items-center mt-2">
+              <div className="flex items-center gap-4">
+                <Link href="/">
+                  <Plus color={"#C1FD35"} />
+                </Link>
+                <span>Seleccionar tarjeta</span>
+              </div>
               <Link href="/">
                 <Arrow color={"#C1FD35"} />
               </Link>

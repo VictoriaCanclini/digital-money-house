@@ -314,3 +314,17 @@ export function Cablevision({ width, height }) {
     </svg>
   );
 }
+
+export function SelectCircle({ width, height, color }) {
+  return (
+    <svg
+      width={width || "15"}
+      height={height || "15"}
+      viewBox="0 0 12 12"
+      fill={color || "currentColor"}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="6" cy="6" r="5.125" fill="#201F22" stroke="#201F22" />
+    </svg>
+  );
+}

@@ -19,7 +19,7 @@ const LoadMoneyPage = () => {
               <button>$0</button>
             </div>
             <div className="flex justify-end text-[#C1FD35] md:mt-16 mt-20">
-              <Link href="credit-card-2">
+              <Link href="load-money-check">
                 <button className="rounded-lg p-3 text-[15px] text-black font-bold border-lg bg-[#C1FD35] text-center md:mr-6 md:w-[200px] w-[180px]">
                   Continuar
                 </button>

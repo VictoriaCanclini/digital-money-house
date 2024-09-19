@@ -23,7 +23,9 @@ const SelectCardPage = () => {
                   <Circle color={"[#C1FD35]"} className="md:mr-2" />
                   <span className="ml-2">Terminada en 0000</span>
                   <span className="md:ml-[600px] ml-20">
-                    <SelectCircle />
+                    <Link href="load-money">
+                      <SelectCircle />
+                    </Link>
                   </span>
                 </div>
                 <hr className="border-gray-300 my-3 mr-6 ml-6" />
@@ -31,7 +33,9 @@ const SelectCardPage = () => {
                   <Circle className="mr-2" />
                   <span className="ml-2">Terminada en 0000</span>
                   <span className="md:ml-[600px] ml-20">
-                    <SelectCircle />
+                    <Link href="load-money">
+                      <SelectCircle />
+                    </Link>
                   </span>
                 </div>
                 <hr className="border-gray-300 my-3 mr-6 ml-6" />

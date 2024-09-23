@@ -2,6 +2,7 @@ import { Circle, Filter, Search } from "@/common/Icons";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Sibvar from "@/components/Sibvar";
+import Link from "next/link";
 
 const Activity = () => {
   return (
@@ -32,11 +33,13 @@ const Activity = () => {
                 </div>
               </div>
               <hr className="border-gray-300 my-3 mr-6 ml-6" />
-              <div className="flex items-center md:ml-6 ml-4 text-sm">
-                <Circle color={"[#C1FD35]"} className="md:mr-2" />
-                <span className="ml-2">Tranferiste a Rodrigo</span>
-                <span className="md:ml-[730px] ml-20">$1265,57</span>
-              </div>
+              <Link href="/activity-details">
+                <div className="flex items-center md:ml-6 ml-4 text-sm">
+                  <Circle color={"[#C1FD35]"} className="md:mr-2" />
+                  <span className="ml-2">Tranferiste a Rodrigo</span>
+                  <span className="md:ml-[730px] ml-20">$1265,57</span>
+                </div>
+              </Link>
               <hr className="border-gray-300 my-3 mr-6 ml-6" />
               <div className="flex items-center md:ml-6 ml-4 text-sm">
                 <Circle className="mr-2" />

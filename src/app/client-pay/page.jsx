@@ -1,4 +1,4 @@
-import { Arrow, Circle, Plus, SelectCircle } from "@/common/Icons";
+import { Circle, SelectCircle } from "@/common/Icons";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Sibvar from "@/components/Sibvar";
@@ -36,9 +36,7 @@ const ClientPage = () => {
                 <Circle color={"[#C1FD35]"} className="md:mr-2" />
                 <span className="ml-2">Terminada en 0000</span>
                 <span className="md:ml-[700px] ml-20">
-                  <Link href="/">
-                    <SelectCircle />
-                  </Link>
+                  <SelectCircle />
                 </span>
               </div>
               <hr className="border-gray-300 my-3 mr-6 ml-6" />
@@ -46,9 +44,7 @@ const ClientPage = () => {
                 <Circle className="mr-2" />
                 <span className="ml-2">Terminada en 0000</span>
                 <span className="md:ml-[700px] ml-20">
-                  <Link href="">
-                    <SelectCircle />
-                  </Link>
+                  <SelectCircle />
                 </span>
               </div>
               <hr className="border-gray-300 my-3 mr-6 ml-6" />
@@ -56,9 +52,7 @@ const ClientPage = () => {
                 <Circle className="mr-2" />
                 <span className="ml-2">Terminada en 0000</span>
                 <span className="md:ml-[700px] ml-20">
-                  <Link href="">
-                    <SelectCircle />
-                  </Link>
+                  <SelectCircle />
                 </span>
               </div>
               <hr className="border-gray-300 my-4 mr-6 ml-6" />

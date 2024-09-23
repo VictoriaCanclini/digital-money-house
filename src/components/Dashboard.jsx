@@ -30,7 +30,6 @@ const dashboard = () => {
               className="w-[80%] sm:w-[500px]"
             />
           </div>
-
           {/* Imagen de fondo principal */}
           {/* <div className="relative mt-10">
             <img
@@ -40,7 +39,6 @@ const dashboard = () => {
             />
           </div> */}
         </section>
-        {/* Footer siempre visible */}
         <Footer />
       </div>
     </>

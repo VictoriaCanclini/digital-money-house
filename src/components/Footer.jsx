@@ -11,5 +11,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-//mt-[250px] sm:mt-[110px]

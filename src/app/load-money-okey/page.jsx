@@ -27,14 +27,14 @@ const LoadMoneyOkeyPage = () => {
           </div>
 
           <div className="flex justify-between md:mt-6 mt-10 p-3 text-[15px] text-black font-bold border-lg text-center">
-            <button className=" bg-[#CECECE] md:w-[200px] w-[150px] h-[50px] rounded-lg mr-4">
-              Ir al inicio
-            </button>
-            <Link href="/">
-              <button className=" bg-[#C1FD35] md:w-[200px] w-[150px] h-[50px] rounded-lg text-sm">
-                Descargar comprobante
+            <Link href="/home">
+              <button className=" bg-[#CECECE] md:w-[200px] w-[150px] h-[50px] rounded-lg mr-4">
+                Ir al inicio
               </button>
             </Link>
+            <button className=" bg-[#C1FD35] md:w-[200px] w-[150px] h-[50px] rounded-lg text-sm">
+              Descargar comprobante
+            </button>
           </div>
         </div>
       </div>

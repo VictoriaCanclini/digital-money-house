@@ -26,11 +26,9 @@ const PayServicePage = () => {
               <div className="flex items-center md:ml-6 ml-4 text-sm">
                 <Claro color={"[#C1FD35]"} className="md:mr-2" />
                 <span className="ml-2">Claro</span>
-                <Link href="/account-number">
-                  <span className="md:ml-[780px] ml-[47%] font-bold">
-                    Seleccionar
-                  </span>
-                </Link>
+                <span className="md:ml-[780px] ml-[47%] font-bold">
+                  <Link href="/account-number">Seleccionar</Link>
+                </span>
               </div>
               <hr className="border-gray-300 my-3 mr-6 ml-6" />
               <div className="flex items-center md:ml-6 ml-4 text-sm">

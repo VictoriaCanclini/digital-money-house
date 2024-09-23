@@ -36,7 +36,7 @@ const ClientPage = () => {
                 <Circle color={"[#C1FD35]"} className="md:mr-2" />
                 <span className="ml-2">Terminada en 0000</span>
                 <span className="md:ml-[700px] ml-20">
-                  <Link href="">
+                  <Link href="/">
                     <SelectCircle />
                   </Link>
                 </span>
@@ -66,7 +66,7 @@ const ClientPage = () => {
           </div>
           <div className="flex justify-end">
             <button className="rounded-lg p-4 text-[15px] text-black font-bold border-lg bg-[#C1FD35] text-center mr-[22%] mt-2 w-[20%]">
-              Pagar
+              <Link href="/pay-ok">Pagar</Link>
             </button>
           </div>
         </div>

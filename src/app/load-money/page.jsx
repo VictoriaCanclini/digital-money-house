@@ -1,4 +1,3 @@
-import { Circle, Plus, SelectCircle } from "@/common/Icons";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Sibvar from "@/components/Sibvar";

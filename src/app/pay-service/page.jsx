@@ -1,14 +1,8 @@
-import {
-  Cablevision,
-  Circle,
-  Claro,
-  Filter,
-  Personal,
-  Search,
-} from "@/common/Icons";
+import { Cablevision, Claro, Personal, Search } from "@/common/Icons";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Sibvar from "@/components/Sibvar";
+import Link from "next/link";
 
 const PayServicePage = () => {
   return (
@@ -32,9 +26,11 @@ const PayServicePage = () => {
               <div className="flex items-center md:ml-6 ml-4 text-sm">
                 <Claro color={"[#C1FD35]"} className="md:mr-2" />
                 <span className="ml-2">Claro</span>
-                <span className="md:ml-[780px] ml-[47%] font-bold">
-                  Seleccionar
-                </span>
+                <Link href="/account-number">
+                  <span className="md:ml-[780px] ml-[47%] font-bold">
+                    Seleccionar
+                  </span>
+                </Link>
               </div>
               <hr className="border-gray-300 my-3 mr-6 ml-6" />
               <div className="flex items-center md:ml-6 ml-4 text-sm">

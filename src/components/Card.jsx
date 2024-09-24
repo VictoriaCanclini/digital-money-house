@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 const Card = ({
   title,
@@ -11,13 +12,15 @@ const Card = ({
   amount,
   icon,
 }) => {
+  const { user_id } = useSelector((state) => state.auth);
+
   return (
     <div className="bg-black md:w-[1000px] sm:w-[500px] w-[300px] md:h-[230px] h-[300px] p-6 rounded-xl mt-6">
       <div className="text-white flex justify-end gap-4 underline text-sm">
         <Link href="/credit-card">
           <button>{button1Text}</button>
         </Link>
-        <Link href="/">
+        <Link href={`/profile/${user_id}`}>
           <button>{button2Text}</button>
         </Link>
       </div>

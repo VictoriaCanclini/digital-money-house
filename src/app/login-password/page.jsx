@@ -82,6 +82,7 @@ export default function LoginPassword() {
             setCredentials({
               email: email,
               user_id: userData.user_id,
+              id: userData.id,
               cvu: userData.cvu,
               alias: userData.alias,
               available_amount: userData.available_amount,

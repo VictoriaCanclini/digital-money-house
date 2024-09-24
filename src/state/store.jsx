@@ -10,6 +10,7 @@ const getStoredAuth = () => {
       : {
           email: "",
           user_id: 0,
+          id: 0,
           cvu: 0,
           alias: "",
           available_amount: 0,
@@ -19,6 +20,7 @@ const getStoredAuth = () => {
   return {
     email: "",
     user_id: 0,
+    id: 0,
     cvu: 0,
     alias: "",
     available_amount: 0,

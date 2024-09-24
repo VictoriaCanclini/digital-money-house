@@ -5,11 +5,43 @@ import Card from "@/components/Card";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Sibvar from "@/components/Sibvar";
+import axios from "axios";
 import Link from "next/link";
+import Cookies from "js-cookie";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const HomePage = () => {
   const available_amount = useSelector((state) => state.auth.available_amount);
+  // Account_id
+  const id = useSelector((state) => state.auth.id);
+  const user_id = useSelector((state) => state.auth.user_id);
+  const [userActivity, setUserActivity] = useState(null);
+
+  useEffect(() => {
+    if (id) {
+      const fetchActivityData = async () => {
+        try {
+          const response = await axios.get(
+            `${process.env.NEXT_PUBLIC_BASE_URL}/api/accounts/${id}/activity`,
+            {
+              headers: {
+                Authorization: `${Cookies.get("token")}`, // Si es necesario un token de autenticación
+              },
+            }
+          );
+          const user = response.data;
+          console.log(user);
+          setUserActivity(user); // Guardamos los datos del usuario en el estado
+        } catch (error) {
+          console.error("Error al obtener la actividad del usuario:", error);
+        }
+      };
+      fetchActivityData();
+    }
+  }, [id]);
+
+  console.log(userActivity);
 
   return (
     <div className="bg-[#D9D9D9]">
@@ -45,27 +77,28 @@ const HomePage = () => {
             <div className="md:w-[1000px] sm:w-[500px] w-[300px] md:h-[285px] h-[320px] bg-white rounded-md text-black border-2 border-gray-300 shadow-md flex flex-col">
               <span className="ml-6 mt-4 font-bold">Tu actividad</span>
               <hr className="border-gray-300 my-3 mr-6 ml-6" />
-              <div className="flex items-center md:ml-6 ml-4 text-sm">
-                <Circle color={"[#C1FD35]"} className="md:mr-2" />
-                <span className="ml-2">Transferiste a Rodrigo</span>
-                <span className="md:ml-[700px] ml-4">-$1265,57</span>
-              </div>
-              <hr className="border-gray-300 my-3 mr-6 ml-6" />
-              <div className="flex items-center md:ml-6 ml-4 text-sm">
-                <Circle className="md:mr-2" />
-                <span className="ml-2">Transferiste a Rodrigo</span>
-                <span className="md:ml-[700px] ml-4">-$1265,57</span>
-              </div>
-              <hr className="border-gray-300 my-3 mr-6 ml-6" />
-              <div className="flex items-center md:ml-6 ml-4 text-sm">
-                <Circle className="md:mr-2" />
-                <span className="ml-2">Transferiste a Rodrigo</span>
-                <span className="md:ml-[700px] ml-4">$1265,57</span>
-              </div>
+              {userActivity && userActivity.length > 0 ? (
+                userActivity.map((activity, index) => (
+                  <div key={index}>
+                    <div className="flex items-center md:ml-6 ml-4 text-sm">
+                      <Circle color={"[#C1FD35]"} className="md:mr-2" />
+                      <span className="ml-2">{activity.description}</span>
+                      <span className="md:ml-[700px] ml-4">
+                        {activity.amount}
+                      </span>
+                    </div>
+                    <hr className="border-gray-300 my-3 mr-6 ml-6" />
+                  </div>
+                ))
+              ) : (
+                <span className="ml-6 text-gray-500">
+                  No tienes actividad reciente
+                </span>
+              )}
               <hr className="border-gray-300 md:my-4 my-6 mr-6 ml-6" />
               <div className="flex justify-between mr-6">
                 <span className="ml-6 font-bold">Ver toda tu actividad</span>
-                <Link href="/activity">
+                <Link href={`/activity/${user_id}`}>
                   <Arrow color={"#A9A9A9"} />
                 </Link>
               </div>

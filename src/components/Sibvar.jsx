@@ -31,7 +31,7 @@ const Sibvar = () => {
             <button>Inicio</button>
           </li>
         </Link>
-        <Link href="/activity">
+        <Link href={`/activity/${user_id}`}>
           <li className="mb-3">
             <button>Actividad</button>
           </li>

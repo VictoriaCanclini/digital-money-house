@@ -120,7 +120,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link href="/activity" onClick={toggleMenu}>
+              <Link href={`/activity/${user_id}`} onClick={toggleMenu}>
                 Actividad
               </Link>
             </li>

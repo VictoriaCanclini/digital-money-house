@@ -1,10 +1,42 @@
+"use client";
+
 import { Arrow, Circle, Plus } from "@/common/Icons";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Sibvar from "@/components/Sibvar";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 const CreditCardPage = () => {
+  const id = useSelector((state) => state.auth.id);
+  const [userCards, setUserCards] = useState(null);
+
+  useEffect(() => {
+    if (id) {
+      const fetchActivityData = async () => {
+        try {
+          const response = await axios.get(
+            `${process.env.NEXT_PUBLIC_BASE_URL}/api/accounts/${id}/cards`,
+            {
+              headers: {
+                Authorization: `${Cookies.get("token")}`, // Si es necesario un token de autenticación
+              },
+            }
+          );
+          const user = response.data;
+          console.log(user);
+          setUserCards(user); // Guardamos los datos del usuario en el estado
+        } catch (error) {
+          console.error("Error al obtener la actividad del usuario:", error);
+        }
+      };
+      fetchActivityData();
+    }
+  }, [id]);
+
   return (
     <div className="bg-[#D9D9D9]">
       <Navbar />

@@ -97,7 +97,6 @@ const Activity = ({ params }) => {
                   No tienes actividad reciente
                 </span>
               )}
-              <hr className="border-gray-300 my-4 mr-6 ml-6" />
               <span className="flex justify-center items-center">
                 1 2 3 4 5 6 7 8
               </span>

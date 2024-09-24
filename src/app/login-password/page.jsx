@@ -9,7 +9,6 @@ import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { setCredentials } from "../../state/features/authSlice";
 import Cookies from "js-cookie";
-import { userAgent } from "next/server";
 
 export default function LoginPassword() {
   const email = useSelector((state) => state.auth.email);
@@ -92,10 +91,15 @@ export default function LoginPassword() {
           router.push("/home");
         } catch (error) {
           console.error(error);
-          setmessageAlert("Error en el login");
+
+          if (error.response && error.response.status === 401) {
+            setmessageAlert("Contraseña incorrecta");
+          } else {
+            setmessageAlert("Error en el login");
+          }
           setTimeout(() => {
             setmessageAlert("");
-          }, 1300);
+          }, 1500);
         }
       }
     }
@@ -156,6 +160,17 @@ export default function LoginPassword() {
                   </p>
                 )}
               </div>
+            </div>
+            <div className="h-[.5rem] mb-[1rem]">
+              {messageAlert ? (
+                <p className="text-red-600 text-[1rem] leading-3">
+                  {messageAlert}
+                </p>
+              ) : (
+                <p className="text-green-500 text-[1rem] leading-3">
+                  {messageAlertOk}
+                </p>
+              )}
             </div>
             <button
               className="

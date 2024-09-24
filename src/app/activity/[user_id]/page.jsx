@@ -14,7 +14,8 @@ const Activity = ({ params }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado para controlar el menú
   const user_id = params["user_id"];
   const id = useSelector((state) => state.auth.id);
-  const [userActivity, setUserActivity] = useState(null);
+  const [userActivity, setUserActivity] = useState([]);
+  const [searchTerm, setSearchTerm] = useState(""); // Estado para manejar el término de búsqueda
 
   useEffect(() => {
     if (id) {
@@ -24,13 +25,12 @@ const Activity = ({ params }) => {
             `${process.env.NEXT_PUBLIC_BASE_URL}/api/accounts/${id}/activity`,
             {
               headers: {
-                Authorization: `${Cookies.get("token")}`, // Si es necesario un token de autenticación
+                Authorization: `${Cookies.get("token")}`,
               },
             }
           );
           const user = response.data;
-          console.log(user);
-          setUserActivity(user); // Guardamos los datos del usuario en el estado
+          setUserActivity(user);
         } catch (error) {
           console.error("Error al obtener la actividad del usuario:", error);
         }
@@ -38,6 +38,11 @@ const Activity = ({ params }) => {
       fetchActivityData();
     }
   }, [id]);
+
+  // Filtramos las actividades basado en el término de búsqueda
+  const filteredActivities = userActivity.filter((activity) =>
+    activity.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -50,10 +55,18 @@ const Activity = ({ params }) => {
         <Sibvar />
         <div className="flex flex-col md:mt-[10%] mt-[40%] w-full ml-10">
           <div className="flex flex-row gap-4">
+            {/* Campo de búsqueda */}
             <div className="bg-white p-2 md:w-[850px] sm:w-[500px] w-[350px] gap-1 rounded-md text-gray-400 border-2 border-gray-300 shadow-md flex items-center">
               <Search className="mr-2" />
-              <span>Buscar en tu actividad</span>
+              <input
+                type="text"
+                placeholder="Buscar en tu actividad"
+                className="bg-transparent outline-none w-full"
+                value={searchTerm} // Vinculamos el término de búsqueda al estado
+                onChange={(e) => setSearchTerm(e.target.value)} // Actualizamos el estado con el valor ingresado
+              />
             </div>
+
             <div className="bg-[#C1FD35] text-black rounded-md w-[10%] hidden sm:block">
               <button
                 className="flex items-center justify-center gap-9 w-full p-2 font-bold"
@@ -64,6 +77,8 @@ const Activity = ({ params }) => {
               </button>
             </div>
           </div>
+
+          {/* Listado de actividades filtradas */}
           <div className="flex flex-row mt-4">
             <div className="md:w-[1000px] sm:w-[500px] w-[350px] md:h-[350px] h-[450px] bg-white rounded-md text-black border-2 border-gray-300 shadow-md flex flex-col">
               <div className="flex items-center gap-2">
@@ -72,16 +87,16 @@ const Activity = ({ params }) => {
                   className="flex items-center ml-[40%] sm:hidden"
                   onClick={toggleMenu}
                 >
-                  <span className="mt-1">Filtrar</span>
+                  <span>Filtrar</span>
                   <Filter />
                 </div>
               </div>
               <hr className="border-gray-300 my-3 mr-6 ml-6" />
-              {userActivity && userActivity.length > 0 ? (
-                userActivity.map((activity, index) => (
+              {filteredActivities.length > 0 ? (
+                filteredActivities.map((activity, index) => (
                   <div key={index}>
                     <Link href="/activity-details">
-                      <div className="flex items-center md:ml-6 ml-4 text-sm">
+                      <div className="flex items-center md:ml-6 ml-4 text-sm p-2">
                         <Circle color={"[#C1FD35]"} className="md:mr-2" />
                         <span className="ml-2">{activity.description}</span>
                         <span className="md:ml-[730px] ml-20">
@@ -94,11 +109,11 @@ const Activity = ({ params }) => {
                 ))
               ) : (
                 <span className="ml-6 text-gray-500">
-                  No tienes actividad reciente
+                  No se encontró actividad para "{searchTerm}"
                 </span>
               )}
-              <span className="flex justify-center items-center">
-                1 2 3 4 5 6 7 8
+              <span className="flex justify-center items-center mt-10">
+                1-2-3-4-5-6-7-8
               </span>
             </div>
           </div>
@@ -123,7 +138,7 @@ const Activity = ({ params }) => {
                 <button onClick={toggleMenu}>Último mes</button>
               </li>
               <li>
-                <button onClick={toggleMenu}>Último ańo</button>
+                <button onClick={toggleMenu}>Último año</button>
               </li>
               <li>
                 <button onClick={toggleMenu}>Otro período</button>

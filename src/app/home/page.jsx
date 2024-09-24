@@ -13,10 +13,10 @@ import { useSelector } from "react-redux";
 
 const HomePage = () => {
   const available_amount = useSelector((state) => state.auth.available_amount);
-  // Account_id
   const id = useSelector((state) => state.auth.id);
   const user_id = useSelector((state) => state.auth.user_id);
-  const [userActivity, setUserActivity] = useState(null);
+  const [userActivity, setUserActivity] = useState([]);
+  const [searchTerm, setSearchTerm] = useState(""); // Estado para manejar el término de búsqueda
 
   useEffect(() => {
     if (id) {
@@ -26,13 +26,12 @@ const HomePage = () => {
             `${process.env.NEXT_PUBLIC_BASE_URL}/api/accounts/${id}/activity`,
             {
               headers: {
-                Authorization: `${Cookies.get("token")}`, // Si es necesario un token de autenticación
+                Authorization: `${Cookies.get("token")}`,
               },
             }
           );
           const user = response.data;
-          console.log(user);
-          setUserActivity(user); // Guardamos los datos del usuario en el estado
+          setUserActivity(user);
         } catch (error) {
           console.error("Error al obtener la actividad del usuario:", error);
         }
@@ -41,7 +40,10 @@ const HomePage = () => {
     }
   }, [id]);
 
-  console.log(userActivity);
+  // Filtramos la actividad basada en el término de búsqueda
+  const filteredActivities = userActivity.filter((activity) =>
+    activity.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="bg-[#D9D9D9]">
@@ -67,18 +69,28 @@ const HomePage = () => {
               </button>
             </Link>
           </div>
+
+          {/* Campo de búsqueda */}
           <div className="flex flex-row mt-6">
             <div className="bg-white p-2 md:w-[1000px] sm:w-[500px] w-[300px] gap-1 rounded-md text-gray-400 border-2 border-gray-300 shadow-md flex items-center">
               <Search className="mr-2" />
-              <span>Buscar en tu actividad</span>
+              <input
+                type="text"
+                placeholder="Buscar en tu actividad"
+                className="bg-transparent outline-none w-full"
+                value={searchTerm} // Vinculamos el término de búsqueda al estado
+                onChange={(e) => setSearchTerm(e.target.value)} // Actualizamos el estado con el valor ingresado
+              />
             </div>
           </div>
+
+          {/* Listado de actividad filtrada */}
           <div className="flex flex-row mt-4">
             <div className="md:w-[1000px] sm:w-[500px] w-[300px] md:h-[285px] h-[320px] bg-white rounded-md text-black border-2 border-gray-300 shadow-md flex flex-col">
               <span className="ml-6 mt-4 font-bold">Tu actividad</span>
               <hr className="border-gray-300 my-3 mr-6 ml-6" />
-              {userActivity && userActivity.length > 0 ? (
-                userActivity.map((activity, index) => (
+              {filteredActivities.length > 0 ? (
+                filteredActivities.map((activity, index) => (
                   <div key={index}>
                     <div className="flex items-center md:ml-6 ml-4 text-sm">
                       <Circle color={"[#C1FD35]"} className="md:mr-2" />
@@ -92,7 +104,7 @@ const HomePage = () => {
                 ))
               ) : (
                 <span className="ml-6 text-gray-500">
-                  No tienes actividad reciente
+                  No se encontró actividad para "{searchTerm}"
                 </span>
               )}
               <div className="flex justify-between mr-6 md:mt-2 mt-4">

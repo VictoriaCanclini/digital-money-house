@@ -15,20 +15,20 @@ const Card = ({
   const { user_id } = useSelector((state) => state.auth);
 
   return (
-    <div className="bg-black md:w-[1000px] sm:w-[500px] w-[300px] md:h-[230px] h-[300px] p-6 rounded-xl mt-6">
-      <div className="text-white flex justify-end gap-4 underline text-sm">
+    <div className="bg-black md:w-[1000px] sm:w-[500px] w-[300px] md:h-[230px] h-[250px] p-6 rounded-xl mt-6">
+      <div className="text-white flex justify-end gap-4 text-sm">
         <Link href="/credit-card">
-          <button>{button1Text}</button>
+          <button className="underline">{button1Text}</button>
         </Link>
         <Link href={`/profile/${user_id}`}>
-          <button>{button2Text}</button>
+          <button className="underline">{button2Text}</button>
         </Link>
       </div>
-      <h2 className="text-md text-white font-semibold md:mb-2 mb-8 md:mt-1">
+      <h2 className="text-lg text-white font-semibold md:mb-2 mb-8 md:mt-1 mt-8">
         {title}
       </h2>
       {amount && (
-        <button className="border-2 border-[#C1FD35] text-xl rounded-full p-2 mt-6">
+        <button className="border-2 border-[#C1FD35] text-xl rounded-full p-2 md:mt-6">
           {amount}
         </button>
       )}

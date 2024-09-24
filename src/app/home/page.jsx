@@ -95,8 +95,7 @@ const HomePage = () => {
                   No tienes actividad reciente
                 </span>
               )}
-              {/* <hr className="border-gray-300 md:my-4 my-6 mr-6 ml-6" /> */}
-              <div className="flex justify-between mr-6">
+              <div className="flex justify-between mr-6 md:mt-2 mt-4">
                 <span className="ml-6 font-bold">Ver toda tu actividad</span>
                 <Link href={`/activity/${user_id}`}>
                   <Arrow color={"#A9A9A9"} />

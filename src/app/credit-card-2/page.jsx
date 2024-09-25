@@ -11,6 +11,8 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CreditCardPage2 = () => {
   const router = useRouter();
@@ -64,7 +66,7 @@ const CreditCardPage2 = () => {
           },
         }
       );
-      alert("tarjeta registrada correctamente");
+      toast("tarjeta registrada correctamente");
       router.push("/credit-card");
       console.log("Tarjeta registrada:", response.data);
 
@@ -175,6 +177,7 @@ const CreditCardPage2 = () => {
         </div>
       </div>
       <Footer />
+      <ToastContainer />
     </div>
   );
 };

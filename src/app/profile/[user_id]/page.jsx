@@ -10,6 +10,8 @@ import { useEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
 import { useSelector } from "react-redux";
 import Link from "next/link";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProfilePage = ({ params }) => {
   const user_id = params["user_id"];
@@ -77,7 +79,7 @@ const ProfilePage = ({ params }) => {
           },
         }
       );
-      alert("Usuario actualizado");
+      toast("Usuario actualizado");
       console.log("Usuario actualizado:", response.data);
       setUserData(response.data);
     } catch (error) {
@@ -96,7 +98,7 @@ const ProfilePage = ({ params }) => {
     navigator.clipboard
       .writeText(text)
       .then(() => {
-        alert("Texto copiado: " + text);
+        toast("Texto copiado: " + text);
       })
       .catch((err) => {
         console.error("Error al copiar: ", err);
@@ -223,6 +225,7 @@ const ProfilePage = ({ params }) => {
         </div>
       </div>
       <Footer />
+      <ToastContainer />
     </div>
   );
 };

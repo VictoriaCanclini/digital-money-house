@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Sibvar from "@/components/Sibvar";
 import { useSelector } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const MyData = () => {
   const cvu = useSelector((state) => state.auth.cvu);
@@ -15,7 +17,7 @@ const MyData = () => {
     navigator.clipboard
       .writeText(text)
       .then(() => {
-        alert("Texto copiado: " + text);
+        toast("Texto copiado: " + text);
       })
       .catch((err) => {
         console.error("Error al copiar: ", err);
@@ -40,6 +42,7 @@ const MyData = () => {
         </div>
       </div>
       <Footer />
+      <ToastContainer />
     </div>
   );
 };

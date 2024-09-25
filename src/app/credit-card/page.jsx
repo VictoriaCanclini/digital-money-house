@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CreditCardPage = () => {
   const id = useSelector((state) => state.auth.id);
@@ -51,7 +53,7 @@ const CreditCardPage = () => {
       setUserCards((prevCards) =>
         prevCards.filter((card) => card.id !== card_id)
       );
-      alert("Tarjeta eliminada exitosamente");
+      toast("Tarjeta eliminada exitosamente");
       console.log("Tarjeta eliminada exitosamente");
     } catch (error) {
       console.error("Error al eliminar la tarjeta:", error);
@@ -110,6 +112,7 @@ const CreditCardPage = () => {
         </div>
       </div>
       <Footer />
+      <ToastContainer />
     </div>
   );
 };

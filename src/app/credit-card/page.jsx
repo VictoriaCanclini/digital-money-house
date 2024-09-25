@@ -22,13 +22,13 @@ const CreditCardPage = () => {
             `${process.env.NEXT_PUBLIC_BASE_URL}/api/accounts/${id}/cards`,
             {
               headers: {
-                Authorization: `${Cookies.get("token")}`, // Si es necesario un token de autenticación
+                Authorization: `${Cookies.get("token")}`,
               },
             }
           );
-          const user = response.data;
-          console.log(user);
-          setUserCards(user); // Guardamos los datos del usuario en el estado
+          const cards = response.data;
+          console.log(cards);
+          setUserCards(cards); // Guardamos los datos del usuario en el estado
         } catch (error) {
           console.error("Error al obtener la actividad del usuario:", error);
         }
@@ -61,26 +61,24 @@ const CreditCardPage = () => {
           </div>
           <div className="flex flex-row mt-4">
             <div className="md:w-[1000px] sm:w-[500px] w-[350px] md:h-[285px] h-[320px] bg-white rounded-md text-black border-2 border-gray-300 shadow-md flex flex-col">
-              <span className="ml-6 mt-4 font-bold">Tus tarjetas</span>
+              <span className="ml-6 mt-6 mb-2 font-bold">Tus tarjetas</span>
               <hr className="border-gray-300 my-3 mr-6 ml-6" />
-              <div className="flex items-center md:ml-6 ml-4 text-sm">
-                <Circle color={"[#C1FD35]"} className="md:mr-2" />
-                <span className="ml-2">Terminada en 0000</span>
-                <span className="md:ml-[730px] ml-20">Eliminar</span>
-              </div>
-              <hr className="border-gray-300 my-3 mr-6 ml-6" />
-              <div className="flex items-center md:ml-6 ml-4 text-sm">
-                <Circle className="mr-2" />
-                <span className="ml-2">Terminada en 0000</span>
-                <span className="md:ml-[730px] ml-20">Eliminar</span>
-              </div>
-              <hr className="border-gray-300 my-3 mr-6 ml-6" />
-              <div className="flex items-center md:ml-6 ml-4  text-sm">
-                <Circle className="mr-2" />
-                <span className="ml-2">Terminada en 0000</span>
-                <span className="md:ml-[730px] ml-20">Eliminar</span>
-              </div>
-              <hr className="border-gray-300 my-4 mr-6 ml-6" />
+              {userCards ? (
+                userCards.map((card, index) => (
+                  <div key={index}>
+                    <div className="flex items-center md:ml-6 ml-4 text-sm">
+                      <Circle color={"[#C1FD35]"} className="md:mr-2" />
+                      <span className="ml-2">
+                        Terminada en {String(card.number_id).slice(-4)}
+                      </span>
+                      <span className="md:ml-[730px] ml-20">Eliminar</span>
+                    </div>
+                    <hr className="border-gray-300 my-3 mr-6 ml-6" />
+                  </div>
+                ))
+              ) : (
+                <p className="text-center">No tienes tarjetas registradas</p>
+              )}
             </div>
           </div>
         </div>

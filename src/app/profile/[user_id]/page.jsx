@@ -6,9 +6,10 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Sibvar from "@/components/Sibvar";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
 import { useSelector } from "react-redux";
+import Link from "next/link";
 
 const ProfilePage = ({ params }) => {
   const user_id = params["user_id"];
@@ -18,7 +19,16 @@ const ProfilePage = ({ params }) => {
     firstname: "",
     lastname: "",
     phone: "",
+    dni: "",
   });
+
+  // Usamos ref para enfocar los inputs
+  const emailRef = useRef(null);
+  const firstnameRef = useRef(null);
+  const lastnameRef = useRef(null);
+  const dniRef = useRef(null);
+  const phoneRef = useRef(null);
+
   const cvu = useSelector((state) => state.auth.cvu);
   const alias = useSelector((state) => state.auth.alias);
 
@@ -41,6 +51,7 @@ const ProfilePage = ({ params }) => {
             firstname: user.firstname,
             lastname: user.lastname,
             phone: user.phone,
+            dni: user.dni,
           });
         } catch (error) {
           console.error("Error al obtener los datos del usuario:", error);
@@ -68,10 +79,15 @@ const ProfilePage = ({ params }) => {
       );
       alert("Usuario actualizado");
       console.log("Usuario actualizado:", response.data);
-      // Opcional: Actualizar el estado con los nuevos datos del usuario si la respuesta devuelve datos actualizados
       setUserData(response.data);
     } catch (error) {
       console.error("Error al actualizar los datos del usuario:", error);
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleUpdateUser();
     }
   };
 
@@ -87,38 +103,59 @@ const ProfilePage = ({ params }) => {
             <div className="flex justify-between md:ml-6 ml-4 md:mr-6 mr-4 text-sm mt-1">
               <span className="ml-2 text-gray-500">Email</span>
               <input
-                className="md:ml-[70%] ml-10 text-gray-500"
+                ref={emailRef} // Usamos ref para enfocar
+                className="md:ml-[75%] ml-10 text-gray-500"
                 name="email"
                 value={editableData.email}
                 onChange={handleInputChange}
+                onKeyDown={handleKeyPress} // Detectamos la tecla "Enter"
               />
-              <button onClick={handleUpdateUser}>
+              <button onClick={() => emailRef.current.focus()}>
                 <Edit color={"#CECECE"} />
               </button>
             </div>
             <hr className="border-gray-300 my-2 mr-6 ml-6" />
             <div className="flex justify-between md:ml-6 ml-4 md:mr-6 mr-4 text-sm mt-1">
-              <span className="ml-2 text-gray-500">Nombre y apellido</span>
+              <span className="ml-2 text-gray-500">Nombre</span>
               <input
-                className="text-gray-500 md:ml-[62%]"
+                ref={firstnameRef} // Usamos ref para enfocar
+                className="text-gray-500 md:ml-[75%] ml-10"
                 name="firstname"
-                value={`${editableData.firstname} ${editableData.lastname}`}
+                value={editableData.firstname}
                 onChange={handleInputChange}
+                onKeyDown={handleKeyPress}
               />
-              <button onClick={handleUpdateUser}>
+              <button onClick={() => firstnameRef.current.focus()}>
+                <Edit color={"#CECECE"} />
+              </button>
+            </div>
+            <hr className="border-gray-300 my-2 mr-6 ml-6" />
+            <div className="flex justify-between md:ml-6 ml-4 md:mr-6 mr-4 text-sm mt-1">
+              <span className="ml-2 text-gray-500">Apellido</span>
+              <input
+                ref={lastnameRef} // Usamos ref para enfocar
+                className="text-gray-500 md:ml-[75%] ml-10"
+                name="firstname"
+                value={editableData.lastname}
+                onChange={handleInputChange}
+                onKeyDown={handleKeyPress}
+              />
+              <button onClick={() => lastnameRef.current.focus()}>
                 <Edit color={"#CECECE"} />
               </button>
             </div>
             <hr className="border-gray-300 my-2 mr-6 ml-6" />
             <div className="flex justify-between md:ml-6 ml-4 md:mr-6 mr-4  text-sm mt-1">
-              <span className="ml-2 text-gray-500">CUIT</span>
+              <span className="ml-2 text-gray-500">DNI</span>
               <input
-                className="text-gray-500 md:ml-[70%] ml-10"
-                name="firstname"
-                value="27372738212"
+                ref={dniRef} // Usamos ref para enfocar
+                className="text-gray-500 md:ml-[78%] ml-16"
+                name="dni"
+                value={editableData.dni}
                 onChange={handleInputChange}
+                onKeyDown={handleKeyPress}
               />
-              <button onClick={handleUpdateUser}>
+              <button onClick={() => dniRef.current.focus()}>
                 <Edit color={"#CECECE"} />
               </button>
             </div>
@@ -126,36 +163,40 @@ const ProfilePage = ({ params }) => {
             <div className="flex justify-between md:ml-6 ml-4 md:mr-6 mr-4  text-sm mt-1">
               <span className="ml-2 text-gray-500">Telefono</span>
               <input
-                className="text-gray-500 md:ml-[70%] ml-8"
+                ref={phoneRef} // Usamos ref para enfocar
+                className="text-gray-500 md:ml-[75%] ml-8"
                 name="phone"
                 value={editableData.phone}
                 onChange={handleInputChange}
+                onKeyDown={handleKeyPress}
               />
-              <button onClick={handleUpdateUser}>
+              <button onClick={() => phoneRef.current.focus()}>
                 <Edit color={"#CECECE"} />
               </button>
             </div>
             <hr className="border-gray-300 my-2 mr-6 ml-6" />
-            <div className="flex justify-between items-center md:ml-6 ml-4 md:mr-6 mr-4  text-sm mt-1">
+            {/* <div className="flex justify-between items-center md:ml-6 ml-4 md:mr-6 mr-4  text-sm mt-1">
               <span className="ml-2 text-gray-500">Contraseña</span>
               <input
                 className="md:ml-[70%] text-gray-500"
-                name="phone"
-                value="xxxxxxxxx"
+                name="contraseña"
+                value={editableData.password}
                 onChange={handleInputChange}
               />
               <button onClick={handleUpdateUser}>
                 <Edit color={"#CECECE"} />
               </button>
             </div>
-            <hr className="border-gray-300 my-3 mr-6 ml-6" />
+            <hr className="border-gray-300 my-3 mr-6 ml-6" /> */}
           </div>
           <div className="flex flex-row mt-6">
             <button className="bg-[#C1FD35] text-black font-bold md:w-[1000px] sm:w-[500px] w-[300px] h-[106px] rounded-md flex justify-between items-center pl-6 pr-4">
               <span className="flex-grow flex justify-start">
                 Gestioná los medios de pago
               </span>
-              <Arrow color={"#000000"} />
+              <Link href="/credit-card">
+                <Arrow color={"#000000"} />
+              </Link>
             </button>
           </div>
           <Card

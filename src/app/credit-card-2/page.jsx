@@ -3,12 +3,19 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Sibvar from "@/components/Sibvar";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Cards from "react-credit-cards-2";
 import styles from "./cardCredit.module.css";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
+import axios from "axios";
+import Cookies from "js-cookie";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
 
 const CreditCardPage2 = () => {
+  const router = useRouter();
+  const id = useSelector((state) => state.auth.id);
+  const [userCards, setUserCards] = useState(null);
   const [cardData, setCardData] = useState({
     number: "",
     name: "",
@@ -33,21 +40,68 @@ const CreditCardPage2 = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if ([number, name, expiry, cvc].includes("")) {
-      // toast.error("All fields are required");
+      // Mostrar error si falta algún campo
       return;
     }
-    setCardData({
-      number: "",
-      name: "",
-      expiry: "",
-      cvc: "",
-      focus: "",
-    });
-    // dispatch({ type: "CLEAR_CART", payload: {} as CartProduct });
+
+    const body = {
+      cod: parseInt(cvc),
+      expiration_date: expiry,
+      first_last_name: name,
+      number_id: parseInt(number),
+    };
+
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/accounts/${id}/cards`,
+        body,
+        {
+          headers: {
+            Authorization: `${Cookies.get("token")}`,
+          },
+        }
+      );
+      alert("tarjeta registrada correctamente");
+      router.push("/credit-card");
+      console.log("Tarjeta registrada:", response.data);
+
+      // Limpiar el formulario
+      setCardData({
+        number: "",
+        name: "",
+        expiry: "",
+        cvc: "",
+        focus: "",
+      });
+    } catch (error) {
+      console.error("Error al registrar la tarjeta:", error);
+    }
   };
+
+  useEffect(() => {
+    if (id) {
+      const fetchUserCards = async () => {
+        try {
+          const response = await axios.get(
+            `${process.env.NEXT_PUBLIC_BASE_URL}/api/accounts/${id}/cards`,
+            {
+              headers: {
+                Authorization: `${Cookies.get("token")}`,
+              },
+            }
+          );
+          const cards = response.data;
+          setUserCards(cards); // Guardamos los datos del usuario en el estado
+        } catch (error) {
+          console.error("Error al obtener las tarjetas del usuario:", error);
+        }
+      };
+      fetchUserCards();
+    }
+  }, [id]);
 
   return (
     <div className="bg-[#D9D9D9]">
@@ -91,7 +145,7 @@ const CreditCardPage2 = () => {
                 </div>
                 <div className={styles.formInputGrup}>
                   <div className={styles.formControl}>
-                    <label htmlFor="expiry">Fecha de vencimiento*</label>
+                    <label htmlFor="expiry">Fecha de vencimiento (MMYY)*</label>
                     <input
                       type="text"
                       name="expiry"

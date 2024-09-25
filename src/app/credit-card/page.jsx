@@ -37,6 +37,27 @@ const CreditCardPage = () => {
     }
   }, [id]);
 
+  const deleteCard = async (card_id) => {
+    try {
+      await axios.delete(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/accounts/${id}/cards/${card_id}`,
+        {
+          headers: {
+            Authorization: `${Cookies.get("token")}`,
+          },
+        }
+      );
+      // Actualiza el estado eliminando la tarjeta borrada
+      setUserCards((prevCards) =>
+        prevCards.filter((card) => card.id !== card_id)
+      );
+      alert("Tarjeta eliminada exitosamente");
+      console.log("Tarjeta eliminada exitosamente");
+    } catch (error) {
+      console.error("Error al eliminar la tarjeta:", error);
+    }
+  };
+
   return (
     <div className="bg-[#D9D9D9]">
       <Navbar />
@@ -71,7 +92,12 @@ const CreditCardPage = () => {
                       <span className="ml-2">
                         Terminada en {String(card.number_id).slice(-4)}
                       </span>
-                      <span className="md:ml-[730px] ml-20">Eliminar</span>
+                      <button
+                        className="md:ml-[730px] ml-20"
+                        onClick={() => deleteCard(card.id)}
+                      >
+                        Eliminar
+                      </button>
                     </div>
                     <hr className="border-gray-300 my-3 mr-6 ml-6" />
                   </div>

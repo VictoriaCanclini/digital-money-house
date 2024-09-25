@@ -11,6 +11,17 @@ const MyData = () => {
   const cvu = useSelector((state) => state.auth.cvu);
   const alias = useSelector((state) => state.auth.alias);
 
+  const handleCopy = (text) => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        alert("Texto copiado: " + text);
+      })
+      .catch((err) => {
+        console.error("Error al copiar: ", err);
+      });
+  };
+
   return (
     <div className="bg-[#D9D9D9]">
       <Navbar />
@@ -23,7 +34,8 @@ const MyData = () => {
             button4Text="Alias"
             number1={cvu}
             number2={alias}
-            icon={<Copy />}
+            icon={<Copy onClick={handleCopy} />}
+            onCopy={handleCopy}
           />
         </div>
       </div>

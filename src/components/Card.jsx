@@ -11,6 +11,7 @@ const Card = ({
   number2,
   amount,
   icon,
+  onCopy, // Callback para manejar la copia
 }) => {
   const { user_id } = useSelector((state) => state.auth);
 
@@ -34,13 +35,23 @@ const Card = ({
       )}
       <div className="flex flex-col mr-[900px] gap-1 text-[#C1FD35] text-lg">
         <div className="flex justify-between">
-          <button>{button3Text}</button>
-          <span className="md:ml-[860px] ml-[180px]">{icon}</span>
+          <button>{button3Text}</button>{" "}
+          <button
+            onClick={() => onCopy(number1)}
+            className="md:ml-[860px] ml-[180px]"
+          >
+            {icon}
+          </button>
         </div>
         <span className="text-white text-sm">{number1}</span>
         <div className="flex justify-between">
-          <button>{button4Text}</button>
-          <span className="md:ml-[860px] ml-[180px]">{icon}</span>
+          <button>{button4Text}</button>{" "}
+          <button
+            onClick={() => onCopy(number2)}
+            className="md:ml-[860px] ml-[180px]"
+          >
+            {icon}
+          </button>
         </div>
         <span className="text-white text-sm">{number2}</span>
       </div>

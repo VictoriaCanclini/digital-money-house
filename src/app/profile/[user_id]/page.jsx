@@ -91,6 +91,18 @@ const ProfilePage = ({ params }) => {
     }
   };
 
+  // Función para copiar el texto
+  const handleCopy = (text) => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        alert("Texto copiado: " + text);
+      })
+      .catch((err) => {
+        console.error("Error al copiar: ", err);
+      });
+  };
+
   return (
     <div className="bg-[#D9D9D9]">
       <Navbar />
@@ -205,7 +217,8 @@ const ProfilePage = ({ params }) => {
             button4Text="Alias"
             number1={cvu}
             number2={alias}
-            icon={<Copy />}
+            icon={<Copy onClick={handleCopy} />}
+            onCopy={handleCopy}
           />
         </div>
       </div>

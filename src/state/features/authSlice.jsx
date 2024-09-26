@@ -9,7 +9,7 @@ const authSlice = createSlice({
     alias: "",
     cvu: 0,
     available_amount: 0,
-    amount: 0, // Añadimos el campo amount
+    amount: 0,
   },
   reducers: {
     setCredentials: (state, { payload }) => {

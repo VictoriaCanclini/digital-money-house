@@ -14,9 +14,9 @@ import { useState } from "react";
 const LoadMoneyCheckPage = () => {
   const router = useRouter();
   const amount = useSelector((state) => state.auth.amount);
-  const [userDeposit, setUserDeposit] = useState(null);
   const id = useSelector((state) => state.auth.id);
   const cvu = useSelector((state) => state.auth.cvu);
+  const [userDeposit, setUserDeposit] = useState(null);
 
   const handleDeposit = async () => {
     if (id && amount) {

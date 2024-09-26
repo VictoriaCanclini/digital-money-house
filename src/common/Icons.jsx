@@ -210,7 +210,7 @@ export function Card({ width, height, color }) {
   );
 }
 
-export function Claro({ width, height, color }) {
+export function Claro({ width, height }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -315,16 +315,31 @@ export function Cablevision({ width, height }) {
   );
 }
 
-export function SelectCircle({ width, height, color }) {
+export function SelectCircle({ width, height }) {
   return (
     <svg
       width={width || "15"}
       height={height || "15"}
-      viewBox="0 0 12 12"
-      fill={color || "currentColor"}
+      viewBox="0 0 18 18"
+      fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle cx="6" cy="6" r="5.125" fill="#201F22" stroke="#201F22" />
+      <circle cx="9" cy="9" r="8.5" stroke="black" stroke-opacity="0.5" />
+    </svg>
+  );
+}
+
+export function CompleteCircle({ width, height }) {
+  return (
+    <svg
+      width={width || "15"}
+      height={height || "15"}
+      viewBox="0 0 18 18"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="9" cy="9" r="8.5" fill="#C1FD35" stroke="#201F22" />
+      <circle cx="9" cy="9" r="5.125" fill="#201F22" stroke="#201F22" />
     </svg>
   );
 }

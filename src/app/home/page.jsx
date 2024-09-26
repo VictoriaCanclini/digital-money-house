@@ -16,8 +16,9 @@ const HomePage = () => {
   const id = useSelector((state) => state.auth.id);
   const user_id = useSelector((state) => state.auth.user_id);
   const [userActivity, setUserActivity] = useState([]);
-  const [searchTerm, setSearchTerm] = useState(""); // Estado para manejar el término de búsqueda
-
+  const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const activitiesPerPage = 3; //
   useEffect(() => {
     if (id) {
       const fetchActivityData = async () => {
@@ -43,6 +44,14 @@ const HomePage = () => {
   // Filtramos la actividad basada en el término de búsqueda
   const filteredActivities = userActivity.filter((activity) =>
     activity.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  // Calculamos el índice de inicio y fin basado en la página actual
+  const indexOfLastActivity = currentPage * activitiesPerPage;
+  const indexOfFirstActivity = indexOfLastActivity - activitiesPerPage;
+  const currentActivities = filteredActivities.slice(
+    indexOfFirstActivity,
+    indexOfLastActivity
   );
 
   return (
@@ -78,8 +87,8 @@ const HomePage = () => {
                 type="text"
                 placeholder="Buscar en tu actividad"
                 className="bg-transparent outline-none w-full"
-                value={searchTerm} // Vinculamos el término de búsqueda al estado
-                onChange={(e) => setSearchTerm(e.target.value)} // Actualizamos el estado con el valor ingresado
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
           </div>
@@ -89,8 +98,8 @@ const HomePage = () => {
             <div className="md:w-[1000px] sm:w-[500px] w-[300px] md:h-[285px] h-[320px] bg-white rounded-md text-black border-2 border-gray-300 shadow-md flex flex-col">
               <span className="ml-6 mt-4 font-bold">Tu actividad</span>
               <hr className="border-gray-300 my-3 mr-6 ml-6" />
-              {filteredActivities.length > 0 ? (
-                filteredActivities.map((activity, index) => (
+              {currentActivities.length > 0 ? (
+                currentActivities.map((activity, index) => (
                   <div key={index}>
                     <div className="flex items-center md:ml-6 ml-4 text-sm">
                       <Circle color={"[#C1FD35]"} className="md:mr-2" />
@@ -107,8 +116,10 @@ const HomePage = () => {
                   No se encontró actividad para "{searchTerm}"
                 </span>
               )}
-              <div className="flex justify-between mr-6 md:mt-2 mt-4">
-                <span className="ml-6 font-bold">Ver toda tu actividad</span>
+              <div className="flex justify-between items-center mr-6 md:mt-2 mt-4">
+                <button className="ml-6 font-bold">
+                  Ver toda tu actividad
+                </button>
                 <Link href={`/activity/${user_id}`}>
                   <Arrow color={"#A9A9A9"} />
                 </Link>

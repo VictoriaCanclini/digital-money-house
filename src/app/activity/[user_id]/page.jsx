@@ -1,6 +1,6 @@
 "use client";
 
-import { Circle, Filter, Search } from "@/common/Icons";
+import { Arrow, Circle, Filter, Search } from "@/common/Icons";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Sibvar from "@/components/Sibvar";
@@ -11,11 +11,13 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 
 const Activity = ({ params }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado para controlar el menú
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const user_id = params["user_id"];
   const id = useSelector((state) => state.auth.id);
   const [userActivity, setUserActivity] = useState([]);
-  const [searchTerm, setSearchTerm] = useState(""); // Estado para manejar el término de búsqueda
+  const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const activitiesPerPage = 4;
 
   useEffect(() => {
     if (id) {
@@ -39,13 +41,36 @@ const Activity = ({ params }) => {
     }
   }, [id]);
 
-  // Filtramos las actividades basado en el término de búsqueda
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  // Filtramos la actividad basada en el término de búsqueda
   const filteredActivities = userActivity.filter((activity) =>
     activity.description.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+  // Calculamos el índice de inicio y fin basado en la página actual
+  const indexOfLastActivity = currentPage * activitiesPerPage;
+  const indexOfFirstActivity = indexOfLastActivity - activitiesPerPage;
+  const currentActivities = filteredActivities.slice(
+    indexOfFirstActivity,
+    indexOfLastActivity
+  );
+
+  //Funciones para avanzar o retroceder entre páginas
+  const nextPage = () => {
+    if (
+      currentPage < Math.ceil(filteredActivities.length / activitiesPerPage)
+    ) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
   };
 
   return (
@@ -62,8 +87,9 @@ const Activity = ({ params }) => {
                 type="text"
                 placeholder="Buscar en tu actividad"
                 className="bg-transparent outline-none w-full"
-                value={searchTerm} // Vinculamos el término de búsqueda al estado
-                onChange={(e) => setSearchTerm(e.target.value)} // Actualizamos el estado con el valor ingresado
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                ingresado
               />
             </div>
 
@@ -80,7 +106,7 @@ const Activity = ({ params }) => {
 
           {/* Listado de actividades filtradas */}
           <div className="flex flex-row mt-4">
-            <div className="md:w-[1000px] sm:w-[500px] w-[350px] md:h-[350px] h-[450px] bg-white rounded-md text-black border-2 border-gray-300 shadow-md flex flex-col">
+            <div className="md:w-[1000px] sm:w-[500px] w-[350px] md:h-[400px] h-[400px] bg-white rounded-md text-black border-2 border-gray-300 shadow-md flex flex-col">
               <div className="flex items-center gap-2">
                 <span className="ml-6 mt-4 font-bold">Tu actividad</span>
                 <div
@@ -92,8 +118,8 @@ const Activity = ({ params }) => {
                 </div>
               </div>
               <hr className="border-gray-300 my-3 mr-6 ml-6" />
-              {filteredActivities.length > 0 ? (
-                filteredActivities.map((activity, index) => (
+              {currentActivities.length > 0 ? (
+                currentActivities.map((activity, index) => (
                   <div key={index}>
                     <Link href="/activity-details">
                       <div className="flex items-center md:ml-6 ml-4 text-sm p-2">
@@ -108,13 +134,29 @@ const Activity = ({ params }) => {
                   </div>
                 ))
               ) : (
-                <span className="ml-6 text-gray-500">
+                <span className="ml-10 text-gray-500">
                   No se encontró actividad para "{searchTerm}"
                 </span>
               )}
-              <span className="flex justify-center items-center mt-10">
-                1-2-3-4-5-6-7-8
-              </span>
+              <div className="flex justify-between mt-2">
+                <button
+                  className="ml-6 font-bold"
+                  onClick={prevPage}
+                  disabled={currentPage === 1}
+                >
+                  Anterior
+                </button>
+                <button
+                  className="mr-10 font-bold"
+                  onClick={nextPage}
+                  disabled={
+                    currentPage ===
+                    Math.ceil(filteredActivities.length / activitiesPerPage)
+                  }
+                >
+                  <Arrow color={"#A9A9A9"} />
+                </button>
+              </div>
             </div>
           </div>
         </div>

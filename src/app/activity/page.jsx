@@ -88,7 +88,7 @@ const Activity = () => {
                 className="bg-transparent outline-none w-full"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                ingresado
+                // ingresado
               />
             </div>
 

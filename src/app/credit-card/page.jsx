@@ -84,16 +84,16 @@ const CreditCardPage = () => {
           </div>
           <div className="flex flex-row mt-4">
             <div className="md:w-[1000px] sm:w-[500px] w-[350px] md:h-[285px] h-[320px] bg-white rounded-md text-black border-2 border-gray-300 shadow-md flex flex-col">
-              <span className="ml-6 mt-6 mb-2 font-bold">Tus tarjetas</span>
+              <spam className="ml-6 mt-6 mb-2 font-bold">Tus tarjetas</spam>
               <hr className="border-gray-300 my-3 mr-6 ml-6" />
               {userCards ? (
                 userCards.map((card, index) => (
                   <div key={index}>
                     <div className="flex items-center md:ml-6 ml-4 text-sm">
                       <Circle color={"[#C1FD35]"} className="md:mr-2" />
-                      <span className="ml-2">
+                      <spam className="ml-2">
                         Terminada en {String(card.number_id).slice(-4)}
-                      </span>
+                      </spam>
                       <button
                         className="md:ml-[730px] ml-20"
                         onClick={() => deleteCard(card.id)}

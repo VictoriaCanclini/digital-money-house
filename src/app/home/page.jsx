@@ -14,11 +14,11 @@ import { useSelector } from "react-redux";
 const HomePage = () => {
   const available_amount = useSelector((state) => state.auth.available_amount);
   const id = useSelector((state) => state.auth.id);
-  const user_id = useSelector((state) => state.auth.user_id);
   const [userActivity, setUserActivity] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const activitiesPerPage = 3; //
+  const activitiesPerPage = 3;
+
   useEffect(() => {
     if (id) {
       const fetchActivityData = async () => {
@@ -120,7 +120,7 @@ const HomePage = () => {
                 <button className="ml-6 font-bold">
                   Ver toda tu actividad
                 </button>
-                <Link href={`/activity/${user_id}`}>
+                <Link href="/activity">
                   <Arrow color={"#A9A9A9"} />
                 </Link>
               </div>

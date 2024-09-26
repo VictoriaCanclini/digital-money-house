@@ -12,7 +12,6 @@ import { useSelector } from "react-redux";
 
 const Activity = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // const user_id = params["user_id"];
   const id = useSelector((state) => state.auth.id);
   const [userActivity, setUserActivity] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");

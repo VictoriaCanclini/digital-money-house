@@ -16,8 +16,6 @@ const HomePage = () => {
   const id = useSelector((state) => state.auth.id);
   const [userActivity, setUserActivity] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
-  const activitiesPerPage = 3;
 
   useEffect(() => {
     if (id) {
@@ -41,18 +39,12 @@ const HomePage = () => {
     }
   }, [id]);
 
-  // Filtramos la actividad basada en el término de búsqueda
-  const filteredActivities = userActivity.filter((activity) =>
-    activity.description.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  // Calculamos el índice de inicio y fin basado en la página actual
-  const indexOfLastActivity = currentPage * activitiesPerPage;
-  const indexOfFirstActivity = indexOfLastActivity - activitiesPerPage;
-  const currentActivities = filteredActivities.slice(
-    indexOfFirstActivity,
-    indexOfLastActivity
-  );
+  // Filtramos la actividad basada en el término de búsqueda y limitamos a un máximo de 3 actividades
+  const filteredActivities = userActivity
+    .filter((activity) =>
+      activity.description.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    .slice(0, 3); // Mostrar solo las primeras 3 actividades
 
   return (
     <div className="bg-[#D9D9D9]">
@@ -98,8 +90,8 @@ const HomePage = () => {
             <div className="md:w-[1000px] sm:w-[500px] w-[300px] md:h-[285px] h-[320px] bg-white rounded-md text-black border-2 border-gray-300 shadow-md flex flex-col">
               <span className="ml-6 mt-4 font-bold">Tu actividad</span>
               <hr className="border-gray-300 my-3 mr-6 ml-6" />
-              {currentActivities.length > 0 ? (
-                currentActivities.map((activity, index) => (
+              {filteredActivities.length > 0 ? (
+                filteredActivities.map((activity, index) => (
                   <div key={index}>
                     <div className="flex items-center md:ml-6 ml-4 text-sm">
                       <Circle color={"[#C1FD35]"} className="md:mr-2" />

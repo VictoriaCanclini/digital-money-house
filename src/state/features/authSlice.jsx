@@ -9,6 +9,7 @@ const authSlice = createSlice({
     alias: "",
     cvu: 0,
     available_amount: 0,
+    amount: 0, // Añadimos el campo amount
   },
   reducers: {
     setCredentials: (state, { payload }) => {
@@ -20,15 +21,22 @@ const authSlice = createSlice({
       state.available_amount = available_amount;
       state.id = id;
 
-      // Guardar el estado en localStorage
       if (email) {
         localStorage.setItem("auth", JSON.stringify(state));
       } else {
         localStorage.removeItem("auth");
       }
     },
+    setAmount: (state, { payload }) => {
+      state.amount = payload;
+
+      // Actualizar el localStorage con el nuevo valor de amount
+      const authState = JSON.parse(localStorage.getItem("auth")) || {};
+      authState.amount = payload;
+      localStorage.setItem("auth", JSON.stringify(authState));
+    },
   },
 });
 
-export const { setCredentials } = authSlice.actions;
+export const { setCredentials, setAmount } = authSlice.actions;
 export default authSlice.reducer;

@@ -14,6 +14,7 @@ const getStoredAuth = () => {
           cvu: 0,
           alias: "",
           available_amount: 0,
+          amount: 0,
         };
   }
   // Estado por defecto en el servidor
@@ -24,6 +25,7 @@ const getStoredAuth = () => {
     cvu: 0,
     alias: "",
     available_amount: 0,
+    amount: 0,
   };
 };
 

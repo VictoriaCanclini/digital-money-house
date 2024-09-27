@@ -7,9 +7,10 @@ import Sibvar from "@/components/Sibvar";
 import Link from "next/link";
 import Cookies from "js-cookie";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { setAvailableAmount } from "@/state/features/authSlice";
 
 const LoadMoneyCheckPage = () => {
   const router = useRouter();
@@ -17,6 +18,8 @@ const LoadMoneyCheckPage = () => {
   const id = useSelector((state) => state.auth.id);
   const cvu = useSelector((state) => state.auth.cvu);
   const [userDeposit, setUserDeposit] = useState(null);
+  const available_amount = useSelector((state) => state.auth.available_amount);
+  const dispatch = useDispatch();
 
   const handleDeposit = async () => {
     if (id && amount) {
@@ -38,6 +41,10 @@ const LoadMoneyCheckPage = () => {
         const deposit = response.data;
         console.log(deposit);
         setUserDeposit(deposit);
+
+        const newAvailableAmount = available_amount + parseFloat(amount);
+        dispatch(setAvailableAmount(newAvailableAmount));
+
         router.push("/load-money-okey"); // Navegamos a la página de confirmación
       } catch (error) {
         console.error("Error al hacer un depósito:", error);
@@ -57,9 +64,9 @@ const LoadMoneyCheckPage = () => {
             </h2>
             <div className="flex justify-between md:mr-[820px] mr-[180px]">
               <h3 className="text-sm">Vas a transferir</h3>
-              <spam>
+              <button>
                 <Note />
-              </spam>
+              </button>
             </div>
             <p className="font-bold">${amount}</p>
             <h4 className="text-sm mt-6">para</h4>

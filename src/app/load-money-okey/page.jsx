@@ -29,7 +29,7 @@ const LoadMoneyOkeyPage = () => {
             <h4 className="text-sm mt-6">para</h4>
             <h5 className="font-bold text-[#C1FD35]">Cuenta propia</h5>
             <h6 className="text-sm mt-6">Brubank</h6>
-            <p className="text-sm">CVU: {cvu}</p>
+            <p className="text-sm text-[#C1FD35]">CVU: {cvu}</p>
           </div>
 
           <div className="flex justify-between md:mt-6 mt-10 p-3 text-[15px] text-black font-bold border-lg text-center">

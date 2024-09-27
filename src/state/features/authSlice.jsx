@@ -35,8 +35,18 @@ const authSlice = createSlice({
       authState.amount = payload;
       localStorage.setItem("auth", JSON.stringify(authState));
     },
+
+    setAvailableAmount: (state, { payload }) => {
+      state.available_amount = payload;
+
+      // Actualizar el localStorage con el nuevo valor de available_amount
+      const authState = JSON.parse(localStorage.getItem("auth")) || {};
+      authState.available_amount = payload;
+      localStorage.setItem("auth", JSON.stringify(authState));
+    },
   },
 });
 
-export const { setCredentials, setAmount } = authSlice.actions;
+export const { setCredentials, setAmount, setAvailableAmount } =
+  authSlice.actions;
 export default authSlice.reducer;

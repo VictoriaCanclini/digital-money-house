@@ -1,10 +1,33 @@
+"use client";
+
 import { Cablevision, Claro, Personal, Search } from "@/common/Icons";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Sibvar from "@/components/Sibvar";
+// import axios from "axios";
 import Link from "next/link";
+// import { useEffect, useState } from "react";
 
 const PayServicePage = () => {
+  // const [userService, setUserService] = useState([]);
+
+  // useEffect(() => {
+  //   const fetchService = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         `${process.env.NEXT_PUBLIC_BASE_URL}/api/service`
+  //       );
+  //       const service = response.data;
+  //       console.log(service);
+  //       setUserService(service);
+  //     } catch (error) {
+  //       console.error("Error al obtener los servicios:", error);
+  //     }
+  //   };
+
+  //   fetchService();
+  // }, []);
+
   return (
     <div className="bg-[#D9D9D9]">
       <Navbar />

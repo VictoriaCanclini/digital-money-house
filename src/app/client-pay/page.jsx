@@ -7,13 +7,48 @@ import Sibvar from "@/components/Sibvar";
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
+import { setAvailableAmount } from "@/state/features/authSlice";
 
 const ClientPage = () => {
   const id = useSelector((state) => state.auth.id);
+  const amount = useSelector((state) => state.auth.amount);
+  const available_amount = useSelector((state) => state.auth.available_amount);
+  const cvu = useSelector((state) => state.auth.cvu);
   const [userCards, setUserCards] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
+  const [userTranfer, setUserTranfer] = useState(null);
+  const dispatch = useDispatch();
+
+  const handleTranference = async () => {
+    if (id && amount) {
+      try {
+        const response = await axios.post(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/api/accounts/${id}/transferences`,
+          {
+            amount: parseFloat(amount),
+            dated: new Date().toISOString(),
+            destination: "pago de servicio",
+            origin: cvu,
+          },
+          {
+            headers: {
+              Authorization: `${Cookies.get("token")}`,
+            },
+          }
+        );
+        const tranference = response.data;
+        console.log(tranference);
+        setUserTranfer(tranference);
+
+        const newAvailableAmount = available_amount + parseFloat(amount);
+        dispatch(setAvailableAmount(newAvailableAmount));
+      } catch (error) {
+        console.error("Error al hacer la transferencia:", error);
+      }
+    }
+  };
 
   useEffect(() => {
     if (id) {
@@ -62,7 +97,7 @@ const ClientPage = () => {
             <hr className="border-gray-600 my-3 mr-6 ml-6" />
             <div className="flex justify-between  text-white text-lg">
               <h3 className="md:mr-[750px] mr-[80px] md:mt-1">Total a pagar</h3>
-              <p className="">$1153,75</p>
+              <p className="">${amount}</p>
             </div>
           </div>
           <div className="flex flex-row mt-4">
@@ -96,11 +131,14 @@ const ClientPage = () => {
               )}
             </div>
           </div>
-          <div className="flex justify-end">
-            <button className="rounded-lg p-4 text-[15px] text-black font-bold border-lg bg-[#C1FD35] text-center mr-[22%] mt-2 w-[20%]">
-              <Link href="/pay-ok">Pagar</Link>
+          <Link href="/pay-ok">
+            <button
+              onClick={handleTranference}
+              className="md:ml-[58%] ml-[60%] rounded-lg p-4 text-[15px] text-black font-bold border-lg bg-[#C1FD35] text-center mr-[22%] mt-4 w-[20%]"
+            >
+              Pagar
             </button>
-          </div>
+          </Link>
         </div>
       </div>
       <Footer />

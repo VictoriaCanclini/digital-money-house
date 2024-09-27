@@ -6,7 +6,7 @@ import Sibvar from "@/components/Sibvar";
 import Link from "next/link";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-// import { setAmount } from "@/state/features/authSlice";
+import { setAmount } from "@/state/features/authSlice";
 
 const AccountNumberPage = () => {
   const [amount, setLocalAmount] = useState("");
@@ -17,9 +17,9 @@ const AccountNumberPage = () => {
     setLocalAmount(e.target.value);
   };
 
-  // const handleContinue = () => {
-  //   dispatch(setAmount(parseFloat(amount))); // Guardamos el amount en el store
-  // };
+  const handleContinue = () => {
+    dispatch(setAmount(parseFloat(amount))); // Guardamos el amount en el store
+  };
 
   return (
     <div className="bg-[#D9D9D9]">
@@ -44,7 +44,7 @@ const AccountNumberPage = () => {
             <div className="flex justify-end text-[#C1FD35] md:mt-6 mt-10">
               <Link href="client-pay">
                 <button
-                  // onClick={handleContinue}
+                  onClick={handleContinue}
                   className="rounded-lg p-3 text-[15px] text-black font-bold border-lg bg-[#C1FD35] text-center md:mr-6 md:w-[200px] w-[180px]"
                 >
                   Continuar

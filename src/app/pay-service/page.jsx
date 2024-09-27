@@ -6,10 +6,15 @@ import Navbar from "@/components/Navbar";
 import Sibvar from "@/components/Sibvar";
 // import axios from "axios";
 import Link from "next/link";
-// import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const PayServicePage = () => {
-  // const [userService, setUserService] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [userService, setUserService] = useState([
+    { description: "Claro" },
+    { description: "Personal" },
+    { description: "Cablevisión" },
+  ]);
 
   // useEffect(() => {
   //   const fetchService = async () => {
@@ -24,9 +29,13 @@ const PayServicePage = () => {
   //       console.error("Error al obtener los servicios:", error);
   //     }
   //   };
-
   //   fetchService();
   // }, []);
+
+  // Filtramos la actividad basada en el término de búsqueda
+  const filteredServices = userService.filter((service) =>
+    service.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="bg-[#D9D9D9]">
@@ -37,63 +46,55 @@ const PayServicePage = () => {
           <div className="flex flex-row gap-4">
             <div className="bg-white p-2 md:w-[1000px] sm:w-[500px] w-[350px] gap-1 rounded-md text-gray-400 border-2 border-gray-300 shadow-md flex items-center">
               <Search className="mr-2" />
-              <span>Buscar entre más de 5.000 empresas</span>
+              <input
+                type="text"
+                placeholder="Buscar entre más de 5.000 empresas"
+                className="bg-transparent outline-none w-full"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
             </div>
           </div>
           <div className="flex flex-row mt-4">
-            <div className="md:w-[1000px] sm:w-[500px] w-[350px] h-[450px] bg-white rounded-md text-black border-2 border-gray-300 shadow-md flex flex-col">
+            <div className="md:w-[1000px] sm:w-[500px] w-[350px] h-[300px] bg-white rounded-md text-black border-2 border-gray-300 shadow-md flex flex-col">
               <div className="flex items-center gap-2">
-                <span className="ml-6 mt-4 font-bold">Más recientes</span>
+                <h1 className="ml-6 mt-8 font-bold">Más recientes</h1>
               </div>
               <hr className="border-gray-300 my-3 mr-6 ml-6" />
-              <div className="flex items-center md:ml-6 ml-4 text-sm">
-                <Claro color={"[#C1FD35]"} className="md:mr-2" />
-                <span className="ml-2">Claro</span>
-                <span className="md:ml-[780px] ml-[47%] font-bold">
-                  <Link href="/account-number">Seleccionar</Link>
-                </span>
-              </div>
-              <hr className="border-gray-300 my-3 mr-6 ml-6" />
-              <div className="flex items-center md:ml-6 ml-4 text-sm">
-                <Personal className="mr-2" />
-                <span className="ml-2">Personal</span>
-                <span className="md:ml-[760px] ml-[40%] font-bold">
-                  Seleccionar
-                </span>
-              </div>
-              <hr className="border-gray-300 my-3 mr-6 ml-6" />
-              <div className="flex items-center md:ml-6 ml-4  text-sm">
-                <Cablevision className="mr-2" />
-                <span className="ml-2">Cablevisión</span>
-                <span className="md:ml-[740px] ml-[35%] font-bold">
-                  Seleccionar
-                </span>
-              </div>
-              <hr className="border-gray-300 my-4 mr-6 ml-6" />
-              <div className="flex items-center md:ml-6 ml-4 text-sm">
-                <Claro color={"[#C1FD35]"} className="md:mr-2" />
-                <span className="ml-2">Claro</span>
-                <span className="md:ml-[780px] ml-[47%] font-bold">
-                  Seleccionar
-                </span>
-              </div>
-              <hr className="border-gray-300 my-4 mr-6 ml-6" />
-              <div className="flex items-center md:ml-6 ml-4 text-sm">
-                <Personal color={"[#C1FD35]"} className="md:mr-2" />
-                <span className="ml-2">Personal</span>
-                <span className="md:ml-[760px] ml-[40%] font-bold">
-                  Seleccionar
-                </span>
-              </div>
-              <hr className="border-gray-300 my-4 mr-6 ml-6" />
-              <div className="flex items-center md:ml-6 ml-4 text-sm">
-                <Cablevision color={"[#C1FD35]"} className="md:mr-2" />
-                <span className="ml-2">Cablevisión</span>
-                <span className="md:ml-[745px] ml-[35%] font-bold">
-                  Seleccionar
-                </span>
-              </div>
-              <hr className="border-gray-300 my-4 mr-6 ml-6" />
+              {filteredServices.map((service, index) => (
+                <div key={index}>
+                  <div className="flex items-center md:ml-6 ml-4 text-sm">
+                    {service.description === "Claro" && (
+                      <>
+                        <Claro />
+                        <h2 className="ml-2">Claro</h2>
+                        <button className="font-bold md:ml-[80%] ml-[40%]">
+                          <Link href="/account-number">Seleccionar</Link>
+                        </button>
+                      </>
+                    )}
+                    {service.description === "Personal" && (
+                      <>
+                        <Personal />
+                        <h2 className="ml-2">Personal</h2>
+                        <button className="font-bold md:ml-[78%] ml-[34%]">
+                          <Link href="/account-number">Seleccionar</Link>
+                        </button>
+                      </>
+                    )}
+                    {service.description === "Cablevisión" && (
+                      <>
+                        <Cablevision />
+                        <h2 className="ml-2">Cablevision</h2>
+                        <button className="font-bold md:ml-[76%] ml-[30%]">
+                          <Link href="/account-number">Seleccionar</Link>
+                        </button>
+                      </>
+                    )}
+                  </div>
+                  <hr className="border-gray-300 my-3 mr-6 ml-6" />
+                </div>
+              ))}
             </div>
           </div>
         </div>

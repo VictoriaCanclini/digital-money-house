@@ -29,19 +29,20 @@ const AccountNumberPage = () => {
         <div className="flex flex-col justify-center w-full ml-10">
           <div className="bg-black md:w-[1000px] sm:w-[500px] w-[350px] md:h-[300px] h-[200px] md:p-6 p-4 md:mr-60 rounded-xl">
             <h2 className="text-lg text-[#C1FD35] font-semibold mb-4">
-              Número de cuenta sin el primer 2
+              {/* Número de cuenta sin el primer 2 */}
+              Ingresa el monto a pagar
             </h2>
             <input
               type="number"
-              className="md:w-[300px] sm:w-[500px] w-[300px] h-[60px] bg-white rounded-md text-black md:mt-8"
+              className="p-2 md:w-[300px] sm:w-[500px] w-[300px] h-[60px] bg-white rounded-md text-black md:mt-8"
               value={amount}
               onChange={handleAmountChange}
             />
-            <h3 className="text-sm md:mt-8 mt-4">
+            {/* <h3 className="text-sm md:mt-8 mt-4">
               Son 11 números sin espacios, sin el “2” inicial. Agregá ceros
               adelante si tenés menos.{" "}
-            </h3>
-            <div className="flex justify-end text-[#C1FD35] md:mt-6 mt-10">
+            </h3> */}
+            <div className="flex justify-end text-[#C1FD35] md:mt-6 mt-6">
               <Link href="client-pay">
                 <button
                   onClick={handleContinue}

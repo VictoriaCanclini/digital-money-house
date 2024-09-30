@@ -33,6 +33,7 @@ const LoadMoneyPage = () => {
             </h2>
             <input
               type="number"
+              placeholder="$"
               className="md:w-[300px] sm:w-[500px] w-[300px] h-[60px] bg-white rounded-md text-black p-4 mt-10 ml-2"
               value={amount}
               onChange={handleAmountChange}

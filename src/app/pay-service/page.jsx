@@ -4,7 +4,6 @@ import { Cablevision, Claro, Personal, Search } from "@/common/Icons";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Sibvar from "@/components/Sibvar";
-// import axios from "axios";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -67,7 +66,7 @@ const PayServicePage = () => {
                     {service.description === "Claro" && (
                       <>
                         <Claro />
-                        <h2 className="ml-2">Claro</h2>
+                        <h2 className="ml-2">{service.description}</h2>
                         <button className="font-bold md:ml-[80%] ml-[40%]">
                           <Link href="/account-number">Seleccionar</Link>
                         </button>
@@ -76,7 +75,7 @@ const PayServicePage = () => {
                     {service.description === "Personal" && (
                       <>
                         <Personal />
-                        <h2 className="ml-2">Personal</h2>
+                        <h2 className="ml-2">{service.description}</h2>
                         <button className="font-bold md:ml-[78%] ml-[34%]">
                           <Link href="/account-number">Seleccionar</Link>
                         </button>
@@ -85,7 +84,7 @@ const PayServicePage = () => {
                     {service.description === "Cablevisión" && (
                       <>
                         <Cablevision />
-                        <h2 className="ml-2">Cablevision</h2>
+                        <h2 className="ml-2">{service.description}</h2>
                         <button className="font-bold md:ml-[76%] ml-[30%]">
                           <Link href="/account-number">Seleccionar</Link>
                         </button>

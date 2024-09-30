@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./features/authSlice";
+import servicesReducer from "./features/servicesSlice";
 
 // Función para recuperar el estado desde localStorage
 const getStoredAuth = () => {
@@ -32,6 +33,7 @@ const getStoredAuth = () => {
 export const store = configureStore({
   reducer: {
     auth: authReducer,
+    services: servicesReducer,
   },
   preloadedState: {
     auth: getStoredAuth(), // Llama a la función para inicializar el estado de auth

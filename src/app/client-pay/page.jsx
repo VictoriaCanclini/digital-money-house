@@ -9,17 +9,37 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
-import { setAvailableAmount } from "@/state/features/authSlice";
+import { setAmount, setAvailableAmount } from "@/state/features/authSlice";
 
 const ClientPage = () => {
   const id = useSelector((state) => state.auth.id);
   const amount = useSelector((state) => state.auth.amount);
   const available_amount = useSelector((state) => state.auth.available_amount);
   const cvu = useSelector((state) => state.auth.cvu);
+  const selectedServiceId = useSelector(
+    (state) => state.services.selectedServiceId
+  );
   const [userCards, setUserCards] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
   const [userTranfer, setUserTranfer] = useState(null);
+  const [userService, setUserService] = useState([]);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchService = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/service/${selectedServiceId}`
+        );
+        const service = response.data;
+        console.log(service);
+        setUserService(service);
+      } catch (error) {
+        console.error("Error al obtener el servicio:", error);
+      }
+    };
+    fetchService();
+  }, []);
 
   const handleTranference = async () => {
     if (id && amount) {
@@ -27,7 +47,8 @@ const ClientPage = () => {
         const response = await axios.post(
           `${process.env.NEXT_PUBLIC_BASE_URL}/api/accounts/${id}/transferences`,
           {
-            amount: parseFloat(amount),
+            amount: parseFloat(-userService.invoice_value),
+            // amount: parseFloat(amount),
             dated: new Date().toISOString(),
             destination: "pago de servicio",
             origin: cvu,
@@ -50,9 +71,13 @@ const ClientPage = () => {
     }
   };
 
+  const handleContinue = () => {
+    dispatch(setAmount(parseFloat(-userService.invoice_value))); // Guardamos el amount en el store
+  };
+
   useEffect(() => {
     if (id) {
-      const fetchActivityData = async () => {
+      const fetchCardsData = async () => {
         try {
           const response = await axios.get(
             `${process.env.NEXT_PUBLIC_BASE_URL}/api/accounts/${id}/cards`,
@@ -69,7 +94,7 @@ const ClientPage = () => {
           console.error("Error al obtener la actividad del usuario:", error);
         }
       };
-      fetchActivityData();
+      fetchCardsData();
     }
   }, [id]);
 
@@ -85,10 +110,10 @@ const ClientPage = () => {
       <div className="flex h-screen">
         <Sibvar />
         <div className="flex flex-col justify-center w-full ml-10">
-          <div className="bg-black md:w-[1000px] sm:w-[500px] w-[350px] md:h-[150px] h-[130px] p-8 mr-60 rounded-xl">
+          <div className="bg-black md:w-[1000px] sm:w-[500px] w-[350px] md:h-[150px] h-[150px] p-8 mr-60 rounded-xl">
             <div className="flex justify-between">
               <h2 className="font-semibold text-[#C1FD35] text-lg">
-                Cablevisión
+                {userService.name}
               </h2>
               <button className="underline text-sm">
                 Ver detalles del pago
@@ -97,7 +122,7 @@ const ClientPage = () => {
             <hr className="border-gray-600 my-3 mr-6 ml-6" />
             <div className="flex justify-between  text-white text-lg">
               <h3 className="md:mr-[750px] mr-[80px] md:mt-1">Total a pagar</h3>
-              <p className="">${amount}</p>
+              <p className="">${userService.invoice_value}</p>
             </div>
           </div>
           <div className="flex flex-row mt-4">

@@ -4,28 +4,31 @@ import { Search } from "@/common/Icons";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Sibvar from "@/components/Sibvar";
+import { setSelectedServiceId } from "@/state/features/servicesSlice";
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
 const PayServicePage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [userService, setUserService] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchService = async () => {
+    const fetchServices = async () => {
       try {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_BASE_URL}/service`
         );
-        const service = response.data;
-        console.log(service);
-        setUserService(service);
+        const services = response.data;
+        console.log(services);
+        setUserService(services);
       } catch (error) {
         console.error("Error al obtener los servicios:", error);
       }
     };
-    fetchService();
+    fetchServices();
   }, []);
 
   // Filtramos la actividad basada en el término de búsqueda
@@ -63,7 +66,12 @@ const PayServicePage = () => {
                     <div className="flex items-center md:ml-6 ml-4 text-sm">
                       {/* <Claro /> */}
                       <h2 className="ml-2">{service.name}</h2>
-                      <button className="font-bold md:ml-[80%] ml-auto mr-8">
+                      <button
+                        className="font-bold md:ml-[80%] ml-auto mr-8"
+                        onClick={() =>
+                          dispatch(setSelectedServiceId(service.id))
+                        }
+                      >
                         <Link href="/account-number">Seleccionar</Link>
                       </button>
                     </div>

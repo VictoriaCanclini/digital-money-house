@@ -124,7 +124,7 @@ const Activity = () => {
                       <div className="flex items-center md:ml-6 ml-4 text-sm p-2">
                         <Circle color={"[#C1FD35]"} className="md:mr-2" />
                         <h2 className="ml-2">{activity.description}</h2>
-                        <button className="md:ml-[730px] ml-6">
+                        <button className="ml-auto mr-6 ">
                           {activity.amount}
                         </button>
                       </div>

@@ -67,7 +67,7 @@ const PayServicePage = () => {
                       {/* <Claro /> */}
                       <h2 className="ml-2">{service.name}</h2>
                       <button
-                        className="font-bold md:ml-[80%] ml-auto mr-8"
+                        className="font-bold ml-auto mr-8"
                         onClick={() =>
                           dispatch(setSelectedServiceId(service.id))
                         }

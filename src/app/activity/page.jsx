@@ -97,7 +97,7 @@ const Activity = () => {
                 className="flex items-center justify-center gap-9 w-full p-2 font-bold"
                 onClick={toggleMenu}
               >
-                <span>Filtrar</span>
+                Filtrar
                 <Filter />
               </button>
             </div>
@@ -105,14 +105,14 @@ const Activity = () => {
 
           {/* Listado de actividades filtradas */}
           <div className="flex flex-row mt-4">
-            <div className="md:w-[1000px] sm:w-[500px] w-[350px] md:h-[400px] h-[400px] bg-white rounded-md text-black border-2 border-gray-300 shadow-md flex flex-col">
+            <div className="md:w-[1000px] sm:w-[500px] w-[350px] h-[400px] bg-white rounded-md text-black border-2 border-gray-300 shadow-md flex flex-col">
               <div className="flex items-center gap-2">
-                <span className="ml-6 mt-4 font-bold">Tu actividad</span>
+                <h1 className="ml-6 mt-4 font-bold">Tu actividad</h1>
                 <div
                   className="flex items-center ml-[40%] sm:hidden"
                   onClick={toggleMenu}
                 >
-                  <span>Filtrar</span>
+                  Filtrar
                   <Filter />
                 </div>
               </div>
@@ -123,19 +123,19 @@ const Activity = () => {
                     <Link href="/activity-details">
                       <div className="flex items-center md:ml-6 ml-4 text-sm p-2">
                         <Circle color={"[#C1FD35]"} className="md:mr-2" />
-                        <span className="ml-2">{activity.description}</span>
-                        <span className="md:ml-[730px] ml-20">
+                        <h2 className="ml-2">{activity.description}</h2>
+                        <button className="md:ml-[730px] ml-6">
                           {activity.amount}
-                        </span>
+                        </button>
                       </div>
                     </Link>
                     <hr className="border-gray-300 my-3 mr-6 ml-6" />
                   </div>
                 ))
               ) : (
-                <span className="ml-10 text-gray-500">
+                <h3 className="ml-10 text-gray-500">
                   No se encontró actividad para "{searchTerm}"
-                </span>
+                </h3>
               )}
               <div className="flex justify-between mt-2">
                 <button

@@ -82,7 +82,7 @@ const ClientPage = () => {
         console.log(tranference);
         setUserTranfer(tranference);
 
-        const newAvailableAmount = available_amount + parseFloat(amount);
+        const newAvailableAmount = available_amount - parseFloat(amount);
         dispatch(setAvailableAmount(newAvailableAmount));
       } catch (error) {
         console.error("Error al hacer la transferencia:", error);
@@ -91,7 +91,7 @@ const ClientPage = () => {
   };
 
   const handleContinue = () => {
-    dispatch(setAmount(parseFloat(-userService.invoice_value))); // Guardamos el amount en el store
+    dispatch(setAmount(parseFloat(-userService.invoice_value))); // Guardamos el amount en redux
   };
 
   useEffect(() => {

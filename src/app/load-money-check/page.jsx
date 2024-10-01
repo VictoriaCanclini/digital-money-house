@@ -29,8 +29,8 @@ const LoadMoneyCheckPage = () => {
           {
             amount: parseFloat(amount),
             dated: new Date().toISOString(),
-            destination: "Mi Cuenta Bancaria", // Modifica con valores reales
-            origin: "Mi Tarjeta", // Modifica con valores reales
+            destination: "Mi Cuenta Bancaria",
+            origin: "Mi Tarjeta",
           },
           {
             headers: {

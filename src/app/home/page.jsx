@@ -56,7 +56,7 @@ const HomePage = () => {
             title="Dinero disponible"
             button1Text="Ver tarjetas"
             button2Text="Ver CVU"
-            amount={available_amount}
+            amount={available_amount.toFixed(2)}
           />
           <div className="flex flex-row mt-6 gap-1">
             <Link href="/add-money">
@@ -96,9 +96,7 @@ const HomePage = () => {
                     <div className="flex items-center md:ml-6 ml-4 text-sm">
                       <Circle color={"[#C1FD35]"} className="md:mr-2" />
                       <span className="ml-2">{activity.description}</span>
-                      <span className="md:ml-[700px] ml-4">
-                        {activity.amount}
-                      </span>
+                      <span className="ml-auto mr-8">{activity.amount}</span>
                     </div>
                     <hr className="border-gray-300 my-3 mr-6 ml-6" />
                   </div>

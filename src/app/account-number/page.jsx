@@ -9,9 +9,12 @@ import { useState } from "react";
 const AccountNumberPage = () => {
   const [number, setNumber] = useState("");
 
-  // Función para manejar el cambio en el input
   const handleAmountChange = (e) => {
-    setNumber(e.target.value);
+    // Asegurarse de que solo se introduzcan números y un máximo de 11 caracteres
+    const value = e.target.value.replace(/\D/g, ""); // Eliminar cualquier carácter no numérico
+    if (value.length <= 11) {
+      setNumber(value);
+    }
   };
 
   return (

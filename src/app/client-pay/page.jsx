@@ -49,7 +49,7 @@ const ClientPage = () => {
         setUserService(service);
         dispatch(
           setServicesData({
-            date: new Date().toISOString(),
+            date: service.date,
             invoice_value: service.invoice_value,
             name: service.name,
           })

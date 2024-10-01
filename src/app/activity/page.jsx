@@ -30,9 +30,10 @@ const Activity = () => {
               },
             }
           );
-          const user = response.data;
-          setUserActivity(user);
-        } catch (error) {
+          const activity = response.data;
+          console.log(activity);
+          setUserActivity(activity);
+        } catch (activity) {
           console.error("Error al obtener la actividad del usuario:", error);
         }
       };

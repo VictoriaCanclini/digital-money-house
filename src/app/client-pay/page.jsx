@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
 import { setAmount, setAvailableAmount } from "@/state/features/authSlice";
+import { setServicesData } from "@/state/features/servicesSlice";
 
 const ClientPage = () => {
   const id = useSelector((state) => state.auth.id);
@@ -34,12 +35,19 @@ const ClientPage = () => {
         const service = response.data;
         console.log(service);
         setUserService(service);
+        dispatch(
+          setServicesData({
+            date: new Date().toISOString(),
+            invoice_value: service.invoice_value,
+            name: service.name,
+          })
+        );
       } catch (error) {
         console.error("Error al obtener el servicio:", error);
       }
     };
     fetchService();
-  }, []);
+  }, [selectedServiceId, dispatch]);
 
   const handleTranference = async () => {
     if (id && amount) {
@@ -48,7 +56,6 @@ const ClientPage = () => {
           `${process.env.NEXT_PUBLIC_BASE_URL}/api/accounts/${id}/transferences`,
           {
             amount: parseFloat(-userService.invoice_value),
-            // amount: parseFloat(amount),
             dated: new Date().toISOString(),
             destination: "pago de servicio",
             origin: cvu,
@@ -89,7 +96,7 @@ const ClientPage = () => {
           );
           const cards = response.data;
           console.log(cards);
-          setUserCards(cards); // Guardamos los datos del usuario en el estado
+          setUserCards(cards);
         } catch (error) {
           console.error("Error al obtener la actividad del usuario:", error);
         }

@@ -1,10 +1,15 @@
+"use client";
+
 import { Check } from "@/common/Icons";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Sibvar from "@/components/Sibvar";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 const PayOkPage = () => {
+  const { date, invoice_value, name } = useSelector((state) => state.services);
+
   return (
     <div className="bg-[#D9D9D9]">
       <Navbar />
@@ -16,10 +21,10 @@ const PayOkPage = () => {
             <span className="text-lg mt-4">Ya realizaste tu pago</span>
           </div>
           <div className="bg-black md:w-[1000px] sm:w-[500px] w-[350px] md:h-[250px] h-[250px] md:p-6 p-4  rounded-xl">
-            <h3 className="text-sm mt-2">17 de agosto 2022 a las 16:34 hs.</h3>
-            <p className="font-bold text-[#C1FD35]">$300</p>
+            <h3 className="text-sm mt-2">{date}</h3>
+            <p className="font-bold text-[#C1FD35]">${invoice_value}</p>
             <h4 className="text-sm mt-6">para</h4>
-            <h5 className="font-bold text-[#C1FD35]">Cablevisión</h5>
+            <h5 className="font-bold text-[#C1FD35]">{name}</h5>
             <h6 className="text-sm mt-6">Tarjeta</h6>
             <p className="text-sm">visa **********4067</p>
           </div>

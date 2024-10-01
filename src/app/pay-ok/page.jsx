@@ -9,6 +9,9 @@ import { useSelector } from "react-redux";
 
 const PayOkPage = () => {
   const { date, invoice_value, name } = useSelector((state) => state.services);
+  const cards = useSelector((state) => state.creditCard.cards);
+  const selectedCard = useSelector((state) => state.creditCard.selectedCard);
+  const cardDetails = cards.find((card) => card.number_id === selectedCard);
 
   return (
     <div className="bg-[#D9D9D9]">
@@ -26,7 +29,14 @@ const PayOkPage = () => {
             <h4 className="text-sm mt-6">para</h4>
             <h5 className="font-bold text-[#C1FD35]">{name}</h5>
             <h6 className="text-sm mt-6">Tarjeta</h6>
-            <p className="text-sm">visa **********4067</p>
+            {cardDetails ? (
+              <p className="text-sm">
+                {cardDetails.type} **********
+                {String(cardDetails.number_id).slice(-4)}
+              </p>
+            ) : (
+              <p>No se ha seleccionado una tarjeta</p>
+            )}
           </div>
 
           <div className="flex justify-between md:mt-6 mt-10 p-3 text-[15px] text-black font-bold border-lg text-center">

@@ -11,6 +11,10 @@ import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
 import { setAmount, setAvailableAmount } from "@/state/features/authSlice";
 import { setServicesData } from "@/state/features/servicesSlice";
+import {
+  setCreditCardData,
+  setSelectedCardId,
+} from "@/state/features/creditCardSlice";
 
 const ClientPage = () => {
   const id = useSelector((state) => state.auth.id);
@@ -25,6 +29,14 @@ const ClientPage = () => {
   const [userTranfer, setUserTranfer] = useState(null);
   const [userService, setUserService] = useState([]);
   const dispatch = useDispatch();
+
+  const handleSelectCard = (cardId) => {
+    setSelectedCard((prevSelected) =>
+      prevSelected === cardId ? null : cardId
+    );
+    // Guardamos la tarjeta seleccionada en Redux
+    dispatch(setSelectedCardId(cardId));
+  };
 
   useEffect(() => {
     const fetchService = async () => {
@@ -97,6 +109,7 @@ const ClientPage = () => {
           const cards = response.data;
           console.log(cards);
           setUserCards(cards);
+          dispatch(setCreditCardData(cards));
         } catch (error) {
           console.error("Error al obtener la actividad del usuario:", error);
         }
@@ -104,12 +117,6 @@ const ClientPage = () => {
       fetchCardsData();
     }
   }, [id]);
-
-  const handleSelectCard = (cardId) => {
-    setSelectedCard((prevSelected) =>
-      prevSelected === cardId ? null : cardId
-    );
-  };
 
   return (
     <div className="bg-[#D9D9D9]">

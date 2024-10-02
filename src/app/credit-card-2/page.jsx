@@ -45,7 +45,14 @@ const CreditCardPage2 = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if ([number, name, expiry, cvc].includes("")) {
-      // Mostrar error si falta algún campo
+      toast.error("Completar todos los campos");
+      return;
+    }
+
+    // Verificar que la fecha de vencimiento tenga el formato correcto MM/AAAA
+    const expiryPattern = /^(0[1-9]|1[0-2])\/[0-9]{4}$/;
+    if (!expiryPattern.test(expiry)) {
+      toast.error("Fecha de vencimiento no válida. Usa el formato MM/AAAA");
       return;
     }
 
@@ -96,7 +103,7 @@ const CreditCardPage2 = () => {
             }
           );
           const cards = response.data;
-          setUserCards(cards); // Guardamos los datos del usuario en el estado
+          setUserCards(cards);
         } catch (error) {
           console.error("Error al obtener las tarjetas del usuario:", error);
         }
@@ -125,7 +132,7 @@ const CreditCardPage2 = () => {
                   <div className={styles.formControl}>
                     <label htmlFor="number">Número de la tarjeta*</label>
                     <input
-                      type="text"
+                      type="number"
                       name="number"
                       id="number"
                       value={number}
@@ -160,7 +167,7 @@ const CreditCardPage2 = () => {
                   <div className={styles.formControl}>
                     <label htmlFor="cvc">Código de seguridad*</label>
                     <input
-                      type="text"
+                      type="number"
                       name="cvc"
                       id="cvc"
                       value={cvc}

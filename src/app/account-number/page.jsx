@@ -3,17 +3,25 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Sibvar from "@/components/Sibvar";
-import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const AccountNumberPage = () => {
   const [number, setNumber] = useState("");
+  const router = useRouter();
 
   const handleAmountChange = (e) => {
-    // Asegurarse de que solo se introduzcan números y un máximo de 11 caracteres
     const value = e.target.value.replace(/\D/g, ""); // Eliminar cualquier carácter no numérico
     if (value.length <= 11) {
       setNumber(value);
+    }
+  };
+
+  const handleSubmit = () => {
+    if (number.startsWith("2") || number.length > 11 || number === "") {
+      router.push("/error-page");
+    } else {
+      router.push("/client-pay");
     }
   };
 
@@ -38,11 +46,12 @@ const AccountNumberPage = () => {
               adelante si tenés menos.{" "}
             </h3>
             <div className="flex justify-end text-[#C1FD35] md:mt-6 mt-10">
-              <Link href="client-pay">
-                <button className="rounded-lg p-3 text-[15px] text-black font-bold border-lg bg-[#C1FD35] text-center md:mr-6 md:w-[200px] w-[180px]">
-                  Continuar
-                </button>
-              </Link>
+              <button
+                onClick={handleSubmit}
+                className="rounded-lg p-3 text-[15px] text-black font-bold border-lg bg-[#C1FD35] text-center md:mr-6 md:w-[200px] w-[180px]"
+              >
+                Continuar
+              </button>
             </div>
           </div>
         </div>

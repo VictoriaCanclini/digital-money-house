@@ -15,6 +15,7 @@ import {
   setCreditCardData,
   setSelectedCardId,
 } from "@/state/features/creditCardSlice";
+import { useRouter } from "next/navigation";
 
 const ClientPage = () => {
   const id = useSelector((state) => state.auth.id);
@@ -29,6 +30,7 @@ const ClientPage = () => {
   const [userTranfer, setUserTranfer] = useState(null);
   const [userService, setUserService] = useState([]);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const handleSelectCard = (cardId) => {
     setSelectedCard((prevSelected) =>
@@ -62,12 +64,18 @@ const ClientPage = () => {
   }, [selectedServiceId, dispatch]);
 
   const handleTranference = async () => {
-    if (id && amount) {
+    const invoiceValue = parseFloat(userService.invoice_value);
+    if (available_amount < invoiceValue) {
+      // Redirigir a la página de error si no hay fondos suficientes
+      router.push("/error-pay");
+      return;
+    }
+    if (id && invoiceValue) {
       try {
         const response = await axios.post(
           `${process.env.NEXT_PUBLIC_BASE_URL}/api/accounts/${id}/transferences`,
           {
-            amount: parseFloat(-userService.invoice_value),
+            amount: -invoiceValue,
             dated: new Date().toISOString(),
             destination: "pago de servicio",
             origin: cvu,
@@ -81,8 +89,9 @@ const ClientPage = () => {
         const tranference = response.data;
         console.log(tranference);
         setUserTranfer(tranference);
+        router.push("/pay-ok");
 
-        const newAvailableAmount = available_amount - parseFloat(amount);
+        const newAvailableAmount = available_amount - invoiceValue;
         dispatch(setAvailableAmount(newAvailableAmount));
       } catch (error) {
         console.error("Error al hacer la transferencia:", error);
@@ -170,14 +179,14 @@ const ClientPage = () => {
               )}
             </div>
           </div>
-          <Link href="/pay-ok">
-            <button
-              onClick={handleTranference}
-              className="md:ml-[58%] ml-[60%] rounded-lg p-4 text-[15px] text-black font-bold border-lg bg-[#C1FD35] text-center mr-[22%] mt-4 w-[20%]"
-            >
-              Pagar
-            </button>
-          </Link>
+          {/* <Link href="/pay-ok"> */}
+          <button
+            onClick={handleTranference}
+            className="md:ml-[58%] ml-[60%] rounded-lg p-4 text-[15px] text-black font-bold border-lg bg-[#C1FD35] text-center mr-[22%] mt-4 w-[20%]"
+          >
+            Pagar
+          </button>
+          {/* </Link> */}
         </div>
       </div>
       <Footer />

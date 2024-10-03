@@ -5,7 +5,6 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Sibvar from "@/components/Sibvar";
 import axios from "axios";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
@@ -179,14 +178,12 @@ const ClientPage = () => {
               )}
             </div>
           </div>
-          {/* <Link href="/pay-ok"> */}
           <button
             onClick={handleTranference}
             className="md:ml-[58%] ml-[60%] rounded-lg p-4 text-[15px] text-black font-bold border-lg bg-[#C1FD35] text-center mr-[22%] mt-4 w-[20%]"
           >
             Pagar
           </button>
-          {/* </Link> */}
         </div>
       </div>
       <Footer />

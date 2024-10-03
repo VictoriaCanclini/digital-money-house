@@ -8,7 +8,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setActivityData } from "@/state/features/activitySlice";
+import { useRouter } from "next/navigation";
 
 const Activity = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,6 +18,8 @@ const Activity = () => {
   const [userActivity, setUserActivity] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const dispatch = useDispatch();
+  const router = useRouter();
   const activitiesPerPage = 4;
 
   useEffect(() => {
@@ -30,16 +34,17 @@ const Activity = () => {
               },
             }
           );
-          const activity = response.data;
-          console.log(activity);
-          setUserActivity(activity);
-        } catch (activity) {
+          const activities = response.data;
+          console.log(activities);
+          setUserActivity(activities);
+          dispatch(setActivityData(activities));
+        } catch (error) {
           console.error("Error al obtener la actividad del usuario:", error);
         }
       };
       fetchActivityData();
     }
-  }, [id]);
+  }, [id, dispatch]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -121,15 +126,20 @@ const Activity = () => {
               {currentActivities.length > 0 ? (
                 currentActivities.map((activity, index) => (
                   <div key={index}>
-                    <Link href="/activity-details">
-                      <div className="flex items-center md:ml-6 ml-4 text-sm p-2">
-                        <Circle color={"[#C1FD35]"} className="md:mr-2" />
-                        <h2 className="ml-2">{activity.description}</h2>
-                        <button className="ml-auto mr-6 ">
-                          {activity.amount}
-                        </button>
-                      </div>
-                    </Link>
+                    {/* <Link href="/activity-details"> */}
+                    <div
+                      className="flex items-center md:ml-6 ml-4 text-sm p-2"
+                      onClick={() =>
+                        router.push(`/activity-details/${activity.id}`)
+                      }
+                    >
+                      <Circle color={"[#C1FD35]"} className="md:mr-2" />
+                      <h2 className="ml-2">{activity.description}</h2>
+                      <button className="ml-auto mr-6 ">
+                        {activity.amount}
+                      </button>
+                    </div>
+                    {/* </Link> */}
                     <hr className="border-gray-300 my-3 mr-6 ml-6" />
                   </div>
                 ))

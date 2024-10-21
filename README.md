@@ -18,9 +18,9 @@
 
 ## Sobre el proyecto
 
-Es una aplicación web de una billetera virtual llamada Digital Money House.
+Es una aplicación web/mobile de una billetera virtual llamada Digital Money House.
 Este producto digital es el mínimo producto viable para el lanzamiento de la billetera, y el usuario tiene las funcionalidades básicas de registro, inicio y cierre de sesión, dar de altos medios de pago como tarjetas de crédito o débito, recargar saldo en su billetera y poder usar los medios de pago o el saldo de su billetera para pagar servicios.
-El usuario cuenta con una Cuenta Virtual Uniforme única que será la cuenta que le pertenece. Y en donde lleva el registro de todas las transacciones (ingresos y egresos) que se realizan a través de la billetera, también conocido como movimientos o actividad de la cuenta.
+El usuario cuenta con una Cuenta Virtual uniforme única que es la cuenta que le pertenece. Y en donde lleva el registro de todas las transacciones (ingresos y egresos) que se realizan a través de la billetera, también conocido como movimientos o actividad de la cuenta.
 
 ### Tecnologías
 
@@ -65,7 +65,7 @@ Este proyecto aún no está deployado, pero puedes probarlo en tu local. Siga la
 - [x] Register
 - [x] Login
 - [x] Perfil de usuario
-- [x] Gestion de pago
+- [x] Gestionar los medios de pago
 - [x] cargar dinero
 - [x] pagar servicios
 - [x] Actividad del usuario

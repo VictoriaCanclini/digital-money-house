@@ -1,41 +1,94 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<a name="home"></a>
 
-## Getting Started
+<!-- INTRODUCCIÓN -->
 
-First, run the development server:
+<div align="center">
+  <a href="#">
+    <img src="/public/img/cover-dm.png" alt="Logo" width="400">
+  </a>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+  <p align="center">
+    <h3 align="center">Digital Money House</h3>
+    <br />
+    <a href="https://github.com/VictoriaCanclini/digital-money-house"><strong>Repositorio Github »</strong></a>
+  </p>
+</div>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<!-- SOBRE EL PROYECTO -->
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Sobre el proyecto
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Es una aplicación web de una billetera virtual llamada Digital Money House.
+Este producto digital es el mínimo producto viable para el lanzamiento de la billetera, y el usuario tiene las funcionalidades básicas de registro, inicio y cierre de sesión, dar de altos medios de pago como tarjetas de crédito o débito, recargar saldo en su billetera y poder usar los medios de pago o el saldo de su billetera para pagar servicios.
+El usuario cuenta con una Cuenta Virtual Uniforme única que será la cuenta que le pertenece. Y en donde lleva el registro de todas las transacciones (ingresos y egresos) que se realizan a través de la billetera, también conocido como movimientos o actividad de la cuenta.
 
-## Learn More
+### Tecnologías
 
-To learn more about Next.js, take a look at the following resources:
+|       |          |
+| :---: | :------: |
+| React | Next 14  |
+| Redux | Tailwind |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<p align="right"><a href="#home">⬆ Volver a home</a></p>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<!-- PARA EMPEZAR -->
 
-## Deploy on Vercel
+## Para empezar
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Este proyecto aún no está deployado, pero puedes probarlo en tu local. Siga las instrucciones a continuación para ejecutarlo.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-=======
-# digital-money-house
-billetera virtual
->>>>>>> 73fe0e0b0dcc6c49e891a467a81a457492816964
+### Instalación
+
+1. En primer lugar debe clonar el <a href="https://github.com/VictoriaCanclini/digital-money-house">Repositorio</a> de Github:
+   <br>
+   `git clone git@github.com:VictoriaCanclini/digital-money-house.git`
+2. En segundo lugar dirigirse al directorio del proyecto:
+   <br>
+   `cd digital-money-house`
+3. Luego ejecutar el siguiente comando para instalar las dependencias de javascript:
+   <br>
+   `npm install`
+4. Debemos copiar el archivo que contine las variable de entorno:
+   <br>
+   `cp .env.example .env`
+   Cuando utilizamos un sistema de control de versiones como git, este archivo se excluye del repositorio por medidas de seguridad.
+5. Necesitamos iniciar el servidor de desarrollo de Next para visualizar los módulos del proyecto escritos en react:
+   <br>
+   `npm run dev`
+
+<p align="right"><a href="#home">⬆ Volver a home</a></p>
+
+<!-- FUNCTIONALITIES -->
+
+## Funcionalidades
+
+- [x] Register
+- [x] Login
+- [x] Perfil de usuario
+- [x] Gestion de pago
+- [x] cargar dinero
+- [x] pagar servicios
+- [x] Actividad del usuario
+- [x] Logout
+
+<p align="right"><a href="#home">⬆ Volver a home</a></p>
+
+<!-- CONTACTO -->
+
+## Contacto
+
+<p align="left">
+
+  <p>Victoria Canclini:</p>
+  <a href="mailto:vikicanclini@gmail.com" target="_blank" rel="noopener noreferrer">
+    <img alt="Gmail" title="gmail" src="https://custom-icon-badges.demolab.com/badge/-vikicanclini@gmail.com-red?style=for-the-badge&logo=mention&logoColor=white"/></a>
+  <a href="https://my-portfolio-victoria.vercel.app" target="_blank" rel="noopener noreferrer">
+    <img alt="Portfolio" title="Portfolio" src="https://custom-icon-badges.demolab.com/badge/-Portfolio-black?style=for-the-badge&logoColor=white&logo=web"/></a>
+  <a href="www.linkedin.com/in/victoriacanclini" target="_blank" rel="noopener noreferrer">
+    <img alt="Linkedin" title="linkedin" src="https://custom-icon-badges.demolab.com/badge/-Linkedin-blue?style=for-the-badge&logoColor=white&logo=linkedin"/></a>
+  <a href="https://github.com/VictoriaCanclini" target="_blank" rel="noopener noreferrer">
+    <img alt="Github" title="Github" src="https://custom-icon-badges.demolab.com/badge/-Github-grey?style=for-the-badge&logoColor=white&logo=github"/></a>
+
+</p>
+
+<p align="right"><a href="#home">⬆ Volver a home</a></p>

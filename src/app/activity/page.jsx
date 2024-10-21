@@ -4,7 +4,6 @@ import { Arrow, Circle, Filter, Search } from "@/common/Icons";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Sibvar from "@/components/Sibvar";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
@@ -18,6 +17,8 @@ const Activity = () => {
   const [userActivity, setUserActivity] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
   const dispatch = useDispatch();
   const router = useRouter();
   const activitiesPerPage = 4;
@@ -51,9 +52,26 @@ const Activity = () => {
   };
 
   // Filtramos la actividad basada en el término de búsqueda
-  const filteredActivities = userActivity.filter((activity) =>
-    activity.description.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // const filteredActivities = userActivity.filter((activity) =>
+  //   activity.description.toLowerCase().includes(searchTerm.toLowerCase())
+  // );
+
+  // Filtramos la actividad basada en el término de búsqueda y fechas
+  const filteredActivities = userActivity.filter((activity) => {
+    const activityDate = new Date(activity.dated);
+
+    // Filtrado por término de búsqueda
+    const matchesSearchTerm = activity.description
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+
+    // Filtrado por rango de fechas
+    const matchesDateRange =
+      (!startDate || activityDate >= new Date(startDate)) &&
+      (!endDate || activityDate <= new Date(endDate));
+
+    return matchesSearchTerm && matchesDateRange;
+  });
 
   // Calculamos el índice de inicio y fin basado en la página actual
   const indexOfLastActivity = currentPage * activitiesPerPage;
@@ -85,7 +103,6 @@ const Activity = () => {
         <Sibvar />
         <div className="flex flex-col md:mt-[10%] mt-[40%] w-full ml-10">
           <div className="flex flex-row gap-4">
-            {/* Campo de búsqueda */}
             <div className="bg-white p-2 md:w-[850px] sm:w-[500px] w-[350px] gap-1 rounded-md text-gray-400 border-2 border-gray-300 shadow-md flex items-center">
               <Search className="mr-2" />
               <input
@@ -94,7 +111,6 @@ const Activity = () => {
                 className="bg-transparent outline-none w-full"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                // ingresado
               />
             </div>
 
@@ -126,7 +142,6 @@ const Activity = () => {
               {currentActivities.length > 0 ? (
                 currentActivities.map((activity, index) => (
                   <div key={index}>
-                    {/* <Link href="/activity-details"> */}
                     <div
                       className="flex items-center md:ml-6 ml-4 text-sm p-2"
                       onClick={() =>
@@ -139,7 +154,6 @@ const Activity = () => {
                         {activity.amount}
                       </button>
                     </div>
-                    {/* </Link> */}
                     <hr className="border-gray-300 my-3 mr-6 ml-6" />
                   </div>
                 ))
@@ -174,7 +188,7 @@ const Activity = () => {
         {isMenuOpen && (
           <div className="absolute md:top-[256px] top-[330px] md:left-[1120px] left-[250px] bg-white text-sm text-black md:w-[9%] rounded-md border-2 flex justify-start">
             <ul className="flex flex-col items-center gap-4 p-4">
-              <li>
+              {/* <li>
                 <button onClick={toggleMenu}>Hoy</button>
               </li>
               <li>
@@ -194,6 +208,95 @@ const Activity = () => {
               </li>
               <li>
                 <button onClick={toggleMenu}>Otro período</button>
+              </li> */}
+              {/* <li>
+                <button
+                  onClick={() => {
+                    setStartDate(new Date());
+                    setEndDate(new Date());
+                    toggleMenu();
+                  }}
+                >
+                  Hoy
+                </button>
+              </li> */}
+              <li>
+                <button
+                  onClick={() => {
+                    const today = new Date();
+                    today.setDate(today.getDate() - 7);
+                    setStartDate(today);
+                    setEndDate(new Date());
+                    toggleMenu();
+                  }}
+                >
+                  hoy
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
+                    const yesterday = new Date();
+                    yesterday.setDate(yesterday.getDate() - 1);
+                    setStartDate(yesterday);
+                    setEndDate(yesterday);
+                    toggleMenu();
+                  }}
+                >
+                  Ayer
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
+                    const lastWeek = new Date();
+                    lastWeek.setDate(lastWeek.getDate() - 7);
+                    setStartDate(lastWeek);
+                    setEndDate(new Date());
+                    toggleMenu();
+                  }}
+                >
+                  Última semana
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
+                    const last15days = new Date();
+                    last15days.setDate(last15days.getDate() - 15);
+                    setStartDate(last15days);
+                    setEndDate(new Date());
+                    toggleMenu();
+                  }}
+                >
+                  Últimos 15 días
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
+                    const lastmonth = new Date();
+                    lastmonth.setDate(lastmonth.getDate() - 30);
+                    setStartDate(lastmonth);
+                    setEndDate(new Date());
+                    toggleMenu();
+                  }}
+                >
+                  Último mes
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
+                    const lastyear = new Date();
+                    lastyear.setDate(lastyear.getDate() - 365);
+                    setStartDate(lastyear);
+                    setEndDate(new Date());
+                    toggleMenu();
+                  }}
+                >
+                  Último año
+                </button>
               </li>
             </ul>
           </div>

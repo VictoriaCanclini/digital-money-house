@@ -39,7 +39,6 @@ const LoadMoneyCheckPage = () => {
           }
         );
         const deposit = response.data;
-        console.log(deposit);
         setUserDeposit(deposit);
 
         const newAvailableAmount = available_amount + parseFloat(amount);

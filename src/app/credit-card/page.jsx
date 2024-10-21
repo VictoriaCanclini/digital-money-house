@@ -29,7 +29,6 @@ const CreditCardPage = () => {
             }
           );
           const cards = response.data;
-          console.log(cards);
           setUserCards(cards); // Guardamos los datos del usuario en el estado
         } catch (error) {
           console.error("Error al obtener la actividad del usuario:", error);
@@ -54,7 +53,6 @@ const CreditCardPage = () => {
         prevCards.filter((card) => card.id !== card_id)
       );
       toast("Tarjeta eliminada exitosamente");
-      console.log("Tarjeta eliminada exitosamente");
     } catch (error) {
       console.error("Error al eliminar la tarjeta:", error);
     }

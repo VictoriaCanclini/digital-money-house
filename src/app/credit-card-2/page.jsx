@@ -75,7 +75,6 @@ const CreditCardPage2 = () => {
       );
       toast("tarjeta registrada correctamente");
       router.push("/credit-card");
-      console.log("Tarjeta registrada:", response.data);
 
       // Limpiar el formulario
       setCardData({

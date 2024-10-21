@@ -12,7 +12,6 @@ const ActivityDetailPage = ({ params }) => {
   const router = useRouter();
   const activityId = params["id"];
   const activities = useSelector((state) => state.activity.activities);
-  console.log(activities);
 
   const activity = activities.find(
     (activity) => activity.id === parseInt(activityId)

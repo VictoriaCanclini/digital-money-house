@@ -70,14 +70,9 @@ export default function LoginPassword() {
             }
           );
           const data = response.data;
-          console.log(data);
-
-          console.log("Token:", data.token);
           Cookies.set("token", data.token, { expires: 7 });
 
           const userData = await fetchUserId(data.token);
-          console.log("User ID:", userData?.user_id);
-          console.log("CVU:", userData?.cvu);
           dispatch(
             setCredentials({
               email: email,

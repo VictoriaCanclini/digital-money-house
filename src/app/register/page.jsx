@@ -103,7 +103,6 @@ export default function Register() {
         } catch (error) {
           console.error(error);
           const { data } = error.response;
-          console.log(data);
           // Uso de las validaciones del back, si el correo está registrado se le manda un alerta al cliente
           if (data.error === "Email already registered") {
             setmessageAlert("El correo ya se encuentra en uso");

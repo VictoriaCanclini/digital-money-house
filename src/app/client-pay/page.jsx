@@ -35,7 +35,7 @@ const ClientPage = () => {
     setSelectedCard((prevSelected) =>
       prevSelected === cardId ? null : cardId
     );
-    // Guardamos la tarjeta seleccionada en Redux
+    // Guardar la tarjeta seleccionada en Redux
     dispatch(setSelectedCardId(cardId));
   };
 
@@ -46,7 +46,6 @@ const ClientPage = () => {
           `${process.env.NEXT_PUBLIC_BASE_URL}/service/${selectedServiceId}`
         );
         const service = response.data;
-        console.log(service);
         setUserService(service);
         dispatch(
           setServicesData({
@@ -86,7 +85,6 @@ const ClientPage = () => {
           }
         );
         const tranference = response.data;
-        console.log(tranference);
         setUserTranfer(tranference);
         router.push("/pay-ok");
 

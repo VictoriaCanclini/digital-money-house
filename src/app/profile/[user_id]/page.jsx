@@ -80,7 +80,6 @@ const ProfilePage = ({ params }) => {
         }
       );
       toast("Usuario actualizado");
-      console.log("Usuario actualizado:", response.data);
       setUserData(response.data);
     } catch (error) {
       console.error("Error al actualizar los datos del usuario:", error);

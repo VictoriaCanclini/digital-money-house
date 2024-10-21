@@ -28,7 +28,6 @@ const SelectCardPage = () => {
             }
           );
           const cards = response.data;
-          console.log(cards);
           setUserCards(cards); // Guardamos los datos del usuario en el estado
         } catch (error) {
           console.error("Error al obtener la actividad del usuario:", error);

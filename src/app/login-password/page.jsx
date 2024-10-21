@@ -36,7 +36,6 @@ export default function LoginPassword() {
         }
       );
       const userData = response.data;
-      console.log("User data:", userData);
       return userData;
     } catch (error) {
       console.error("Error fetching user data:", error);

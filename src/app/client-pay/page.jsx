@@ -113,7 +113,6 @@ const ClientPage = () => {
             }
           );
           const cards = response.data;
-          console.log(cards);
           setUserCards(cards);
           dispatch(setCreditCardData(cards));
         } catch (error) {

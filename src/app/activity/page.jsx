@@ -35,8 +35,10 @@ const Activity = () => {
               },
             }
           );
-          const activities = response.data;
-          console.log(activities);
+          let activities = response.data;
+          activities = activities.sort(
+            (a, b) => new Date(b.dated) - new Date(a.dated)
+          );
           setUserActivity(activities);
           dispatch(setActivityData(activities));
         } catch (error) {
@@ -51,14 +53,15 @@ const Activity = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Filtramos la actividad basada en el término de búsqueda
-  // const filteredActivities = userActivity.filter((activity) =>
-  //   activity.description.toLowerCase().includes(searchTerm.toLowerCase())
-  // );
+  const normalizeDate = (date) => {
+    const normalized = new Date(date);
+    normalized.setHours(0, 0, 0, 0); // Establece la hora a medianoche
+    return normalized;
+  };
 
   // Filtramos la actividad basada en el término de búsqueda y fechas
   const filteredActivities = userActivity.filter((activity) => {
-    const activityDate = new Date(activity.dated);
+    const activityDate = normalizeDate(new Date(activity.dated));
 
     // Filtrado por término de búsqueda
     const matchesSearchTerm = activity.description
@@ -67,8 +70,8 @@ const Activity = () => {
 
     // Filtrado por rango de fechas
     const matchesDateRange =
-      (!startDate || activityDate >= new Date(startDate)) &&
-      (!endDate || activityDate <= new Date(endDate));
+      (!startDate || activityDate >= normalizeDate(startDate)) &&
+      (!endDate || activityDate <= normalizeDate(endDate));
 
     return matchesSearchTerm && matchesDateRange;
   });
@@ -184,32 +187,10 @@ const Activity = () => {
             </div>
           </div>
         </div>
-
         {isMenuOpen && (
           <div className="absolute md:top-[256px] top-[330px] md:left-[1120px] left-[250px] bg-white text-sm text-black md:w-[9%] rounded-md border-2 flex justify-start">
             <ul className="flex flex-col items-center gap-4 p-4">
-              {/* <li>
-                <button onClick={toggleMenu}>Hoy</button>
-              </li>
               <li>
-                <button onClick={toggleMenu}>Ayer</button>
-              </li>
-              <li>
-                <button onClick={toggleMenu}>Última semana</button>
-              </li>
-              <li>
-                <button onClick={toggleMenu}>Últimos 15 días</button>
-              </li>
-              <li>
-                <button onClick={toggleMenu}>Último mes</button>
-              </li>
-              <li>
-                <button onClick={toggleMenu}>Último año</button>
-              </li>
-              <li>
-                <button onClick={toggleMenu}>Otro período</button>
-              </li> */}
-              {/* <li>
                 <button
                   onClick={() => {
                     setStartDate(new Date());
@@ -218,19 +199,6 @@ const Activity = () => {
                   }}
                 >
                   Hoy
-                </button>
-              </li> */}
-              <li>
-                <button
-                  onClick={() => {
-                    const today = new Date();
-                    today.setDate(today.getDate() - 7);
-                    setStartDate(today);
-                    setEndDate(new Date());
-                    toggleMenu();
-                  }}
-                >
-                  hoy
                 </button>
               </li>
               <li>

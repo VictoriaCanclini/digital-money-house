@@ -29,8 +29,11 @@ const HomePage = () => {
               },
             }
           );
-          const user = response.data;
-          setUserActivity(user);
+          let activities = response.data;
+          activities = activities.sort(
+            (a, b) => new Date(b.dated) - new Date(a.dated)
+          );
+          setUserActivity(activities);
         } catch (error) {
           console.error("Error al obtener la actividad del usuario:", error);
         }

@@ -56,7 +56,6 @@ const ActivityDetailPage = ({ params }) => {
             <h6 className="text-sm mt-6">Número de la operación</h6>
             <p className="text-sm text-[#C1FD35]">{id}</p>
           </div>
-
           <div className="flex justify-between md:mt-6 mt-10 p-3 text-[15px] text-black font-bold border-lg text-center">
             <Link href="/home">
               <button className=" bg-[#CECECE] md:w-[200px] w-[150px] h-[50px] rounded-lg mr-4">

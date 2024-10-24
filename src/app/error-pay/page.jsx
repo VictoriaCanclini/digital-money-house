@@ -11,11 +11,13 @@ const ErrorPay = () => {
       <div className="flex h-screen">
         <Sibvar />
         <div className="flex flex-col justify-center items-center w-full">
-          <div className="flex flex-col bg-black text-white font-bold md:w-[1000px] sm:w-[500px] w-[400px] h-[300px] rounded-md justify-center items-center mb-10">
+          <div className="flex flex-col bg-black text-white font-bold md:w-[1000px] sm:w-[500px] w-[360px] h-[300px] rounded-md justify-center items-center mb-10">
             <Cross color={"#000000"} />
-            <h1 className="text-lg mt-4">Hubo un problema con tu pago</h1>
+            <h1 className="md:text-lg text-md mt-4">
+              Hubo un problema con tu pago
+            </h1>
             <hr className="border-gray-300 my-4 mr-6 ml-6" />
-            <h2 className="flex justify-center text-center text-sm text-[#CECECE]">
+            <h2 className="flex justify-center text-center text-sm text-[#CECECE] p-1">
               Puede deberse a fondos insuficientes Comunicate con la entidad
               emisora de la tarjeta
             </h2>

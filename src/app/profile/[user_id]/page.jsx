@@ -190,14 +190,14 @@ const ProfilePage = ({ params }) => {
             <hr className="border-gray-300 my-2 mr-6 ml-6" />
           </div>
           <div className="flex flex-row mt-2">
-            <button className="bg-[#C1FD35] text-black font-bold md:w-[1000px] sm:w-[500px] w-[300px] h-[106px] rounded-md flex justify-between items-center pl-6 pr-4">
-              <span className="flex-grow flex justify-start">
-                Gestioná los medios de pago
-              </span>
-              <Link href="/credit-card">
+            <Link href="/credit-card">
+              <button className="bg-[#C1FD35] text-black font-bold md:w-[1000px] sm:w-[500px] w-[300px] h-[106px] rounded-md flex justify-between items-center pl-6 pr-4">
+                <span className="flex-grow flex justify-start">
+                  Gestioná los medios de pago
+                </span>
                 <Arrow color={"#000000"} />
-              </Link>
-            </button>
+              </button>
+            </Link>
           </div>
           <Card
             title="Copia tu cvu o alias para ingresar o transferir dinero desde otra cuenta"

@@ -17,7 +17,7 @@ const dashboard = () => {
               Tu nueva <strong>billetera virtual</strong>
             </h2>
           </div>
-          <div className="relative z-10 flex flex-col sm:flex-row justify-center items-center gap-4 mt-20 ml-4 mr-4 sm:mt-60">
+          <div className="relative z-10 flex flex-col sm:flex-row justify-center items-center gap-4 mt-16 ml-4 mr-4 sm:mt-60 ">
             <Image
               src="/img/Card-landing.png"
               alt="card1"

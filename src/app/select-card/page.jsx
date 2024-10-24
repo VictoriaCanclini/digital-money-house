@@ -88,7 +88,9 @@ const SelectCardPage = () => {
               <Link href="credit-card-2">
                 <Plus color={"#C1FD35"} />
               </Link>
-              <h5 className="md:mr-[700px] mr-[40px] mt-1">Nueva Tarjeta</h5>
+              <Link href="credit-card-2">
+                <h5 className="md:mr-[700px] mr-[40px] mt-1">Nueva Tarjeta</h5>
+              </Link>
               <Link href="load-money">
                 <button className="rounded-lg p-3 text-[15px] text-black font-bold border-lg bg-[#C1FD35] text-center mr-6">
                   Continuar

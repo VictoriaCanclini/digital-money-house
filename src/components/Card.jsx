@@ -16,7 +16,7 @@ const Card = ({
   const { user_id } = useSelector((state) => state.auth);
 
   return (
-    <div className="bg-black md:w-[1000px] sm:w-[500px] w-[300px] md:h-[230px] h-[300px] p-6 rounded-xl mt-6">
+    <div className="bg-black md:w-[1000px] sm:w-[500px] w-[300px] md:h-[230px] h-[300px] p-6 rounded-xl mt-2">
       <div className="text-white flex justify-end gap-4 text-sm">
         <Link href="/credit-card">
           <button className="underline">{button1Text}</button>

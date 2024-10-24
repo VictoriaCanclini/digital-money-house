@@ -110,8 +110,8 @@ const ProfilePage = ({ params }) => {
       <div className="flex h-screen">
         <Sibvar />
         <div className="flex flex-col justify-center items-center w-full mt-6">
-          <div className="md:w-[1000px] sm:w-[500px] w-[300px] md:h-[285px] h-[320px] bg-white rounded-md text-black border-2 border-gray-300 shadow-md flex flex-col">
-            <span className="ml-6 mt-8 font-bold">Tus datos</span>
+          <div className="md:w-[1000px] sm:w-[500px] w-[300px] h-[285px] bg-white rounded-md text-black border-2 border-gray-300 shadow-md flex flex-col">
+            <span className="ml-6 mt-6 font-bold">Tus datos</span>
             <hr className="border-gray-300 my-2 mr-6 ml-6" />
             <div className="flex justify-between md:ml-6 ml-4 md:mr-6 mr-4 text-sm mt-1">
               <span className="ml-2 text-gray-500">Email</span>
@@ -189,7 +189,7 @@ const ProfilePage = ({ params }) => {
             </div>
             <hr className="border-gray-300 my-2 mr-6 ml-6" />
           </div>
-          <div className="flex flex-row mt-6">
+          <div className="flex flex-row mt-2">
             <button className="bg-[#C1FD35] text-black font-bold md:w-[1000px] sm:w-[500px] w-[300px] h-[106px] rounded-md flex justify-between items-center pl-6 pr-4">
               <span className="flex-grow flex justify-start">
                 Gestioná los medios de pago

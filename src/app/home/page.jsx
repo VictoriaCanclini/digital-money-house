@@ -54,7 +54,7 @@ const HomePage = () => {
       <Navbar />
       <div className="flex h-screen">
         <Sibvar />
-        <div className="flex flex-col justify-center w-full p-10 ml-6">
+        <div className="flex flex-col justify-center items-center w-full">
           <Card
             title="Dinero disponible"
             button1Text="Ver tarjetas"
@@ -90,16 +90,16 @@ const HomePage = () => {
 
           {/* Listado de actividad filtrada */}
           <div className="flex flex-row mt-4">
-            <div className="md:w-[1000px] sm:w-[500px] w-[300px] md:h-[285px] h-[320px] bg-white rounded-md text-black border-2 border-gray-300 shadow-md flex flex-col">
-              <span className="ml-6 mt-4 font-bold">Tu actividad</span>
+            <div className="md:w-[1000px] sm:w-[500px] w-[300px] md:h-[285px] h-[300px] bg-white rounded-md text-black border-2 border-gray-300 shadow-md flex flex-col">
+              <h1 className="ml-6 mt-4 font-bold">Tu actividad</h1>
               <hr className="border-gray-300 my-3 mr-6 ml-6" />
               {filteredActivities.length > 0 ? (
                 filteredActivities.map((activity, index) => (
                   <div key={index}>
                     <div className="flex items-center md:ml-6 ml-4 text-sm">
                       <Circle color={"[#C1FD35]"} className="md:mr-2" />
-                      <span className="ml-2">{activity.description}</span>
-                      <span className="ml-auto mr-8">{activity.amount}</span>
+                      <h2 className="ml-2">{activity.description}</h2>
+                      <h3 className="ml-auto mr-8">{activity.amount}</h3>
                     </div>
                     <hr className="border-gray-300 my-3 mr-6 ml-6" />
                   </div>
@@ -109,7 +109,7 @@ const HomePage = () => {
                   No se encontró actividad para {searchTerm}
                 </span>
               )}
-              <div className="flex justify-between items-center mr-6 md:mt-2 mt-4">
+              <div className="flex justify-between items-center mr-6 mt-2">
                 <button className="ml-6 font-bold">
                   Ver toda tu actividad
                 </button>

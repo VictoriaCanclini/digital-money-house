@@ -35,7 +35,6 @@ const ClientPage = () => {
     setSelectedCard((prevSelected) =>
       prevSelected === cardId ? null : cardId
     );
-    // Guardar la tarjeta seleccionada en Redux
     dispatch(setSelectedCardId(cardId));
   };
 
@@ -64,7 +63,6 @@ const ClientPage = () => {
   const handleTranference = async () => {
     const invoiceValue = parseFloat(userService.invoice_value);
     if (available_amount < invoiceValue) {
-      // Redirigir a la página de error si no hay fondos suficientes
       router.push("/error-pay");
       return;
     }
@@ -121,7 +119,7 @@ const ClientPage = () => {
       };
       fetchCardsData();
     }
-  }, [id]);
+  }, [id, dispatch]);
 
   return (
     <div className="bg-[#D9D9D9]">

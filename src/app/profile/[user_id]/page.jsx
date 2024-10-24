@@ -42,12 +42,12 @@ const ProfilePage = ({ params }) => {
             `${process.env.NEXT_PUBLIC_BASE_URL}/api/users/${user_id}`,
             {
               headers: {
-                Authorization: `${Cookies.get("token")}`, // Si es necesario un token de autenticación
+                Authorization: `${Cookies.get("token")}`,
               },
             }
           );
           const user = response.data;
-          setUserData(user); // Guardamos los datos del usuario en el estado
+          setUserData(user);
           setEditableData({
             email: user.email,
             firstname: user.firstname,
@@ -116,12 +116,12 @@ const ProfilePage = ({ params }) => {
             <div className="flex justify-between md:ml-6 ml-4 md:mr-6 mr-4 text-sm mt-1">
               <span className="ml-2 text-gray-500">Email</span>
               <input
-                ref={emailRef} // Usamos ref para enfocar
+                ref={emailRef}
                 className="md:ml-[75%] ml-10 text-gray-500"
                 name="email"
                 value={editableData.email}
                 onChange={handleInputChange}
-                onKeyDown={handleKeyPress} // Detectamos la tecla "Enter"
+                onKeyDown={handleKeyPress}
               />
               <button onClick={() => emailRef.current.focus()}>
                 <Edit color={"#CECECE"} />
@@ -131,7 +131,7 @@ const ProfilePage = ({ params }) => {
             <div className="flex justify-between md:ml-6 ml-4 md:mr-6 mr-4 text-sm mt-1">
               <span className="ml-2 text-gray-500">Nombre</span>
               <input
-                ref={firstnameRef} // Usamos ref para enfocar
+                ref={firstnameRef}
                 className="text-gray-500 md:ml-[75%] ml-10"
                 name="firstname"
                 value={editableData.firstname}
@@ -146,7 +146,7 @@ const ProfilePage = ({ params }) => {
             <div className="flex justify-between md:ml-6 ml-4 md:mr-6 mr-4 text-sm mt-1">
               <span className="ml-2 text-gray-500">Apellido</span>
               <input
-                ref={lastnameRef} // Usamos ref para enfocar
+                ref={lastnameRef}
                 className="text-gray-500 md:ml-[75%] ml-10"
                 name="firstname"
                 value={editableData.lastname}
@@ -161,7 +161,7 @@ const ProfilePage = ({ params }) => {
             <div className="flex justify-between md:ml-6 ml-4 md:mr-6 mr-4  text-sm mt-1">
               <span className="ml-2 text-gray-500">DNI</span>
               <input
-                ref={dniRef} // Usamos ref para enfocar
+                ref={dniRef}
                 className="text-gray-500 md:ml-[78%] ml-16"
                 name="dni"
                 value={editableData.dni}
@@ -176,7 +176,7 @@ const ProfilePage = ({ params }) => {
             <div className="flex justify-between md:ml-6 ml-4 md:mr-6 mr-4  text-sm mt-1">
               <span className="ml-2 text-gray-500">Telefono</span>
               <input
-                ref={phoneRef} // Usamos ref para enfocar
+                ref={phoneRef}
                 className="text-gray-500 md:ml-[75%] ml-8"
                 name="phone"
                 value={editableData.phone}
@@ -188,19 +188,6 @@ const ProfilePage = ({ params }) => {
               </button>
             </div>
             <hr className="border-gray-300 my-2 mr-6 ml-6" />
-            {/* <div className="flex justify-between items-center md:ml-6 ml-4 md:mr-6 mr-4  text-sm mt-1">
-              <span className="ml-2 text-gray-500">Contraseña</span>
-              <input
-                className="md:ml-[70%] text-gray-500"
-                name="contraseña"
-                value={editableData.password}
-                onChange={handleInputChange}
-              />
-              <button onClick={handleUpdateUser}>
-                <Edit color={"#CECECE"} />
-              </button>
-            </div>
-            <hr className="border-gray-300 my-3 mr-6 ml-6" /> */}
           </div>
           <div className="flex flex-row mt-6">
             <button className="bg-[#C1FD35] text-black font-bold md:w-[1000px] sm:w-[500px] w-[300px] h-[106px] rounded-md flex justify-between items-center pl-6 pr-4">

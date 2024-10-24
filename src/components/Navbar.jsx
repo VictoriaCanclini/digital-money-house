@@ -9,6 +9,7 @@ import { useRouter, usePathname } from "next/navigation";
 import Cookies from "js-cookie";
 import { setCredentials } from "../state/features/authSlice";
 import { useDispatch } from "react-redux";
+import Image from "next/image";
 
 const Navbar = () => {
   const router = useRouter();
@@ -16,7 +17,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const { email, user_id } = useSelector((state) => state.auth);
   const [isClient, setIsClient] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado para controlar el menú
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [userData, setUserData] = useState(null);
   const [initials, setInitials] = useState("");
 
@@ -29,16 +30,16 @@ const Navbar = () => {
             `${process.env.NEXT_PUBLIC_BASE_URL}/api/users/${user_id}`,
             {
               headers: {
-                Authorization: `${Cookies.get("token")}`, // Si es necesario un token de autenticación
+                Authorization: `${Cookies.get("token")}`,
               },
             }
           );
           const user = response.data;
-          setUserData(user); // Guardamos los datos del usuario en el estado
+          setUserData(user);
           const userInitials =
             user.firstname?.charAt(0).toUpperCase() +
             user.lastname?.charAt(0).toUpperCase();
-          setInitials(userInitials); // Guardar iniciales
+          setInitials(userInitials);
         } catch (error) {
           console.error("Error al obtener los datos del usuario:", error);
         }
@@ -47,7 +48,6 @@ const Navbar = () => {
     }
   }, [user_id]);
 
-  // Función para alternar el estado del menú hamburguesa
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -67,7 +67,7 @@ const Navbar = () => {
     <div className="flex justify-between bg-black h-[60px]">
       <div className="mt-5 ml-2">
         <Link href="/">
-          <img src="/img/Logo 01.png" alt="Logo1" width={70} />
+          <Image src="/img/Logo 01.png" alt="Logo1" width={70} height={70} />
         </Link>
       </div>
       <div className="flex justify-end gap-2 sm:mt-4 mr-4 mt-5 sm:mb-2">
@@ -82,7 +82,7 @@ const Navbar = () => {
             {pathname !== "/" && (
               <button
                 className="sm:hidden flex items-center"
-                onClick={toggleMenu} // Al hacer clic, alternamos el estado del menú
+                onClick={toggleMenu}
               >
                 <Burguer />
               </button>
@@ -109,8 +109,6 @@ const Navbar = () => {
           </>
         )}
       </div>
-
-      {/* Mostrar menú hamburguesa cuando esté abierto */}
       {isMenuOpen && (
         <div className="absolute top-[60px] right-0 bg-[#C1FD35] bg-opacity-70 text-black w-[30%] rounded-md sm:hidden">
           <ul className="flex flex-col items-center gap-4 p-4">

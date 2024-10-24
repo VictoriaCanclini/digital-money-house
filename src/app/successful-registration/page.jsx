@@ -1,5 +1,6 @@
 import { Check } from "@/common/Icons";
 import Footer from "@/components/Footer";
+import Image from "next/image";
 import Link from "next/link";
 
 const Successful = () => {
@@ -8,7 +9,12 @@ const Successful = () => {
       <div className="flex justify-between bg-[#C1FD35]">
         <div className="mt-6 ml-2 mb-4">
           <Link href="/">
-            <img src="/img/Logo-black.png" alt="Logo1" width={70} />
+            <Image
+              src="/img/Logo-black.png"
+              alt="Logo1"
+              width={70}
+              height={70}
+            />
           </Link>
         </div>
       </div>

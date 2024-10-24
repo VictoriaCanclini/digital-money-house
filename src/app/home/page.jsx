@@ -106,7 +106,7 @@ const HomePage = () => {
                 ))
               ) : (
                 <span className="ml-6 text-gray-500">
-                  No se encontró actividad para "{searchTerm}"
+                  No se encontró actividad para {searchTerm}
                 </span>
               )}
               <div className="flex justify-between items-center mr-6 md:mt-2 mt-4">

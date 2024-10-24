@@ -11,7 +11,7 @@ const Card = ({
   number2,
   amount,
   icon,
-  onCopy, // Callback para manejar la copia
+  onCopy,
 }) => {
   const { user_id } = useSelector((state) => state.auth);
 

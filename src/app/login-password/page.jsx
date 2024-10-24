@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { setCredentials } from "../../state/features/authSlice";
 import Cookies from "js-cookie";
+import Image from "next/image";
 
 export default function LoginPassword() {
   const email = useSelector((state) => state.auth.email);
@@ -52,14 +53,12 @@ export default function LoginPassword() {
         setmessageAlert("");
       }, 1300);
     } else {
-      //Verificacion campos de los mensajes de error
       if (MessagePassword) {
         setmessageAlert("¡Verificar campos!");
         setTimeout(() => {
           setmessageAlert("");
         }, 1300);
       } else {
-        //Registro de usuario
         try {
           const response = await axios.post(
             `${`${process.env.NEXT_PUBLIC_BASE_URL}/api/login`}`,
@@ -105,11 +104,12 @@ export default function LoginPassword() {
       <div className="h-screen">
         <div className="flex justify-between bg-[#C1FD35]">
           <Link href="/">
-            <img
+            <Image
               className="mt-6 ml-2 mb-4"
               src="/img/Logo-black.png"
               alt="Logo1"
               width={70}
+              height={70}
             />
           </Link>
         </div>

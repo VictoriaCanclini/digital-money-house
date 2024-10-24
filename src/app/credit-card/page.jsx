@@ -29,7 +29,7 @@ const CreditCardPage = () => {
             }
           );
           const cards = response.data;
-          setUserCards(cards); // Guardamos los datos del usuario en el estado
+          setUserCards(cards);
         } catch (error) {
           console.error("Error al obtener la actividad del usuario:", error);
         }

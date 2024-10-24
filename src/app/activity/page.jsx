@@ -55,7 +55,7 @@ const Activity = () => {
 
   const normalizeDate = (date) => {
     const normalized = new Date(date);
-    normalized.setHours(0, 0, 0, 0); // Establece la hora a medianoche
+    normalized.setHours(0, 0, 0, 0);
     return normalized;
   };
 
@@ -162,7 +162,7 @@ const Activity = () => {
                 ))
               ) : (
                 <h3 className="ml-10 text-gray-500">
-                  No se encontró actividad para "{searchTerm}"
+                  No se encontró actividad para {searchTerm}
                 </h3>
               )}
               <div className="flex justify-between mt-2">

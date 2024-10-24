@@ -44,7 +44,7 @@ const LoadMoneyCheckPage = () => {
         const newAvailableAmount = available_amount + parseFloat(amount);
         dispatch(setAvailableAmount(newAvailableAmount));
 
-        router.push("/load-money-okey"); // Navegamos a la página de confirmación
+        router.push("/load-money-okey");
       } catch (error) {
         console.error("Error al hacer un depósito:", error);
       }

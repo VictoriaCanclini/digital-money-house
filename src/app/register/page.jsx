@@ -6,6 +6,7 @@ import useInput from "@/hooks/useInput";
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function Register() {
   const router = useRouter();
@@ -52,13 +53,10 @@ export default function Register() {
     blur: BlurPassword,
     focus: FocusPassword,
     message: MessagePassword,
-    // isPasswordVisible,
-    // setIsPasswordVisible,
   } = useInput("password");
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
-    // Verificación de campos de los inputs
     if (
       valueName.trim() === "" ||
       valueLastName.trim() === "" ||
@@ -71,7 +69,6 @@ export default function Register() {
         setmessageAlert("");
       }, 1300);
     } else {
-      // Verificación de mensajes de error
       if (
         MessageLastName ||
         MessageName ||
@@ -84,7 +81,6 @@ export default function Register() {
           setmessageAlert("");
         }, 1300);
       } else {
-        //Registro de usuario
         try {
           const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/users`;
           await axios.post(url, {
@@ -103,7 +99,6 @@ export default function Register() {
         } catch (error) {
           console.error(error);
           const { data } = error.response;
-          // Uso de las validaciones del back, si el correo está registrado se le manda un alerta al cliente
           if (data.error === "Email already registered") {
             setmessageAlert("El correo ya se encuentra en uso");
             setTimeout(() => {
@@ -120,7 +115,12 @@ export default function Register() {
       <div className="flex justify-between bg-[#C1FD35]">
         <div className="mt-6 ml-2 mb-4">
           <Link href="/">
-            <img src="/img/Logo-black.png" alt="Logo1" width={70} />
+            <Image
+              src="/img/Logo-black.png"
+              alt="Logo1"
+              width={70}
+              height={70}
+            />
           </Link>
         </div>
         <div className="flex justify-end gap-1">
@@ -255,10 +255,6 @@ export default function Register() {
               onFocus={FocusPassword}
               onChange={OnChangePassword}
               onBlur={BlurPassword}
-              // isPasswordVisible={isPasswordVisible}
-              // togglePasswordVisibility={() =>
-              //   setIsPasswordVisible(!isPasswordVisible)
-              // }
             />
             {MessagePassword && (
               <p className="text-red-500 text-[.9rem] leading-3 mt-2">

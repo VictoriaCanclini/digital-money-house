@@ -63,7 +63,6 @@ const PayServicePage = () => {
                 {filteredServices.map((service, index) => (
                   <div key={index}>
                     <div className="flex items-center md:ml-6 ml-4 text-sm">
-                      {/* <Claro /> */}
                       <h2 className="ml-2">{service.name}</h2>
                       <button
                         className="font-bold ml-auto mr-8"

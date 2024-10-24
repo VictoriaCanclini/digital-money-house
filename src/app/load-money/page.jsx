@@ -12,13 +12,12 @@ const LoadMoneyPage = () => {
   const [amount, setLocalAmount] = useState("");
   const dispatch = useDispatch();
 
-  // Función para manejar el cambio en el input
   const handleAmountChange = (e) => {
     setLocalAmount(e.target.value);
   };
 
   const handleContinue = () => {
-    dispatch(setAmount(parseFloat(amount))); // Guardamos el amount en el store
+    dispatch(setAmount(parseFloat(amount)));
   };
 
   return (

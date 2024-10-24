@@ -7,7 +7,6 @@ import activityReducer from "./features/activitySlice";
 // Función para recuperar el estado desde localStorage
 const getStoredAuth = () => {
   if (typeof window !== "undefined") {
-    // Solo accede a localStorage en el cliente
     return localStorage.getItem("auth")
       ? JSON.parse(localStorage.getItem("auth"))
       : {
@@ -20,7 +19,6 @@ const getStoredAuth = () => {
           amount: 0,
         };
   }
-  // Estado por defecto en el servidor
   return {
     email: "",
     user_id: 0,
@@ -40,6 +38,6 @@ export const store = configureStore({
     activity: activityReducer,
   },
   preloadedState: {
-    auth: getStoredAuth(), // Llama a la función para inicializar el estado de auth
+    auth: getStoredAuth(),
   },
 });

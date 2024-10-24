@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "../../state/features/authSlice";
+import Image from "next/image";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -30,7 +31,6 @@ export default function Login() {
         setmessageAlert("");
       }, 1300);
     } else {
-      //Verificacion campos de los mensajes de error
       if (MessageEmail) {
         setmessageAlert("¡Verificar campos!");
         setTimeout(() => {
@@ -48,11 +48,12 @@ export default function Login() {
       <div className="h-screen">
         <div className="flex justify-between bg-[#C1FD35]">
           <Link href="/">
-            <img
+            <Image
               className="mt-6 ml-2 mb-4"
               src="/img/Logo-black.png"
               alt="Logo1"
               width={70}
+              height={70}
             />
           </Link>
         </div>

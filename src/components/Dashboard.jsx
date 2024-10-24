@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import Image from "next/image";
 
 const dashboard = () => {
   return (
@@ -16,28 +17,24 @@ const dashboard = () => {
               Tu nueva <strong>billetera virtual</strong>
             </h2>
           </div>
-
-          {/* Contenedor para las tarjetas */}
           <div className="relative z-10 flex flex-col sm:flex-row justify-center items-center gap-4 mt-20 ml-4 mr-4 sm:mt-60">
-            <img
+            <Image
               src="/img/Card-landing.png"
               alt="card1"
+              width={500}
+              height={300}
               className="w-[80%] sm:w-[500px]"
+              priority
             />
-            <img
+            <Image
               src="/img/Card-landing2.png"
               alt="card2"
+              width={500}
+              height={300}
               className="w-[80%] sm:w-[500px]"
+              priority
             />
           </div>
-          {/* Imagen de fondo principal */}
-          {/* <div className="relative mt-10">
-            <img
-              className="w-screen"
-              src="/img/Main.png"
-              alt="Main background"
-            />
-          </div> */}
         </section>
         <Footer />
       </div>

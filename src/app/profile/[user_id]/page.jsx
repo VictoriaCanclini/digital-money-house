@@ -109,7 +109,7 @@ const ProfilePage = ({ params }) => {
       <Navbar />
       <div className="flex h-screen">
         <Sibvar />
-        <div className="flex flex-col justify-center w-full p-10 ml-6">
+        <div className="flex flex-col justify-center items-center w-full">
           <div className="md:w-[1000px] sm:w-[500px] w-[300px] md:h-[285px] h-[320px] bg-white rounded-md text-black border-2 border-gray-300 shadow-md flex flex-col">
             <span className="ml-6 mt-8 font-bold">Tus datos</span>
             <hr className="border-gray-300 my-2 mr-6 ml-6" />
@@ -117,7 +117,7 @@ const ProfilePage = ({ params }) => {
               <span className="ml-2 text-gray-500">Email</span>
               <input
                 ref={emailRef}
-                className="md:ml-[75%] ml-10 text-gray-500"
+                className=" text-gray-500"
                 name="email"
                 value={editableData.email}
                 onChange={handleInputChange}
@@ -132,7 +132,7 @@ const ProfilePage = ({ params }) => {
               <span className="ml-2 text-gray-500">Nombre</span>
               <input
                 ref={firstnameRef}
-                className="text-gray-500 md:ml-[75%] ml-10"
+                className="text-gray-500"
                 name="firstname"
                 value={editableData.firstname}
                 onChange={handleInputChange}
@@ -147,7 +147,7 @@ const ProfilePage = ({ params }) => {
               <span className="ml-2 text-gray-500">Apellido</span>
               <input
                 ref={lastnameRef}
-                className="text-gray-500 md:ml-[75%] ml-10"
+                className="text-gray-500"
                 name="firstname"
                 value={editableData.lastname}
                 onChange={handleInputChange}
@@ -162,7 +162,7 @@ const ProfilePage = ({ params }) => {
               <span className="ml-2 text-gray-500">DNI</span>
               <input
                 ref={dniRef}
-                className="text-gray-500 md:ml-[78%] ml-16"
+                className="text-gray-500 ml-8"
                 name="dni"
                 value={editableData.dni}
                 onChange={handleInputChange}
@@ -177,7 +177,7 @@ const ProfilePage = ({ params }) => {
               <span className="ml-2 text-gray-500">Telefono</span>
               <input
                 ref={phoneRef}
-                className="text-gray-500 md:ml-[75%] ml-8"
+                className="text-gray-500"
                 name="phone"
                 value={editableData.phone}
                 onChange={handleInputChange}

@@ -126,8 +126,8 @@ const ClientPage = () => {
       <Navbar />
       <div className="flex h-screen">
         <Sibvar />
-        <div className="flex flex-col justify-center w-full ml-10">
-          <div className="bg-black md:w-[1000px] sm:w-[500px] w-[350px] md:h-[150px] h-[150px] p-8 mr-60 rounded-xl">
+        <div className="flex flex-col justify-center items-center w-full">
+          <div className="bg-black md:w-[1000px] sm:w-[500px] w-[350px] md:h-[150px] h-[150px] p-8 rounded-xl">
             <div className="flex justify-between">
               <h2 className="font-semibold text-[#C1FD35] text-lg">
                 {userService.name}

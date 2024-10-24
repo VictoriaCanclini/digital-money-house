@@ -104,8 +104,8 @@ const Activity = () => {
       <Navbar />
       <div className="flex h-screen">
         <Sibvar />
-        <div className="flex flex-col md:mt-[10%] mt-[40%] w-full ml-10">
-          <div className="flex flex-row gap-4">
+        <div className="flex flex-col justify-center items-center w-full">
+          <div className="flex flex-row gap-8">
             <div className="bg-white p-2 md:w-[850px] sm:w-[500px] w-[350px] gap-1 rounded-md text-gray-400 border-2 border-gray-300 shadow-md flex items-center">
               <Search className="mr-2" />
               <input
@@ -188,7 +188,7 @@ const Activity = () => {
           </div>
         </div>
         {isMenuOpen && (
-          <div className="absolute md:top-[256px] top-[330px] md:left-[1120px] left-[250px] bg-white text-sm text-black md:w-[9%] rounded-md border-2 flex justify-start">
+          <div className="absolute md:top-[270px] top-[390px] md:left-[1240px] left-[250px] bg-white text-sm text-black md:w-[9%] rounded-md border-2 flex justify-start">
             <ul className="flex flex-col items-center gap-4 p-4">
               <li>
                 <button

@@ -40,7 +40,7 @@ const PayServicePage = () => {
       <Navbar />
       <div className="flex h-screen">
         <Sibvar />
-        <div className="flex flex-col md:mt-[10%] mt-[40%] w-full ml-10">
+        <div className="flex flex-col justify-center items-center w-full">
           <div className="flex flex-row gap-4">
             <div className="bg-white p-2 md:w-[1000px] sm:w-[500px] w-[350px] gap-1 rounded-md text-gray-400 border-2 border-gray-300 shadow-md flex items-center">
               <Search className="mr-2" />

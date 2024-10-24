@@ -63,8 +63,8 @@ const CreditCardPage = () => {
       <Navbar />
       <div className="flex h-screen">
         <Sibvar />
-        <div className="flex flex-col justify-center w-full ml-10">
-          <div className="bg-black md:w-[1000px] sm:w-[500px] w-[350px] md:h-[150px] h-[130px] p-8 mr-60 rounded-xl">
+        <div className="flex flex-col justify-center items-center w-full">
+          <div className="bg-black md:w-[1000px] sm:w-[500px] w-[350px] md:h-[150px] h-[130px] p-8 rounded-xl">
             <h2 className="text-sm text-white font-semibold mb-4">
               Agregá tu tarjeta de débito o crédito
             </h2>

@@ -30,7 +30,7 @@ const AccountNumberPage = () => {
       <Navbar />
       <div className="flex h-screen">
         <Sibvar />
-        <div className="flex flex-col justify-center w-full ml-10">
+        <div className="flex flex-col justify-center items-center w-full">
           <div className="bg-black md:w-[1000px] sm:w-[500px] w-[350px] md:h-[300px] h-[200px] md:p-6 p-4 md:mr-60 rounded-xl">
             <h2 className="text-lg text-[#C1FD35] font-semibold mb-4">
               Número de cuenta sin el primer 2

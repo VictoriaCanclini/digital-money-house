@@ -48,8 +48,8 @@ const SelectCardPage = () => {
       <Navbar />
       <div className="flex h-screen">
         <Sibvar />
-        <div className="flex flex-col justify-center w-full ml-10">
-          <div className="bg-black md:w-[1000px] sm:w-[500px] w-[350px] md:h-[450px] h-[480px] p-6 mr-60 rounded-xl">
+        <div className="flex flex-col justify-center items-center w-full">
+          <div className="bg-black md:w-[1000px] sm:w-[500px] w-[350px] md:h-[450px] h-[480px] p-6 rounded-xl">
             <h2 className="text-lg text-[#C1FD35] font-semibold mb-4">
               Seleccionar tarjeta
             </h2>

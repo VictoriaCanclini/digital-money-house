@@ -109,7 +109,7 @@ const ProfilePage = ({ params }) => {
       <Navbar />
       <div className="flex h-screen">
         <Sibvar />
-        <div className="flex flex-col justify-center items-center w-full">
+        <div className="flex flex-col justify-center items-center w-full mt-6">
           <div className="md:w-[1000px] sm:w-[500px] w-[300px] md:h-[285px] h-[320px] bg-white rounded-md text-black border-2 border-gray-300 shadow-md flex flex-col">
             <span className="ml-6 mt-8 font-bold">Tus datos</span>
             <hr className="border-gray-300 my-2 mr-6 ml-6" />

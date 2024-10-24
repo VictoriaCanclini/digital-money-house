@@ -111,7 +111,7 @@ const Navbar = () => {
       </div>
       {isMenuOpen && (
         <div className="absolute top-[60px] right-0 bg-[#C1FD35] bg-opacity-70 text-black w-[30%] rounded-md sm:hidden">
-          <ul className="flex flex-col items-center gap-4 p-4">
+          <ul className="flex flex-col gap-4 p-4">
             <li>
               <Link href="/home" onClick={toggleMenu}>
                 Inicio

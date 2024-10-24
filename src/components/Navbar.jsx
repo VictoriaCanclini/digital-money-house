@@ -65,15 +65,15 @@ const Navbar = () => {
 
   return (
     <div className="flex justify-between bg-black h-[60px]">
-      <div className="mt-6 md:mt-5 ml-2">
-        <Link href="/login">
+      <div className="mt-5 ml-2">
+        <Link href="/">
           <Image src="/img/Logo 01.png" alt="Logo1" width={70} height={70} />
         </Link>
       </div>
       <div className="flex justify-end gap-2 sm:mt-4 mr-4 mt-5 sm:mb-2">
         {isClient && email ? (
           <>
-            <button className="bg-[#C1FD35] text-black rounded-lg pt-4 pb-4 pl-3 pr-3 mb-2 flex items-center md:mt-1">
+            <button className="bg-[#C1FD35] text-black rounded-lg pt-4 pb-4 pl-3 pr-3 mb-1 flex items-center">
               <Link href={`/profile/${user_id}`}>{initials}</Link>
             </button>
             <p className="hidden sm:block mt-3">
@@ -111,7 +111,7 @@ const Navbar = () => {
       </div>
       {isMenuOpen && (
         <div className="absolute top-[60px] right-0 bg-[#C1FD35] bg-opacity-70 text-black w-[30%] rounded-md sm:hidden">
-          <ul className="flex flex-col gap-4 p-4">
+          <ul className="flex flex-col items-center gap-4 p-4">
             <li>
               <Link href="/home" onClick={toggleMenu}>
                 Inicio

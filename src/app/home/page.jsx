@@ -54,7 +54,7 @@ const HomePage = () => {
       <Navbar />
       <div className="flex h-screen">
         <Sibvar />
-        <div className="flex flex-col justify-center items-center w-full">
+        <div className="flex flex-col justify-center items-center w-full mt-2">
           <Card
             title="Dinero disponible"
             button1Text="Ver tarjetas"

@@ -72,7 +72,11 @@ const CreditCardPage = () => {
               <Link href="credit-card-2">
                 <Plus color={"#C1FD35"} />
               </Link>
-              <h3 className="md:mr-[760px] mr-[80px] md:mt-1">Nueva Tarjeta</h3>
+              <Link href="credit-card-2">
+                <h3 className="md:mr-[760px] mr-[80px] md:mt-1">
+                  Nueva Tarjeta
+                </h3>
+              </Link>
               <Link href="credit-card-2">
                 <Arrow color={"#C1FD35"} />
               </Link>

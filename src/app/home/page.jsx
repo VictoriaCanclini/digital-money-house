@@ -88,8 +88,8 @@ const HomePage = () => {
             </div>
           </div>
           {/* Listado de actividad filtrada */}
-          <div className="flex flex-row mt-2">
-            <div className="md:w-[1000px] sm:w-[500px] w-[300px] md:h-[285px] h-[300px] bg-white rounded-md text-black border-2 border-gray-300 shadow-md flex flex-col">
+          <div className="flex flex-row mt-1">
+            <div className="md:w-[1000px] sm:w-[500px] w-[300px] md:h-[285px] h-[290px] bg-white rounded-md text-black border-2 border-gray-300 shadow-md flex flex-col">
               <h1 className="ml-6 mt-4 font-bold">Tu actividad</h1>
               <hr className="border-gray-300 my-3 mr-6 ml-6" />
               {filteredActivities.length > 0 ? (
@@ -108,7 +108,7 @@ const HomePage = () => {
                   No se encontró actividad para {searchTerm}
                 </span>
               )}
-              <div className="flex justify-between items-center mr-6 mt-1">
+              <div className="flex justify-between items-center mr-6">
                 <button className="ml-6 font-bold">
                   Ver toda tu actividad
                 </button>

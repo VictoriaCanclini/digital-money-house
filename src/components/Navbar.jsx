@@ -66,7 +66,7 @@ const Navbar = () => {
   return (
     <div className="flex justify-between bg-black h-[60px]">
       <div className="mt-5 ml-2">
-        <Link href="/">
+        <Link href="/home">
           <Image src="/img/Logo 01.png" alt="Logo1" width={70} height={70} />
         </Link>
       </div>
@@ -110,7 +110,7 @@ const Navbar = () => {
         )}
       </div>
       {isMenuOpen && (
-        <div className="absolute top-[60px] right-0 bg-[#C1FD35] bg-opacity-70 text-black w-[35%] rounded-md sm:hidden">
+        <div className="absolute top-[60px] right-0 bg-[#C1FD35] bg-opacity-90 text-black w-[35%] rounded-md sm:hidden">
           <ul className="flex flex-col gap-4 p-4">
             <li>
               <Link href="/home" onClick={toggleMenu}>

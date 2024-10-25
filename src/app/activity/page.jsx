@@ -188,7 +188,7 @@ const Activity = () => {
           </div>
         </div>
         {isMenuOpen && (
-          <div className="absolute md:top-[270px] top-[300px] md:left-[1240px] left-[250px] bg-white text-sm text-black md:w-[9%] rounded-md border-2 flex justify-start">
+          <div className="absolute md:top-[270px] top-[310px] md:left-[1240px] left-[250px] bg-white text-sm text-black md:w-[9%] rounded-md border-2 flex justify-start">
             <ul className="flex flex-col items-center gap-4 p-4">
               <li>
                 <button

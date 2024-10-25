@@ -13,7 +13,7 @@ const ErrorPage = () => {
         <div className="flex flex-col justify-center items-center w-full">
           <div className="flex flex-col bg-black text-white font-bold md:w-[1000px] sm:w-[500px] w-[360px] h-[300px] rounded-md justify-center items-center mb-10">
             <Cross color={"#000000"} />
-            <h1 className="text-md md:text-lg p-2 mt-4">
+            <h1 className="text-md md:text-lg flex justify-center text-center p-1 mt-4">
               No encontramos facturas asociadas a este dato
             </h1>
             <hr className="border-gray-300 my-4 mr-6 ml-6" />

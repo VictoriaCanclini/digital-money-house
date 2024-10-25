@@ -61,7 +61,7 @@ const HomePage = () => {
             button2Text="Ver CVU"
             amount={available_amount ? available_amount.toFixed(2) : "0.00"}
           />
-          <div className="flex flex-row mt-2 gap-1">
+          <div className="flex flex-row mt-1 gap-1">
             <Link href="/add-money">
               <button className="bg-[#C1FD35] text-black font-bold md:w-[500px] sm:w-[250px] w-[150px] h-[106px] rounded-md">
                 Cargar dinero
@@ -75,7 +75,7 @@ const HomePage = () => {
           </div>
 
           {/* Campo de búsqueda */}
-          <div className="flex flex-row mt-2">
+          <div className="flex flex-row mt-1">
             <div className="bg-white p-2 md:w-[1000px] sm:w-[500px] w-[300px] gap-1 rounded-md text-gray-400 border-2 border-gray-300 shadow-md flex items-center">
               <Search className="mr-2" />
               <input

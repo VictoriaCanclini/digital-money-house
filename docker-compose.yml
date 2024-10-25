@@ -1,0 +1,20 @@
+version: "3"
+services:
+  app:
+    build:
+      context: .
+    image: digitalmoneyhouse
+    container_name: digitalmoneyhouse
+    ports:
+      - "3000:3000"
+    command: npm run dev
+    volumes:
+      - ./:/app
+    environment:
+      - NODE_ENV=development
+    restart: unless-stopped
+    networks:
+      - dev
+
+networks:
+  dev:

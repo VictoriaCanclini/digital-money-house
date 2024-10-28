@@ -105,9 +105,9 @@ const Activity = () => {
       <div className="flex h-screen">
         <Sibvar />
         <div className="flex flex-col justify-center items-center w-full">
-          <div className="flex flex-row gap-8">
-            <div className="bg-white p-2 md:w-[850px] sm:w-[500px] w-[350px] gap-1 rounded-md text-gray-400 border-2 border-gray-300 shadow-md flex items-center">
-              <Search className="mr-2" />
+          <div className="flex flex-row gap-4">
+            <div className="bg-white p-2 md:w-[900px] sm:w-[500px] w-[350px] gap-1 rounded-md text-gray-400 border-2 border-gray-300 shadow-md flex items-center">
+              <Search />
               <input
                 type="text"
                 placeholder="Buscar en tu actividad"
@@ -116,10 +116,9 @@ const Activity = () => {
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
-
             <div className="bg-[#C1FD35] text-black rounded-md w-[10%] hidden sm:block">
               <button
-                className="flex items-center justify-center gap-9 w-full p-2 font-bold"
+                className="flex items-center justify-center gap-2 w-full p-2 font-bold"
                 onClick={toggleMenu}
               >
                 Filtrar

@@ -35,7 +35,7 @@ El usuario cuenta con una Cuenta Virtual uniforme única que es la cuenta que le
 
 ## Para empezar
 
-Este proyecto aún no está deployado, pero puedes probarlo en tu local. Siga las instrucciones a continuación para ejecutarlo.
+Para probarlo en tu local. Siga las instrucciones a continuación para ejecutarlo.
 
 ### Instalación
 
@@ -52,12 +52,17 @@ Este proyecto aún no está deployado, pero puedes probarlo en tu local. Siga la
    <br>
    `cp .env.example .env`
    Cuando utilizamos un sistema de control de versiones como git, este archivo se excluye del repositorio por medidas de seguridad.
-5. Necesitamos iniciar el servidor de desarrollo de Next para visualizar los módulos del proyecto escritos en react:
+5. Levanta el proyecto usando Docker y Docker Compose:
    <br>
+   `docker-compose up`
+   O, si prefieres ejecutarlo en segundo plano:
+   `docker-compose up -d`
+6. Necesitamos iniciar el servidor de desarrollo de Next.js para visualizar los módulos del proyecto escritos
+   en React. Si ya has configurado Docker Compose correctamente, el contenedor de Next.js debería ejecutarse automáticamente. De no ser así, puedes iniciarlo manualmente:
    `npm run dev`
 
 <p align="right"><a href="#home">⬆ Volver a home</a></p>
-
+    
 <!-- FUNCTIONALITIES -->
 
 ## Funcionalidades

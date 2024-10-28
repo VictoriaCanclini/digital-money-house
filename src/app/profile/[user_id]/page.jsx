@@ -107,11 +107,11 @@ const ProfilePage = ({ params }) => {
   return (
     <div className="bg-[#D9D9D9]">
       <Navbar />
-      <div className="flex h-screen">
+      <div className="flex h-screen mt-8">
         <Sibvar />
-        <div className="flex flex-col justify-center items-center w-full mt-6">
+        <div className="flex flex-col justify-center items-center w-full">
           <div className="md:w-[1000px] sm:w-[500px] w-[300px] h-[285px] bg-white rounded-md text-black border-2 border-gray-300 shadow-md flex flex-col">
-            <span className="ml-6 mt-6 font-bold">Tus datos</span>
+            <h1 className="ml-6 mt-6 font-bold">Tus datos</h1>
             <hr className="border-gray-300 my-2 mr-6 ml-6" />
             <div className="flex justify-between md:ml-6 ml-4 md:mr-6 mr-4 text-sm mt-1">
               <span className="ml-2 text-gray-500">Email</span>

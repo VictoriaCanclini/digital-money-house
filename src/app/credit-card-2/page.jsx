@@ -153,7 +153,9 @@ const CreditCardPage2 = () => {
                 </div>
                 <div className={styles.formInputGrup}>
                   <div className={styles.formControl}>
-                    <label htmlFor="expiry">Fecha de vencimiento (MMYY)*</label>
+                    <label htmlFor="expiry">
+                      Fecha de vencimiento (MM/YYYY)*
+                    </label>
                     <input
                       type="text"
                       name="expiry"

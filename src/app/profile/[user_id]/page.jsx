@@ -97,7 +97,7 @@ const ProfilePage = ({ params }) => {
     navigator.clipboard
       .writeText(text)
       .then(() => {
-        toast("Texto copiado: " + text);
+        toast("copiado: " + text);
       })
       .catch((err) => {
         console.error("Error al copiar: ", err);

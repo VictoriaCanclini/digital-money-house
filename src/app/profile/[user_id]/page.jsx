@@ -21,7 +21,7 @@ const ProfilePage = ({ params }) => {
     firstname: "",
     lastname: "",
     phone: "",
-    dni: "",
+    dni: 0,
   });
 
   // Usamos ref para enfocar los inputs
@@ -65,7 +65,10 @@ const ProfilePage = ({ params }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setEditableData({ ...editableData, [name]: value });
+    setEditableData({
+      ...editableData,
+      [name]: name === "dni" ? parseInt(value, 10) || "" : value,
+    });
   };
 
   const handleUpdateUser = async () => {
@@ -148,7 +151,7 @@ const ProfilePage = ({ params }) => {
               <input
                 ref={lastnameRef}
                 className="text-gray-500"
-                name="firstname"
+                name="lastname"
                 value={editableData.lastname}
                 onChange={handleInputChange}
                 onKeyDown={handleKeyPress}

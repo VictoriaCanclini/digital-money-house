@@ -85,6 +85,7 @@ const ProfilePage = ({ params }) => {
       toast("Usuario actualizado");
       setUserData(response.data);
     } catch (error) {
+      toast("No se permite actualizar ese campo del usuario");
       console.error("Error al actualizar los datos del usuario:", error);
     }
   };

@@ -131,12 +131,14 @@ const CreditCardPage2 = () => {
                   <div className={styles.formControl}>
                     <label htmlFor="number">Número de la tarjeta*</label>
                     <input
-                      type="number"
+                      type="text"
                       name="number"
                       id="number"
                       value={number}
                       onChange={handleInputChange}
                       onFocus={handleInputFocus}
+                      maxLength={16}
+                      pattern="\d*"
                     />
                   </div>
                   <div className={styles.formControl}>
@@ -168,11 +170,13 @@ const CreditCardPage2 = () => {
                   <div className={styles.formControl}>
                     <label htmlFor="cvc">Código de seguridad*</label>
                     <input
-                      type="number"
+                      type="text"
                       name="cvc"
                       id="cvc"
                       value={cvc}
                       onChange={handleInputChange}
+                      maxLength={3}
+                      pattern="\d*"
                     />
                   </div>
                 </div>

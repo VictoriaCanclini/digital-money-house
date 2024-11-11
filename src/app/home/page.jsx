@@ -10,12 +10,14 @@ import Link from "next/link";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
 
 const HomePage = () => {
   const available_amount = useSelector((state) => state.auth.available_amount);
   const id = useSelector((state) => state.auth.id);
   const [userActivity, setUserActivity] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const router = useRouter();
 
   useEffect(() => {
     if (id) {
@@ -105,7 +107,12 @@ const HomePage = () => {
                 {filteredActivities.length > 0 ? (
                   filteredActivities.map((activity, index) => (
                     <div key={index}>
-                      <div className="flex items-center text-sm">
+                      <div
+                        className="flex items-center text-sm"
+                        onClick={() =>
+                          router.push(`/activity-details/${activity.id}`)
+                        }
+                      >
                         <Circle color={"[#C1FD35]"} />
                         <h2 className="ml-2">{activity.description}</h2>
                         <h3 className="ml-auto mr-4">{activity.amount}</h3>

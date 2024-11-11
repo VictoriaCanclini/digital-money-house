@@ -146,31 +146,33 @@ const ClientPage = () => {
             <div className="md:w-[1000px] sm:w-[500px] w-[350px] md:h-[285px] h-[320px] bg-white rounded-md text-black border-2 border-gray-300 shadow-md flex flex-col">
               <h4 className="ml-6 mt-6 font-bold">Tus tarjetas</h4>
               <hr className="border-gray-300 my-4 mr-6 ml-6" />
-              {userCards ? (
-                userCards.map((card, index) => (
-                  <div key={index}>
-                    <div className="flex items-center md:ml-6 ml-4 text-sm">
-                      <Circle color={"[#C1FD35]"} className="md:mr-2" />
-                      <h5 className="ml-2">
-                        Terminada en {String(card.number_id).slice(-4)}
-                      </h5>
-                      <button
-                        className="md:ml-[600px] ml-20"
-                        onClick={() => handleSelectCard(card.number_id)}
-                      >
-                        {selectedCard === card.number_id ? (
-                          <CompleteCircle />
-                        ) : (
-                          <SelectCircle />
-                        )}
-                      </button>
+              <div className="overflow-y-auto h-[220px]">
+                {userCards ? (
+                  userCards.map((card, index) => (
+                    <div key={index}>
+                      <div className="flex items-center md:ml-6 ml-4 text-sm">
+                        <Circle color={"[#C1FD35]"} className="md:mr-2" />
+                        <h5 className="ml-2">
+                          Terminada en {String(card.number_id).slice(-4)}
+                        </h5>
+                        <button
+                          className="md:ml-[600px] ml-20"
+                          onClick={() => handleSelectCard(card.number_id)}
+                        >
+                          {selectedCard === card.number_id ? (
+                            <CompleteCircle />
+                          ) : (
+                            <SelectCircle />
+                          )}
+                        </button>
+                      </div>
+                      <hr className="border-gray-300 my-3 mr-6 ml-6" />
                     </div>
-                    <hr className="border-gray-300 my-3 mr-6 ml-6" />
-                  </div>
-                ))
-              ) : (
-                <p className="text-center">No tienes tarjetas registradas</p>
-              )}
+                  ))
+                ) : (
+                  <p className="text-center">No tienes tarjetas registradas</p>
+                )}
+              </div>
             </div>
           </div>
           <button

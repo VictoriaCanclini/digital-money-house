@@ -151,7 +151,7 @@ const Activity = () => {
                       }
                     >
                       <Circle color={"[#C1FD35]"} className="md:mr-2" />
-                      <h2 className="ml-2">{activity.description}</h2>
+                      <button className="ml-2">{activity.description}</button>
                       <button className="ml-auto mr-6 ">
                         {activity.amount}
                       </button>
@@ -263,6 +263,19 @@ const Activity = () => {
                   }}
                 >
                   Último año
+                </button>
+              </li>
+
+              <li>
+                <button
+                  onClick={() => {
+                    setStartDate(null);
+                    setEndDate(null);
+                    setSearchTerm("");
+                    toggleMenu();
+                  }}
+                >
+                  Limpiar Filtros
                 </button>
               </li>
             </ul>

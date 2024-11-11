@@ -115,7 +115,9 @@ const HomePage = () => {
                       >
                         <Circle color={"[#C1FD35]"} />
                         <h2 className="ml-2">{activity.description}</h2>
-                        <h3 className="ml-auto mr-4">{activity.amount}</h3>
+                        <button className="ml-auto mr-4">
+                          {activity.amount}
+                        </button>
                       </div>
                       <hr className="border-gray-300 my-3 mr-6 ml-6" />
                     </div>

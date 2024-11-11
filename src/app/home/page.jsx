@@ -59,7 +59,14 @@ const HomePage = () => {
             title="Dinero disponible"
             button1Text="Ver tarjetas"
             button2Text="Ver CVU"
-            amount={available_amount ? available_amount.toFixed(2) : "0.00"}
+            amount={
+              available_amount
+                ? `$ ${available_amount.toLocaleString("es-AR", {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}`
+                : "$0,00"
+            }
           />
           <div className="flex flex-row mt-1 gap-1">
             <Link href="/add-money">

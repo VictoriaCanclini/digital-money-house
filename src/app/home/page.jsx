@@ -47,7 +47,7 @@ const HomePage = () => {
     .filter((activity) =>
       activity.description.toLowerCase().includes(searchTerm.toLowerCase())
     )
-    .slice(0, 3); // Mostrar solo las primeras 3 actividades
+    .slice(0, 10); // Mostrar solo las primeras 10 actividades
 
   return (
     <div className="bg-[#D9D9D9]">
@@ -99,23 +99,27 @@ const HomePage = () => {
             <div className="md:w-[1000px] sm:w-[500px] w-[300px] md:h-[285px] h-[290px] bg-white rounded-md text-black border-2 border-gray-300 shadow-md flex flex-col">
               <h1 className="ml-6 mt-4 font-bold">Tu actividad</h1>
               <hr className="border-gray-300 my-3 mr-6 ml-6" />
-              {filteredActivities.length > 0 ? (
-                filteredActivities.map((activity, index) => (
-                  <div key={index}>
-                    <div className="flex items-center md:ml-6 ml-4 text-sm">
-                      <Circle color={"[#C1FD35]"} className="md:mr-2" />
-                      <h2 className="ml-2">{activity.description}</h2>
-                      <h3 className="ml-auto mr-8">{activity.amount}</h3>
+
+              {/* Contenedor con scroll para las actividades */}
+              <div className="overflow-y-auto h-[180px] px-4">
+                {filteredActivities.length > 0 ? (
+                  filteredActivities.map((activity, index) => (
+                    <div key={index}>
+                      <div className="flex items-center text-sm">
+                        <Circle color={"[#C1FD35]"} />
+                        <h2 className="ml-2">{activity.description}</h2>
+                        <h3 className="ml-auto mr-4">{activity.amount}</h3>
+                      </div>
+                      <hr className="border-gray-300 my-3 mr-6 ml-6" />
                     </div>
-                    <hr className="border-gray-300 my-3 mr-6 ml-6" />
-                  </div>
-                ))
-              ) : (
-                <span className="ml-6 text-gray-500">
-                  No se encontró actividad para {searchTerm}
-                </span>
-              )}
-              <div className="flex justify-between items-center mr-6">
+                  ))
+                ) : (
+                  <span className="ml-6 text-gray-500">
+                    No se encontró actividad para {searchTerm}
+                  </span>
+                )}
+              </div>
+              <div className="flex justify-between items-center mr-6 mt-2">
                 <button className="ml-6 font-bold">
                   Ver toda tu actividad
                 </button>

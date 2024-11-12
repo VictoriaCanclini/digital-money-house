@@ -21,7 +21,7 @@ const Activity = () => {
   const [endDate, setEndDate] = useState(null);
   const dispatch = useDispatch();
   const router = useRouter();
-  const activitiesPerPage = 4;
+  const activitiesPerPage = 10;
 
   useEffect(() => {
     if (id) {
@@ -141,29 +141,31 @@ const Activity = () => {
                 </div>
               </div>
               <hr className="border-gray-300 my-3 mr-6 ml-6" />
-              {currentActivities.length > 0 ? (
-                currentActivities.map((activity, index) => (
-                  <div key={index}>
-                    <div
-                      className="flex items-center md:ml-6 ml-4 text-sm p-2"
-                      onClick={() =>
-                        router.push(`/activity-details/${activity.id}`)
-                      }
-                    >
-                      <Circle color={"[#C1FD35]"} className="md:mr-2" />
-                      <button className="ml-2">{activity.description}</button>
-                      <button className="ml-auto mr-6 ">
-                        {activity.amount}
-                      </button>
+              <div className="overflow-y-auto h-[280px]">
+                {currentActivities.length > 0 ? (
+                  currentActivities.map((activity, index) => (
+                    <div key={index}>
+                      <div
+                        className="flex items-center md:ml-6 ml-4 text-sm p-2"
+                        onClick={() =>
+                          router.push(`/activity-details/${activity.id}`)
+                        }
+                      >
+                        <Circle color={"[#C1FD35]"} className="md:mr-2" />
+                        <button className="ml-2">{activity.description}</button>
+                        <button className="ml-auto mr-6 ">
+                          {activity.amount}
+                        </button>
+                      </div>
+                      <hr className="border-gray-300 my-3 mr-6 ml-6" />
                     </div>
-                    <hr className="border-gray-300 my-3 mr-6 ml-6" />
-                  </div>
-                ))
-              ) : (
-                <h3 className="ml-10 text-gray-500">
-                  No se encontró actividad para {searchTerm}
-                </h3>
-              )}
+                  ))
+                ) : (
+                  <h3 className="ml-10 text-gray-500">
+                    No se encontró actividad para {searchTerm}
+                  </h3>
+                )}
+              </div>
               <div className="flex justify-between mt-2">
                 <button
                   className="ml-6 font-bold"

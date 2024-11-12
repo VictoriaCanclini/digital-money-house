@@ -176,7 +176,7 @@ const ClientPage = () => {
               </div>
             </div>
           </div>
-          <button className="md:ml-[58%] ml-[60%] rounded-lg p-4 text-[15px] text-black font-bold border-lg bg-gray-400 text-center mr-[60%] mt-4 w-[80%] md:w-[20%]">
+          <button className="md:ml-[58%] ml-[60%] rounded-lg p-4 text-[15px] text-black font-bold border-lg bg-[#CECECE] text-center mr-[60%] mt-4 w-[80%] md:w-[20%]">
             <Link href="/credit-card-2">Agregar medio de pago</Link>
           </button>
           <button

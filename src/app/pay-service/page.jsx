@@ -22,7 +22,6 @@ const PayServicePage = () => {
           `${process.env.NEXT_PUBLIC_BASE_URL}/service`
         );
         const services = response.data;
-        console.log(services);
         setUserService(services);
       } catch (error) {
         console.error("Error al obtener los servicios:", error);

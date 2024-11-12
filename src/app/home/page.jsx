@@ -103,7 +103,7 @@ const HomePage = () => {
               <hr className="border-gray-300 my-3 mr-6 ml-6" />
 
               {/* Contenedor con scroll para las actividades */}
-              <div className="overflow-y-auto h-[180px] px-4">
+              <div className="overflow-y-auto h-[180px] md:h-[160px] px-4">
                 {filteredActivities.length > 0 ? (
                   filteredActivities.map((activity, index) => (
                     <div key={index}>

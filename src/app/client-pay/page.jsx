@@ -144,7 +144,7 @@ const ClientPage = () => {
             </div>
           </div>
           <div className="flex flex-row mt-4">
-            <div className="md:w-[1000px] sm:w-[500px] w-[350px] md:h-[285px] h-[320px] bg-white rounded-md text-black border-2 border-gray-300 shadow-md flex flex-col">
+            <div className="md:w-[1000px] sm:w-[500px] w-[350px] md:h-[330px] h-[320px] bg-white rounded-md text-black border-2 border-gray-300 shadow-md flex flex-col">
               <h4 className="ml-6 mt-6 font-bold">Tus tarjetas</h4>
               <hr className="border-gray-300 my-4 mr-6 ml-6" />
               <div className="overflow-y-auto h-[220px]">

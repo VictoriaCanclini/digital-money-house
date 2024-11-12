@@ -13,7 +13,7 @@ const dashboard = () => {
             <h1 className="text-[40px]">
               De ahora en adelante, hacés más con tu dinero
             </h1>
-            <h2 className="text-[30px] text-[#C1FD35]">
+            <h2 className="text-[30px] text-[#C1FD35] mt-2">
               Tu nueva <strong>billetera virtual</strong>
             </h2>
           </div>
@@ -35,13 +35,13 @@ const dashboard = () => {
               priority
             />
           </div>
-          <div className="relative z-0">
+          <div className="absolute bottom-0 left-0 w-full z-0">
             <Image
               src="/img/Main.png"
               alt="main"
               width={500}
               height={300}
-              className="w-full h-[150px] object-cover"
+              className="w-full md:h-[150px] h-[350px] object-cover"
               priority
             />
           </div>

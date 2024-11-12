@@ -108,7 +108,7 @@ const HomePage = () => {
                   filteredActivities.map((activity, index) => (
                     <div key={index}>
                       <div
-                        className="flex items-center text-sm"
+                        className="flex items-center text-sm cursor-pointer"
                         onClick={() =>
                           router.push(`/activity-details/${activity.id}`)
                         }

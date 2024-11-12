@@ -146,14 +146,14 @@ const Activity = () => {
                   currentActivities.map((activity, index) => (
                     <div key={index}>
                       <div
-                        className="flex items-center md:ml-6 ml-4 text-sm p-2"
+                        className="flex items-center md:ml-6 ml-4 text-sm p-2 cursor-pointer"
                         onClick={() =>
                           router.push(`/activity-details/${activity.id}`)
                         }
                       >
                         <Circle color={"[#C1FD35]"} className="md:mr-2" />
                         <button className="ml-2">{activity.description}</button>
-                        <button className="ml-auto mr-6 ">
+                        <button className="ml-auto mr-6">
                           {activity.amount}
                         </button>
                       </div>

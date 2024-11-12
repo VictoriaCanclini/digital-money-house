@@ -15,6 +15,7 @@ import {
   setSelectedCardId,
 } from "@/state/features/creditCardSlice";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const ClientPage = () => {
   const id = useSelector((state) => state.auth.id);
@@ -175,9 +176,12 @@ const ClientPage = () => {
               </div>
             </div>
           </div>
+          <button className="md:ml-[58%] ml-[60%] rounded-lg p-4 text-[15px] text-black font-bold border-lg bg-gray-400 text-center mr-[60%] mt-4 w-[80%] md:w-[20%]">
+            <Link href="/credit-card-2">Agregar medio de pago</Link>
+          </button>
           <button
             onClick={handleTranference}
-            className="md:ml-[58%] ml-[60%] rounded-lg p-4 text-[15px] text-black font-bold border-lg bg-[#C1FD35] text-center mr-[22%] mt-4 w-[20%]"
+            className="md:ml-[58%] ml-[60%] rounded-lg p-4 text-[15px] text-black font-bold border-lg bg-[#C1FD35] text-center mr-[60%] w-[80%] md:w-[20%] mt-4"
           >
             Pagar
           </button>

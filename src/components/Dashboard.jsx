@@ -41,7 +41,7 @@ const dashboard = () => {
               alt="main"
               width={500}
               height={300}
-              className="w-full md:h-[150px] h-[350px] object-cover"
+              className="w-full md:h-[150px] h-[250px] object-cover"
               priority
             />
           </div>

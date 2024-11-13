@@ -282,9 +282,8 @@ export default function Register() {
           </div>
         </form>
       </div>
-      <div className="mt-[145px]">
-        <Footer />
-      </div>
+      <div className="mt-[145px]"></div>
+      <Footer />
     </>
   );
 }

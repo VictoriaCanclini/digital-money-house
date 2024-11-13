@@ -8,10 +8,21 @@ import Link from "next/link";
 import { useSelector } from "react-redux";
 
 const PayOkPage = () => {
-  const { date, invoice_value, name } = useSelector((state) => state.services);
+  const { invoice_value, name } = useSelector((state) => state.services);
   const cards = useSelector((state) => state.creditCard.cards);
   const selectedCard = useSelector((state) => state.creditCard.selectedCard);
   const cardDetails = cards.find((card) => card.number_id === selectedCard);
+
+  const currentDate = new Date();
+  const formattedDate = currentDate.toLocaleDateString("es-ES", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+  const formattedTime = currentDate.toLocaleTimeString("es-ES", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
   return (
     <div className="bg-[#D9D9D9]">
@@ -24,7 +35,9 @@ const PayOkPage = () => {
             <span className="text-lg mt-4">Ya realizaste tu pago</span>
           </div>
           <div className="bg-black md:w-[1000px] sm:w-[500px] w-[350px] md:h-[250px] h-[250px] md:p-6 p-4  rounded-xl">
-            <h3 className="text-sm mt-2">{date}</h3>
+            <h3 className="text-sm mt-2">
+              {formattedDate} a las {formattedTime} hs.
+            </h3>
             <p className="font-bold text-[#C1FD35]">${invoice_value}</p>
             <h4 className="text-sm mt-6">para</h4>
             <h5 className="font-bold text-[#C1FD35]">{name}</h5>

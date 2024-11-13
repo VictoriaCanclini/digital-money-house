@@ -162,7 +162,7 @@ const Activity = () => {
                   ))
                 ) : (
                   <h3 className="ml-10 text-gray-500">
-                    No se encontró actividad para {searchTerm}
+                    No se encontró actividad {searchTerm}
                   </h3>
                 )}
               </div>

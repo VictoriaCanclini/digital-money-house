@@ -124,7 +124,7 @@ const HomePage = () => {
                   ))
                 ) : (
                   <span className="ml-6 text-gray-500">
-                    No se encontró actividad para {searchTerm}
+                    No se encontró actividad {searchTerm}
                   </span>
                 )}
               </div>

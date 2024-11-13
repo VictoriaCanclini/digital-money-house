@@ -34,6 +34,7 @@ const ActivityDetailPage = ({ params }) => {
   }
 
   const { amount, dated, destination, id, type } = activity;
+  const formattedDate = new Date(dated).toLocaleDateString("es-ES");
 
   return (
     <div className="bg-[#D9D9D9]">
@@ -46,7 +47,7 @@ const ActivityDetailPage = ({ params }) => {
               <h1 className="text-[#C1FD35] flex flex-row gap-2">
                 <Check width={20} height={20} /> Aprobada
               </h1>
-              <h2 className="hidden sm:block">Creada el {dated}</h2>
+              <h2 className="hidden sm:block">Creada el {formattedDate}</h2>
             </div>
             <hr className="border-gray-300 my-4 mr-6 ml-6" />
             <h3 className="text-sm mt-2"></h3>

@@ -11,6 +11,17 @@ const LoadMoneyOkeyPage = () => {
   const amount = useSelector((state) => state.auth.amount);
   const cvu = useSelector((state) => state.auth.cvu);
 
+  const currentDate = new Date();
+  const formattedDate = currentDate.toLocaleDateString("es-ES", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+  const formattedTime = currentDate.toLocaleTimeString("es-ES", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
   return (
     <div className="bg-[#D9D9D9]">
       <Navbar />
@@ -24,7 +35,9 @@ const LoadMoneyOkeyPage = () => {
             </span>
           </div>
           <div className="bg-black md:w-[1000px] sm:w-[500px] w-[350px] md:h-[250px] h-[250px] md:p-6 p-4  rounded-xl">
-            <h3 className="text-sm mt-2">17 de agosto 2022 a las 16:34 hs.</h3>
+            <h3 className="text-sm mt-2">
+              {formattedDate} a las {formattedTime} hs.
+            </h3>
             <p className="font-bold text-[#C1FD35]">${amount}</p>
             <h4 className="text-sm mt-6">para</h4>
             <h5 className="font-bold text-[#C1FD35]">Cuenta propia</h5>

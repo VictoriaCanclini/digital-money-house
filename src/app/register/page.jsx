@@ -112,33 +112,34 @@ export default function Register() {
 
   return (
     <>
-      <div className="flex justify-between bg-[#C1FD35]">
-        <div className="mt-6 ml-2 mb-4">
-          <Link href="/">
-            <Image
-              src="/img/Logo-black.png"
-              alt="Logo1"
-              width={70}
-              height={70}
-            />
-          </Link>
+      <div className="h-screen">
+        <div className="flex justify-between bg-[#C1FD35]">
+          <div className="mt-6 ml-2 mb-4">
+            <Link href="/">
+              <Image
+                src="/img/Logo-black.png"
+                alt="Logo1"
+                width={70}
+                height={70}
+              />
+            </Link>
+          </div>
+          <div className="flex justify-end gap-1">
+            <Link
+              href="/login"
+              className="text-white bg-black border-2 border-black rounded-md m-3 p-2"
+            >
+              Iniciar sesión
+            </Link>
+          </div>
         </div>
-        <div className="flex justify-end gap-1">
-          <Link
-            href="/login"
-            className="text-white bg-black border-2 border-black rounded-md m-3 p-2"
-          >
-            Iniciar sesión
-          </Link>
-        </div>
-      </div>
-      <div className="flex flex-col justify-center items-center w-full h-full mt-[80px]">
-        <h2 className="text-[20px] mb-[10px] sm:text-[30px] sm:mb-[20px] leading-3">
-          Crear cuenta
-        </h2>
-        <form
-          onSubmit={onSubmitForm}
-          className="
+        <div className="flex flex-col justify-center items-center w-full h-full mt-[80px]">
+          <h2 className="text-[20px] mb-[10px] sm:text-[30px] sm:mb-[20px] leading-3">
+            Crear cuenta
+          </h2>
+          <form
+            onSubmit={onSubmitForm}
+            className="
       
           mt-[50px] 
           w-[80%]
@@ -150,139 +151,138 @@ export default function Register() {
           md:gap-y-6
           justify-items-center
           "
-        >
-          <div className="w-full mb-4">
-            <input
-              className="w-full h-[60px] rounded-lg text-black p-2"
-              label={"Nombre"}
-              value={valueName}
-              onChange={OnChangeName}
-              onBlur={BlurName}
-              onFocus={FocusName}
-              placeholder={"Nombre*"}
-              name={"nombre"}
-            />
-            {MessageName && (
-              <p className="text-red-500 text-[.9rem] leading-3 mt-2">
-                {MessageName}
-              </p>
-            )}
-          </div>
+          >
+            <div className="w-full mb-4">
+              <input
+                className="w-full h-[60px] rounded-lg text-black p-2"
+                label={"Nombre"}
+                value={valueName}
+                onChange={OnChangeName}
+                onBlur={BlurName}
+                onFocus={FocusName}
+                placeholder={"Nombre*"}
+                name={"nombre"}
+              />
+              {MessageName && (
+                <p className="text-red-500 text-[.9rem] leading-3 mt-2">
+                  {MessageName}
+                </p>
+              )}
+            </div>
 
-          <div className="w-full mb-4">
-            <input
-              className="w-full h-[60px] rounded-lg text-black p-2"
-              label={"Apellido"}
-              value={valueLastName}
-              onChange={OnChangeLastName}
-              onBlur={BlurLastName}
-              onFocus={FocusLastName}
-              placeholder={"Apellido*"}
-              name={"apellido"}
-            />
-            {MessageLastName && (
-              <p className="text-red-500 text-[.9rem] leading-3 mt-2">
-                {MessageLastName}
-              </p>
-            )}
-          </div>
+            <div className="w-full mb-4">
+              <input
+                className="w-full h-[60px] rounded-lg text-black p-2"
+                label={"Apellido"}
+                value={valueLastName}
+                onChange={OnChangeLastName}
+                onBlur={BlurLastName}
+                onFocus={FocusLastName}
+                placeholder={"Apellido*"}
+                name={"apellido"}
+              />
+              {MessageLastName && (
+                <p className="text-red-500 text-[.9rem] leading-3 mt-2">
+                  {MessageLastName}
+                </p>
+              )}
+            </div>
 
-          <div className="w-full mb-4">
-            <input
-              className="w-full h-[60px] rounded-lg text-black p-2"
-              type={"text"}
-              label={"DNI"}
-              value={valueDni}
-              onChange={OnChangeDni}
-              onBlur={BlurDni}
-              onFocus={FocusDni}
-              name={"dni"}
-              placeholder={"DNI*"}
-            />
-            {MessageDni && (
-              <p className="text-red-500 text-[.9rem] leading-3 mt-2">
-                {MessageDni}
-              </p>
-            )}
-          </div>
+            <div className="w-full mb-4">
+              <input
+                className="w-full h-[60px] rounded-lg text-black p-2"
+                type={"text"}
+                label={"DNI"}
+                value={valueDni}
+                onChange={OnChangeDni}
+                onBlur={BlurDni}
+                onFocus={FocusDni}
+                name={"dni"}
+                placeholder={"DNI*"}
+              />
+              {MessageDni && (
+                <p className="text-red-500 text-[.9rem] leading-3 mt-2">
+                  {MessageDni}
+                </p>
+              )}
+            </div>
 
-          <div className="w-full mb-4">
-            <input
-              className="w-full h-[60px] rounded-lg text-black p-2"
-              type={"text"}
-              label={"Teléfono"}
-              value={valuePhone}
-              onChange={OnChangePhone}
-              onBlur={BlurPhone}
-              onFocus={FocusPhone}
-              name={"phone"}
-              placeholder={"Teléfono*"}
-            />
-            {MessagePhone && (
-              <p className="text-red-500 text-[.9rem] leading-3 mt-2">
-                {MessagePhone}
-              </p>
-            )}
-          </div>
+            <div className="w-full mb-4">
+              <input
+                className="w-full h-[60px] rounded-lg text-black p-2"
+                type={"text"}
+                label={"Teléfono"}
+                value={valuePhone}
+                onChange={OnChangePhone}
+                onBlur={BlurPhone}
+                onFocus={FocusPhone}
+                name={"phone"}
+                placeholder={"Teléfono*"}
+              />
+              {MessagePhone && (
+                <p className="text-red-500 text-[.9rem] leading-3 mt-2">
+                  {MessagePhone}
+                </p>
+              )}
+            </div>
 
-          <div className="w-full mb-4">
-            <input
-              className="w-full h-[60px] rounded-lg text-black p-2"
-              label={"email"}
-              name={"email"}
-              type={"text"}
-              placeholder={"Correo electrónico*"}
-              onFocus={FocusEmail}
-              value={valueEmail}
-              onChange={OnChangeEmail}
-              onBlur={BlurEmail}
-            />
-            {MessageEmail && (
-              <p className="text-red-500 text-[.9rem] leading-3 mt-2">
-                {MessageEmail}
-              </p>
-            )}
-          </div>
+            <div className="w-full mb-4">
+              <input
+                className="w-full h-[60px] rounded-lg text-black p-2"
+                label={"email"}
+                name={"email"}
+                type={"text"}
+                placeholder={"Correo electrónico*"}
+                onFocus={FocusEmail}
+                value={valueEmail}
+                onChange={OnChangeEmail}
+                onBlur={BlurEmail}
+              />
+              {MessageEmail && (
+                <p className="text-red-500 text-[.9rem] leading-3 mt-2">
+                  {MessageEmail}
+                </p>
+              )}
+            </div>
 
-          <div className="w-full mb-4">
-            <input
-              label={"Contraseña"}
-              name={"password"}
-              type={"password"}
-              className="w-full h-[60px] rounded-lg text-black p-2"
-              placeholder={"Contraseña*"}
-              value={valuePassword}
-              onFocus={FocusPassword}
-              onChange={OnChangePassword}
-              onBlur={BlurPassword}
-            />
-            {MessagePassword && (
-              <p className="text-red-500 text-[.9rem] leading-3 mt-2">
-                {MessagePassword}
-              </p>
-            )}
-          </div>
+            <div className="w-full mb-4">
+              <input
+                label={"Contraseña"}
+                name={"password"}
+                type={"password"}
+                className="w-full h-[60px] rounded-lg text-black p-2"
+                placeholder={"Contraseña*"}
+                value={valuePassword}
+                onFocus={FocusPassword}
+                onChange={OnChangePassword}
+                onBlur={BlurPassword}
+              />
+              {MessagePassword && (
+                <p className="text-red-500 text-[.9rem] leading-3 mt-2">
+                  {MessagePassword}
+                </p>
+              )}
+            </div>
 
-          <div className="h-[.5rem] mb-[1.2rem]">
-            {messageAlert ? (
-              <p className="text-red-500 text-[1rem] leading-3">
-                {messageAlert}
-              </p>
-            ) : (
-              <p className="text-green-500 text-[1rem] leading-3">
-                {messageAlertOk}
-              </p>
-            )}
-          </div>
+            <div className="h-[.5rem] mb-[1.2rem]">
+              {messageAlert ? (
+                <p className="text-red-500 text-[1rem] leading-3">
+                  {messageAlert}
+                </p>
+              ) : (
+                <p className="text-green-500 text-[1rem] leading-3">
+                  {messageAlertOk}
+                </p>
+              )}
+            </div>
 
-          <div className="col-span-2 w-full">
-            <button className="w-full h-[60px] rounded-lg p-2 text-[20px] text-black border-lg bg-[#C1FD35]">
-              Crear cuenta
-            </button>
-          </div>
-        </form>
-      </div>
-      <div className="mt-[100px]">
+            <div className="col-span-2 w-full">
+              <button className="w-full h-[60px] rounded-lg p-2 text-[20px] text-black border-lg bg-[#C1FD35]">
+                Crear cuenta
+              </button>
+            </div>
+          </form>
+        </div>
         <Footer />
       </div>
     </>

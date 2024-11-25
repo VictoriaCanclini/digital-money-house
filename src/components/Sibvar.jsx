@@ -17,7 +17,7 @@ const Sibvar = () => {
       await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/logout`, {});
       Cookies.remove("token");
       dispatch(setCredentials({ user: null, email: "" }));
-      router.push("/login");
+      router.push("/");
     } catch (error) {
       console.error("Error al cerrar sesión:", error);
     }

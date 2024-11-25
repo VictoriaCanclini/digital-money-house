@@ -73,7 +73,10 @@ const Navbar = () => {
       <div className="flex justify-end gap-2 sm:mt-4 mr-4 mt-5 sm:mb-2">
         {isClient && email ? (
           <>
-            <button className="bg-[#C1FD35] text-black rounded-lg pt-4 pb-4 pl-3 pr-3 mb-1 flex items-center">
+            <button
+              className="bg-[#C1FD35] text-black rounded-lg pt-4 pb-4 pl-3 pr-3 mb-1 flex items-center"
+              onClick={handleLogout}
+            >
               <Link href={`/`}>{initials}</Link>
             </button>
             <p className="hidden sm:block mt-3">
